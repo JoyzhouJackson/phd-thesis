@@ -19,3 +19,15 @@ const observer = new IntersectionObserver((entries) => {
 
 document.querySelectorAll('.reveal').forEach((element) => observer.observe(element));
 window.setTimeout(() => document.querySelectorAll('.reveal').forEach((element) => element.classList.add('shown')), 1000);
+
+const researchVideo = document.querySelector('video');
+if (researchVideo) {
+  const videoObserver = new IntersectionObserver(([entry]) => {
+    if (entry.isIntersecting) {
+      researchVideo.play().catch(() => {});
+    } else {
+      researchVideo.pause();
+    }
+  }, { threshold: 0.2 });
+  videoObserver.observe(researchVideo);
+}

@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="周雨露的博士研究：让复杂制造系统更聪明地做决定，从多资源调度到强化学习与 LLM Agent。" />
+    <meta name="description" content="周雨露的博士研究：面向柔性托盘自动化系统的多资源约束调度，从建模和元启发式到强化学习与 LLM Agent。" />
     <meta name="theme-color" content="#111a20" />
     <title>周雨露｜智能制造调度研究</title>
     <link rel="icon" href="favicon.svg" type="image/svg+xml" />
@@ -16,7 +16,9 @@
 
     <header class="site-header">
       <a class="logo" href="#top"><span>YZ</span><strong>周雨露<br />Yulu Zhou</strong></a>
-      <nav aria-label="主导航"><a href="#story">研究主线</a><a href="#ai">AI 方向</a><a href="#results">研究成果</a></nav>
+      <nav aria-label="主导航">
+        <a href="#background">背景</a><a href="#object">研究对象</a><a href="#roadmap">研究主线</a><a href="#ai">AI 方向</a><a href="#future">下一步</a>
+      </nav>
       <a class="contact-link" href="mailto:yuluzhou@sjtu.edu.cn">联系我 ↗</a>
     </header>
 
@@ -24,112 +26,157 @@
       <section class="hero" id="top">
         <div class="hero-inner">
           <div class="hero-copy reveal">
-            <p class="overline">我的博士研究</p>
-            <h1>让复杂制造系统，<br /><em>更聪明地做决定</em></h1>
-            <p class="hero-intro">机器、夹具、托盘和设置站应该怎样协同，才能更快完成生产？我的研究从这个具体问题出发，逐步走向强化学习与 LLM Agent。</p>
-            <a class="button" href="#story">看懂我的研究 <span>↓</span></a>
-            <p class="affiliation">上海交通大学 × 米兰理工大学</p>
+            <p class="overline">多资源约束调度研究</p>
+            <h1>设备越来越灵活，<br />为什么生产仍会<br /><em>等待和拥堵？</em></h1>
+            <p>问题往往不在单台设备，而在机器、夹具、托盘和设置站之间缺少高效协同。</p>
+            <a class="button" href="#background">从问题开始 <span>↓</span></a>
           </div>
-          <div class="hero-visual reveal" aria-label="多种制造资源协同完成生产">
-            <div class="resource machine">机器</div><div class="resource fixture">夹具托盘</div>
-            <div class="resource station">设置站</div><div class="resource material">物料托盘</div>
-            <div class="visual-core"><span>调度决策</span><strong>更快完成生产</strong></div>
+          <div class="hero-note reveal">
+            <strong>我的研究</strong>
+            <p>让制造问题更接近真实工厂，也让调度方法从“计算答案”走向“学习决策”。</p>
+            <span>上海交通大学 × 米兰理工大学</span>
           </div>
         </div>
       </section>
 
-      <section class="plain-question section reveal">
-        <p class="section-number">01</p>
-        <div>
-          <h2>我研究的，不是单台机器怎么工作。</h2>
-          <p>我研究的是多个有限资源如何相互配合。一个看似更快的机器选择，可能让夹具长期占用；一次局部最优，也可能造成后续拥堵。这就是多资源调度的难点。</p>
+      <section class="background section" id="background">
+        <div class="section-title reveal"><p>01 · 背景与痛点</p><h2>柔性自动化解决了“能不能生产”，<br />却没有自动解决“怎样高效生产”。</h2></div>
+        <div class="video-layout reveal">
+          <div class="video-frame">
+            <video autoplay muted loop playsinline controls preload="auto" poster="assets/pallet-video-poster.png" aria-label="Fastems 托盘自动化系统演示视频">
+              <source src="assets/pallet-system.mp4" type="video/mp4" />
+              您的浏览器不支持视频播放。
+            </video>
+            <p>托盘自动化系统示例 · 视频来自用户提供的 Fastems 参考资料</p>
+          </div>
+          <div class="pain-list">
+            <article><span>1</span><div><h3>订单变化快</h3><p>多品种、小批量和短交期，让固定生产计划很快失效。</p></div></article>
+            <article><span>2</span><div><h3>资源必须共享</h3><p>多个工件竞争机器、夹具托盘、设置站和物料托盘。</p></div></article>
+            <article><span>3</span><div><h3>局部最优会制造拥堵</h3><p>眼前更快的选择，可能延长资源占用并拖慢整个订单。</p></div></article>
+          </div>
+        </div>
+        <blockquote class="problem-statement reveal">真正的瓶颈，是如何把系统的<span>物理柔性</span>转化为<span>生产效率</span>。</blockquote>
+      </section>
+
+      <section class="object-section" id="object">
+        <div class="section object-inner">
+          <div class="section-title light reveal"><p>02 · 研究对象与难点</p><h2>柔性托盘自动化系统<br /><span>Pallet Automation System</span></h2></div>
+          <figure class="factory-photo reveal">
+            <img src="assets/industrial-pas.jpg" alt="发动机制造企业中的柔性托盘自动化系统" />
+            <figcaption>研究案例来源于发动机制造企业的实际柔性托盘自动化系统</figcaption>
+          </figure>
+          <div class="system-resources reveal" aria-label="系统关键资源">
+            <div><b>机器</b><span>决定加工时间</span></div><i>×</i>
+            <div><b>夹具托盘</b><span>随工件等待与加工</span></div><i>×</i>
+            <div><b>设置站</b><span>承担装载与卸载</span></div><i>×</i>
+            <div><b>物料托盘</b><span>影响存储与释放</span></div>
+          </div>
+          <div class="difficulty-grid reveal">
+            <article><span>难点一</span><h3>约束多</h3><p>兼容选择、同步占用、先后衔接、等待与释放必须同时满足。</p></article>
+            <article><span>难点二</span><h3>耦合强</h3><p>机器选择会改变夹具占用；夹具选择也会改变机器等待。</p></article>
+            <article><span>难点三</span><h3>规模增长快</h3><p>资源和工件增加后，可行组合与决策空间迅速扩大。</p></article>
+          </div>
         </div>
       </section>
 
-      <section class="story section" id="story">
-        <div class="section-title reveal"><p class="section-number">02</p><h2>我的研究，可以看成<br />两条同时向前的路</h2></div>
+      <section class="state-section section" id="state">
+        <div class="section-title reveal"><p>03 · 研究现状</p><h2>现有方法能优化生产，<br />但真正的多资源联合学习仍然少见。</h2></div>
+        <div class="literature-table reveal" role="table" aria-label="第五篇论文研究现状表格的精简版">
+          <div class="table-row table-head" role="row"><span>研究方向</span><span>主要决策</span><span>RL 的作用</span></div>
+          <div class="table-row" role="row"><strong>标准柔性作业车间</strong><span>工序 + 机器</span><span>直接学习分配</span></div>
+          <div class="table-row" role="row"><strong>多资源调度</strong><span>机器 + 运输 / 工人等</span><span>多用于选择规则、算子或参数</span></div>
+          <div class="table-row" role="row"><strong>已有 PAS 学习方法</strong><span>主要学习夹具托盘选择</span><span>工序与机器仍由固定规则决定</span></div>
+          <div class="table-row emphasis-row" role="row"><strong>本研究</strong><span>工序 + 夹具托盘 + 机器</span><span>端到端联合决策</span></div>
+        </div>
+        <p class="source-note reveal">根据第五篇论文 “RL applications in FJSP and MRFJSP” 文献表归纳。</p>
+        <div class="gap-callout reveal"><span>研究缺口</span><strong>从“让 RL 辅助算法”，走向“让 RL 直接完成多资源调度”。</strong></div>
+      </section>
 
-        <article class="track-card problem-track reveal">
-          <div class="track-intro"><span>A</span><h3>问题越来越真实</h3><p>逐步把真实工厂中的关键资源加入模型。</p></div>
-          <div class="steps three-steps">
-            <div><b>机器 + 夹具托盘</b><span>先描述基础资源协同</span></div><i>→</i>
-            <div><b>再加入设置站</b><span>考虑装卸排队与资源占用</span></div><i>→</i>
-            <div><b>再加入物料托盘</b><span>形成更完整的生产系统</span></div>
+      <section class="roadmap section" id="roadmap">
+        <div class="section-title reveal"><p>04 · 两条研究主线</p><h2>一条让问题更真实，<br />一条让方法更通用。</h2></div>
+
+        <article class="research-line reveal">
+          <header><span>A</span><div><h3>问题复杂度提升</h3><p>逐步补齐真实 PAS 中的资源与占用关系。</p></div></header>
+          <div class="line-steps three">
+            <div><span>01</span><h4>夹具托盘 + 装卸时间</h4><p>创新：刻画 FP 从装载、等待、加工到卸载的连续占用。</p></div>
+            <i>→</i>
+            <div><span>02</span><h4>再加入有限设置站</h4><p>创新：联合处理装卸任务分配、排队与 FP 释放。</p></div>
+            <i>→</i>
+            <div><span>03</span><h4>再加入物料托盘</h4><p>创新：描述 MP 可用性与 FP 释放之间的决策耦合。</p></div>
           </div>
         </article>
 
-        <article class="track-card method-track reveal">
-          <div class="track-intro"><span>B</span><h3>方法越来越智能</h3><p>从求解一张订单，走向学习可复用的决策能力。</p></div>
-          <div class="steps four-steps">
-            <div><b>精确求解</b><span>找到最优基准</span></div><i>→</i>
-            <div><b>元启发式</b><span>解决更大问题</span></div><i>→</i>
-            <div class="highlight"><b>强化学习</b><span>学习跨订单策略</span></div><i>→</i>
-            <div class="highlight"><b>LLM Agent</b><span>发现策略的盲区</span></div>
+        <article class="research-line method-line reveal">
+          <header><span>B</span><div><h3>方法泛化性提升</h3><p>从每个实例重新计算，走向可复用、可改进的策略。</p></div></header>
+          <div class="line-steps four">
+            <div><span>01</span><h4>精确求解</h4><p>建立正确性与最优性基准。</p></div><i>→</i>
+            <div><span>02</span><h4>元启发式</h4><p>规则初始化结合关键路径搜索。</p></div><i>→</i>
+            <div class="ai-step"><span>03</span><h4>强化学习</h4><p>学习可跨订单复用的联合策略。</p></div><i>→</i>
+            <div class="ai-step"><span>04</span><h4>LLM Agent</h4><p>用反例持续诊断和精化表示。</p></div>
           </div>
         </article>
-
-        <div class="story-result reveal"><span>更真实的问题</span><b>×</b><span>更通用的方法</span><b>=</b><strong>可信、快速的智能调度</strong></div>
       </section>
 
       <section class="ai-section" id="ai">
         <div class="section ai-inner">
-          <div class="section-title light reveal"><p class="section-number">03</p><h2>AI 是这条路线的下一步，<br />不是额外贴上的标签</h2></div>
+          <div class="section-title light reveal"><p>05 · AI 研究重点</p><h2>先让智能体学会调度，<br />再让它发现自己看不见什么。</h2></div>
 
-          <article class="ai-story rl-story reveal">
+          <article class="ai-block reveal">
             <div class="ai-copy">
-              <p class="ai-index">重点一 · 强化学习</p>
-              <h3>不再为每张订单<br />从头搜索一次</h3>
-              <p>让智能体直接联合选择“哪道工序、用哪个夹具托盘、放在哪台机器上”，从大量仿真中学习一种可以复用的调度策略。</p>
-              <ul><li>同时考虑工序、夹具托盘和机器</li><li>权衡眼前效率与后续资源拥堵</li><li>面向未见过的订单规模与生产场景</li></ul>
+              <p class="ai-label">强化学习</p>
+              <h3>一次动作，完成三类联合选择</h3>
+              <p>智能体直接选择一个可行的“工序—夹具托盘—机器”组合，并通过仿真回报学习局部效率与长期拥堵之间的权衡。</p>
+              <div class="joint-action"><span>工序</span><b>×</b><span>夹具托盘</span><b>×</b><span>机器</span><i>→</i><strong>联合动作</strong></div>
             </div>
-            <div class="rl-diagram" aria-label="强化学习联合决策">
-              <div class="decision-items"><span><b>工序</b>做什么</span><i>+</i><span><b>夹具托盘</b>用什么</span><i>+</i><span><b>机器</b>在哪里做</span></div>
-              <div class="learn-arrow">反复仿真与学习 <b>↓</b></div>
-              <div class="policy-box"><span>可复用的</span><strong>调度策略</strong></div>
+            <figure class="evidence-figure">
+              <img src="assets/rl-generalization.png" alt="强化学习策略在不同资源主导场景下相对规则的改进箱线图" />
+              <figcaption><strong>跨场景泛化并不等于所有场景都同样好。</strong>结果显示策略在加工主导与资源紧张场景保持优势，装卸主导场景则暴露出泛化边界。</figcaption>
+            </figure>
+          </article>
+
+          <article class="ai-block agent-block reveal">
+            <div class="ai-copy">
+              <p class="ai-label">LLM Agent</p>
+              <h3>把“为什么选错”变成一个可检验的假设</h3>
+              <p>LLM 不直接生成最终调度策略。它阅读反事实错例，解释可能缺失的上下文，再把想法编译为可计算特征与实验配置。</p>
+              <div class="agent-principle"><strong>LLM 提建议</strong><i>→</i><strong>实验做裁判</strong></div>
+            </div>
+            <div class="agent-loop" aria-label="LLM Agent 表示精化闭环">
+              <div><span>1</span><h4>寻找反例</h4><p>定位长期结果明显更差的决策。</p></div><i>→</i>
+              <div><span>2</span><h4>诊断缺失信息</h4><p>提出可计算、无信息泄漏的特征。</p></div><i>→</i>
+              <div><span>3</span><h4>重新训练验证</h4><p>不通过预设门槛就拒绝晋级。</p></div>
             </div>
           </article>
 
-          <article class="ai-story agent-story reveal">
-            <div class="ai-copy">
-              <p class="ai-index">重点二 · LLM Agent</p>
-              <h3>让强化学习发现：<br />自己遗漏了什么</h3>
-              <p>强化学习有时会选错，不是因为没有训练，而是因为它看到的信息不够。LLM Agent 从错误案例中寻找缺失信息，提出新特征，再交给实验验证。</p>
-              <div class="agent-rule"><strong>LLM 提建议</strong><span>实验做裁判</span></div>
-            </div>
-            <div class="agent-flow" aria-label="LLM Agent 的研究闭环">
-              <div><span>1</span><b>找到错例</b><p>模型在哪些决策上看错了？</p></div><i>→</i>
-              <div><span>2</span><b>提出假设</b><p>还缺少哪一个关键信息？</p></div><i>→</i>
-              <div><span>3</span><b>重新实验</b><p>真的变好，还是只是看起来合理？</p></div>
-            </div>
-          </article>
+          <blockquote class="integrity-note reveal">新特征即使解决了原来的错误，只要整体性能变差，<strong>就不把它包装成成功。</strong></blockquote>
+        </div>
+      </section>
 
-          <div class="honest-result reveal">
-            <p>一个真实的研究片段</p>
-            <h3>新特征消除了原来的错误，<br />但整体表现反而变差。</h3>
-            <div><span>因此：不包装成成功</span><strong>拒绝晋级，继续寻找原因。</strong></div>
+      <section class="conclusion section" id="conclusion">
+        <div class="section-title reveal"><p>06 · 结论</p><h2>我的研究不是四个孤立算法，<br />而是一条连续演进的路线。</h2></div>
+        <div class="conclusion-flow reveal">
+          <div><span>描述</span><strong>更完整的制造问题</strong></div><i>→</i>
+          <div><span>求解</span><strong>更大规模的真实案例</strong></div><i>→</i>
+          <div><span>学习</span><strong>可跨订单复用的策略</strong></div><i>→</i>
+          <div><span>反思</span><strong>策略表示中的盲区</strong></div>
+        </div>
+        <p class="conclusion-line reveal">最终目标：把 PAS 的物理柔性，转化为可信、快速、可迁移的智能调度能力。</p>
+      </section>
+
+      <section class="future-section" id="future">
+        <div class="section future-inner">
+          <div class="section-title light reveal"><p>07 · 未来展望与下一步</p><h2>从完成当前验证，<br />走向更真实的动态制造系统。</h2></div>
+          <div class="future-list">
+            <article class="reveal"><span>现在</span><h3>完成 LLM Agent 闭环验证</h3><p>继续反例驱动的特征迭代，完成独立测试、消融实验以及与人工和传统特征工程的公平比较。</p></article>
+            <article class="reveal"><span>下一步</span><h3>让强化学习覆盖完整多资源</h3><p>进一步把有限设置站、物料托盘、缓存与运输资源纳入统一学习环境。</p></article>
+            <article class="reveal"><span>继续拓展</span><h3>面对扰动，而不只是静态订单</h3><p>考虑紧急订单、机器故障、随机加工时间和动态重调度。</p></article>
+            <article class="reveal"><span>长期方向</span><h3>函数逼近与跨系统迁移</h3><p>面向更大状态空间学习可迁移策略，同时保留可解释性和人的审核边界。</p></article>
           </div>
+          <a class="button" href="mailto:yulu.zhou@mail.polimi.it">讨论研究与合作 <span>↗</span></a>
         </div>
-      </section>
-
-      <section class="results section" id="results">
-        <div class="section-title reveal"><p class="section-number">04</p><h2>已经完成的三步</h2></div>
-        <div class="result-list">
-          <article class="result-item reveal"><span>01</span><div><h3>把夹具托盘与装卸时间真正纳入调度</h3><p>建立基础多资源模型与求解方法。</p></div><strong>Journal of Manufacturing Systems · 2024</strong></article>
-          <article class="result-item reveal"><span>02</span><div><h3>进一步考虑有限设置站与装卸排队</h3><p>刻画夹具托盘与设置站之间的强耦合。</p></div><a href="https://doi.org/10.1109/TSMC.2026.3655483" target="_blank" rel="noreferrer">IEEE TSMC · 2026 ↗</a></article>
-          <article class="result-item reveal"><span>03</span><div><h3>加入物料托盘，走向完整工业系统</h3><p>在真实发动机制造订单中验证方法价值。</p></div><strong>Journal of Manufacturing Systems · 2025</strong></article>
-        </div>
-      </section>
-
-      <section class="ending section reveal">
-        <p>我的研究目标</p>
-        <h2>让调度方法不仅能解题，<br />还能学习、迁移，并审视自己的局限。</h2>
-        <a class="button dark-button" href="mailto:yulu.zhou@mail.polimi.it">讨论研究与合作 <span>↗</span></a>
       </section>
     </main>
 
-    <footer class="site-footer section">
-      <strong>周雨露 · Yulu Zhou</strong><span>智能制造调度 · 强化学习 · LLM Agent</span>
-      <div><a href="mailto:yuluzhou@sjtu.edu.cn">Email</a><a href="https://github.com/JoyzhouJackson">GitHub</a><a href="#top">回到顶部 ↑</a></div>
-    </footer>
+    <footer class="site-footer section"><strong>周雨露 · Yulu Zhou</strong><span>智能制造调度 · 强化学习 · LLM Agent</span><div><a href="mailto:yuluzhou@sjtu.edu.cn">Email</a><a href="https://github.com/JoyzhouJackson">GitHub</a><a href="#top">回到顶部 ↑</a></div></footer>
   </body>
 </html>
