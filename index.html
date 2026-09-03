@@ -34,13 +34,12 @@
           <div class="hero-note reveal">
             <strong>我的研究</strong>
             <p>让制造问题更接近真实工厂，也让调度方法从“计算答案”走向“学习决策”。</p>
-            <span>上海交通大学 × 米兰理工大学</span>
           </div>
         </div>
       </section>
 
       <section class="background section" id="background">
-        <div class="section-title reveal"><p>01 · 背景与痛点</p><h2>柔性自动化解决了“能不能生产”，<br />却没有自动解决“怎样高效生产”。</h2></div>
+        <div class="section-title reveal"><p>01 · 背景与痛点</p><h2>柔性设备解决了“能不能生产”</h2></div>
         <div class="video-layout reveal">
           <div class="video-frame">
             <video autoplay muted loop playsinline controls preload="auto" poster="assets/pallet-video-poster.png" aria-label="Fastems 托盘自动化系统演示视频">
@@ -50,9 +49,9 @@
             <p>托盘自动化系统示例 · 视频来自用户提供的 Fastems 参考资料</p>
           </div>
           <div class="pain-list">
-            <article><span>1</span><div><h3>订单变化快</h3><p>多品种、小批量和短交期，让固定生产计划很快失效。</p></div></article>
-            <article><span>2</span><div><h3>资源必须共享</h3><p>多个工件竞争机器、夹具托盘、设置站和物料托盘。</p></div></article>
-            <article><span>3</span><div><h3>局部最优会制造拥堵</h3><p>眼前更快的选择，可能延长资源占用并拖慢整个订单。</p></div></article>
+            <article><span>1</span><div><h3>宏观背景</h3><p>随着产品定制化程度提高和生命周期缩短，生产模式正从少品种大批量转向多品种小批量。企业因此面临柔性自动化升级难题，而托盘自动化系统（PAS）是重要解决方案之一。</p></div></article>
+            <article><span>2</span><div><h3>行业升级意愿强</h3><p>Fastems 对中国托盘自动化应用的调查显示，78% 的受访企业计划在一至三年内升级 PAS。更高的产品多样性和更短的交付窗口，使 PAS 的高效运行成为日益重要的生产管理问题。</p></div></article>
+            <article><span>3</span><div><h3>PAS 把柔性设备连成系统</h3><p>PAS 通过标准化托盘整合异构机床、共享设置站、自动搬运与存储及中央控制，减少人工搬运和非加工时间，提高设备利用率与无人化生产能力，并支持模块化扩容和重构。</p></div></article>
           </div>
         </div>
         <blockquote class="problem-statement reveal">真正的瓶颈，是如何把系统的<span>物理柔性</span>转化为<span>生产效率</span>。</blockquote>
@@ -61,10 +60,16 @@
       <section class="object-section" id="object">
         <div class="section object-inner">
           <div class="section-title light reveal"><p>02 · 研究对象与难点</p><h2>柔性托盘自动化系统<br /><span>Pallet Automation System</span></h2></div>
-          <figure class="factory-photo reveal">
-            <img src="assets/industrial-pas.jpg" alt="发动机制造企业中的柔性托盘自动化系统" />
-            <figcaption>研究案例来源于发动机制造企业的实际柔性托盘自动化系统</figcaption>
-          </figure>
+          <div class="object-visuals reveal">
+            <figure class="factory-photo">
+              <img src="assets/industrial-pas.jpg" alt="发动机制造企业中的柔性托盘自动化系统" />
+              <figcaption>发动机制造企业中的实际柔性托盘自动化系统</figcaption>
+            </figure>
+            <figure class="structure-figure">
+              <img src="assets/pas-structure.png" alt="工件、夹具、托盘、设置站与机床组成的 PAS 结构示意图" />
+              <figcaption>结构示意：工件装夹到夹具托盘后，在设置站、存储系统与异构机床之间自动流转</figcaption>
+            </figure>
+          </div>
           <div class="system-resources reveal" aria-label="系统关键资源">
             <div><b>机器</b><span>决定加工时间</span></div><i>×</i>
             <div><b>夹具托盘</b><span>随工件等待与加工</span></div><i>×</i>
@@ -89,7 +94,7 @@
           <div class="table-row emphasis-row" role="row"><strong>本研究</strong><span>工序 + 夹具托盘 + 机器</span><span>端到端联合决策</span></div>
         </div>
         <p class="source-note reveal">根据第五篇论文 “RL applications in FJSP and MRFJSP” 文献表归纳。</p>
-        <div class="gap-callout reveal"><span>研究缺口</span><strong>从“让 RL 辅助算法”，走向“让 RL 直接完成多资源调度”。</strong></div>
+        <div class="gap-callout reveal"><span>研究缺口</span><strong>从“让 RL 辅助算法”，走向“让 RL 直接端到端完成多资源调度”。</strong></div>
       </section>
 
       <section class="roadmap section" id="roadmap">
@@ -115,62 +120,116 @@
             <div class="ai-step"><span>04</span><h4>LLM Agent</h4><p>用反例持续诊断和精化表示。</p></div>
           </div>
         </article>
+
+        <section class="publications reveal" aria-labelledby="publication-title">
+          <div class="publication-heading"><p>第一作者成果</p><h3 id="publication-title">两条主线已形成 3 篇期刊论文、2 篇会议论文与 1 篇在研稿件</h3></div>
+          <div class="publication-grid">
+            <article><span>已发表 · JMS 2024</span><h4>Machine-Fixture-Pallet Resources Constrained Flexible Job Shop Scheduling Considering Loading and Unloading Times under Pallet Automation System</h4><p>机器—夹具托盘联合调度与连续占用建模</p></article>
+            <article><span>会议 · IFAC MIM 2025</span><h4>Machine-fixture-pallet resources constrained flexible pallet automation system scheduling with loading and unloading time</h4><p>Yulu Zhou, Shichang Du*, Andrea Matta</p></article>
+            <article><span>已发表 · JMS 2025</span><h4>Flexible Pallet Automation System Scheduling with Limited Fixture-Pallets and Material-Pallets</h4><p>引入有限物料托盘的发动机制造案例</p></article>
+            <article><span>已发表 · IEEE TSMC:S 2026</span><h4>Multiresource-Constrained Flexible Job Shop Scheduling with Fixture Pallets and Setup Stations under Pallet Automation Systems</h4><p>进一步纳入有限设置站与装卸任务</p></article>
+            <article><span>会议 · APMS 2026</span><h4>End-to-End Q-Learning for Fixture Selection in Multi-Resource-Constrained Flexible Job Shop Scheduling</h4><p>Yulu Zhou, Andrea Matta, Shichang Du*</p></article>
+            <article><span>准备投稿 · IJPR</span><h4>End-to-end Q-learning for operation-fixture-machine scheduling in pallet automation systems</h4><p>工序—夹具托盘—机器端到端联合决策</p></article>
+          </div>
+        </section>
       </section>
 
       <section class="ai-section" id="ai">
         <div class="section ai-inner">
-          <div class="section-title light reveal"><p>05 · AI 研究重点</p><h2>先让智能体学会调度，<br />再让它发现自己看不见什么。</h2></div>
+          <div class="section-title light reveal"><p>05 · AI 研究重点</p><h2>先让智能体学会端到端联合决策，<br />再让 LLM 用反例推动策略持续改进。</h2></div>
 
-          <article class="ai-block reveal">
-            <div class="ai-copy">
-              <p class="ai-label">强化学习</p>
-              <h3>一次动作，完成三类联合选择</h3>
-              <p>智能体直接选择一个可行的“工序—夹具托盘—机器”组合，并通过仿真回报学习局部效率与长期拥堵之间的权衡。</p>
+          <article class="rl-section reveal">
+            <div class="ai-copy rl-heading">
+              <p class="ai-label">强化学习 · End-to-End Q-Learning</p>
+              <h3>一个动作，同时决定工序、夹具托盘和机器</h3>
+              <p>候选筛选与三层离散化共同控制状态—动作规模，使相似调度情境能够共享经验；核心是在保留关键决策差异与避免 Q 表过度稀疏之间取得平衡。</p>
               <div class="joint-action"><span>工序</span><b>×</b><span>夹具托盘</span><b>×</b><span>机器</span><i>→</i><strong>联合动作</strong></div>
             </div>
-            <figure class="evidence-figure">
-              <img src="assets/rl-generalization.png" alt="强化学习策略在不同资源主导场景下相对规则的改进箱线图" />
-              <figcaption><strong>跨场景泛化并不等于所有场景都同样好。</strong>结果显示策略在加工主导与资源紧张场景保持优势，装卸主导场景则暴露出泛化边界。</figcaption>
+
+            <div class="rl-principles" aria-label="强化学习的四个组成部分">
+              <article><span>01 · STATE</span><h4>候选动作的状态表示</h4><p>用设置时间、加工时间、工序等待、机器等待、剩余工作量和工序柔性六个离散特征描述每个候选动作。</p><code>φₜ(a) = [bˢᵉᵗ, bᵖʳᵒᶜ, bᵒʷ, bᵐʷ, bʳᵉᵐ, bᶠˡᵉˣ]</code></article>
+              <article><span>02 · ACTION</span><h4>端到端联合动作</h4><p>先生成所有可行的工序—夹具托盘—机器组合，再保留兼顾设置、加工和等待偏好的代表候选，由智能体完成最终选择。</p><code>aₜ = (Oᵢⱼ, f, m) ∈ Ãₜ</code></article>
+              <article><span>03 · REWARD</span><h4>过程反馈 + 完工反馈</h4><p>过程项惩罚本次动作造成的部分完工期增长；终止项评价完整调度相对参考方案的改善，并按案例规模归一化。</p><code>rₜ = (Cₜᵖ − Cₜ₊₁ᵖ)/Cʳᵉᶠ + Iₜβ(Cʳᵉᶠ − Cₘₐₓ)/Cʳᵉᶠ</code></article>
+              <article><span>04 · UPDATE</span><h4>从当前结果修正长期价值</h4><p>用即时回报与下一决策点的最佳估计共同更新 Q 值，使一次联合选择能够学习其对后续调度的影响。</p><code>Q ← Q + α[rₜ + γ max Q′ − Q]</code></article>
+            </div>
+
+            <figure class="algorithm-figure">
+              <img src="assets/q-learning-algorithm.png" alt="论文 5 图 4：端到端 Q-learning 的训练、决策、验证与测试流程" />
+              <figcaption>论文 5 图 4：初始化、训练轮次、案例循环、联合决策与独立验证组成完整的端到端 Q-learning 流程。</figcaption>
             </figure>
+
+            <div class="result-heading">
+              <p class="ai-label">结果 · 100 个测试案例</p>
+              <h3>在覆盖完整测试集的比较方法中，智能体的平均 makespan 均更低</h3>
+              <p>总体比较覆盖 GA、TS、SA、规则组合与上一代智能体。Gurobi 仅评估最小的 15 个案例，因此不纳入这项完整测试集结论。</p>
+            </div>
+            <div class="bubble-grid">
+              <figure><img src="assets/rl-bubble-ts.png" alt="相对禁忌搜索的改进随案例规模变化的气泡图" /><figcaption><strong>相对 TS：</strong>前三个最小规模为负，从第 4 个规模起转为正，并随问题复杂度总体增大。</figcaption></figure>
+              <figure><img src="assets/rl-bubble-previous.png" alt="相对上一代智能体的改进随案例规模变化的气泡图" /><figcaption><strong>相对上一代智能体：</strong>20 个规模均为正，说明端到端联合决策在不同规模上保持一致改进。</figcaption></figure>
+            </div>
+            <div class="rl-limitation">
+              <span>极端测试暴露的边界</span>
+              <p>在装卸时间占主导的极端场景中，三层离散化会把差异明显的设置时间映射到同一类别，造成信息损失；智能体平均比 Rule 2 差 3.39%。这说明常规测试上的优势并不等于状态表示已经覆盖所有分布变化。</p>
+            </div>
           </article>
 
-          <article class="ai-block agent-block reveal">
-            <div class="ai-copy">
-              <p class="ai-label">LLM Agent</p>
-              <h3>把“为什么选错”变成一个可检验的假设</h3>
-              <p>LLM 不直接生成最终调度策略。它阅读反事实错例，解释可能缺失的上下文，再把想法编译为可计算特征与实验配置。</p>
-              <div class="agent-principle"><strong>LLM 提建议</strong><i>→</i><strong>实验做裁判</strong></div>
+          <article class="agent-section reveal">
+            <div class="ai-copy agent-heading">
+              <p class="ai-label">LLM Agent · Counterexample-driven Learning</p>
+              <h3>LLM 不替代调度智能体，而是帮助它发现表示缺陷</h3>
+              <p>Agent 从反事实决策中寻找“当前策略选了什么、换一个动作会怎样”，把错误转化为可证伪的特征假设，再由冻结的实验协议决定淘汰、晋级或结束。</p>
+              <div class="agent-principle"><strong>LLM 生成假设</strong><i>→</i><strong>程序执行实验</strong><i>→</i><strong>证据决定去留</strong></div>
             </div>
-            <div class="agent-loop" aria-label="LLM Agent 表示精化闭环">
-              <div><span>1</span><h4>寻找反例</h4><p>定位长期结果明显更差的决策。</p></div><i>→</i>
-              <div><span>2</span><h4>诊断缺失信息</h4><p>提出可计算、无信息泄漏的特征。</p></div><i>→</i>
-              <div><span>3</span><h4>重新训练验证</h4><p>不通过预设门槛就拒绝晋级。</p></div>
+
+            <div class="agent-elements" aria-label="LLM Agent 六大要素">
+              <article><span>GOAL</span><h4>目标</h4><p>减少有害反例，同时不牺牲独立测试集的整体调度性能。</p></article>
+              <article><span>PERCEPTION</span><h4>感知</h4><p>读取已选动作、可行替代、最终 makespan、特征差异与状态键冲突。</p></article>
+              <article><span>REASONING</span><h4>推理</h4><p>诊断缺失信息，并提出一次只改变一个表示因素的可检验假设。</p></article>
+              <article><span>MEMORY</span><h4>记忆</h4><p>保存每轮假设、配置、结果与失败原因，避免重复无效方向。</p></article>
+              <article><span>TOOLS</span><h4>工具</h4><p>调用冻结仿真器、训练器、反例挖掘、状态混叠分析和验证程序。</p></article>
+              <article><span>ACTION</span><h4>行动</h4><p>把假设编译为新特征与隔离配置，启动实验并按门槛晋级或淘汰。</p></article>
+            </div>
+
+            <div class="counterexample-definition">
+              <span>什么是反例？</span>
+              <p>从完全相同的决策前状态出发，分别执行当前所选动作和每个可行替代动作，再用同一冻结贪心策略完成后续调度；若所选动作造成的最终 makespan 比最佳替代高至少 1%，则记为有害反例。若两者还共享同一个离散状态键，则构成最强的“信息丢失”证据。</p>
+            </div>
+
+            <div class="screening-funnel">
+              <article class="screen-card fast"><span>第一层 · 粗略筛选</span><h4>低成本淘汰弱假设</h4><ul><li>Seed A × 500 epochs</li><li>验证集最佳五检查点移动平均达到性能底线</li><li>反例率或同键反例数必须改善</li><li>仅弱改善时，再用 Seed B 复核</li></ul></article>
+              <i>通过才进入 →</i>
+              <article class="screen-card full"><span>第二层 · 精细筛选</span><h4>完整科学确认</h4><ul><li>A / B / C 三个固定种子 × 2000 epochs</li><li>五个发现集案例逐动作反例挖掘</li><li>冻结的 100 案例独立测试</li><li>记录复杂度、状态混叠与总体性能</li></ul></article>
+            </div>
+
+            <div class="closure-grid">
+              <article><span>改进方向</span><p>优先尝试相对化表示、替换弱信息特征、补充资源耦合上下文，并控制状态维度与 Q 表稀疏性。</p></article>
+              <article><span>什么样算好</span><p>有害反例减少、严格同键反例降为 0，且冻结独立测试的宏观性能不低于无选择器基准。</p></article>
+              <article><span>何时结束闭环</span><p>候选通过完整精筛即接受；若预先约定的迭代预算耗尽仍无候选通过，则以“尚未解决的局限”结束，而不是继续追逐正结果。</p></article>
             </div>
           </article>
-
-          <blockquote class="integrity-note reveal">新特征即使解决了原来的错误，只要整体性能变差，<strong>就不把它包装成成功。</strong></blockquote>
         </div>
       </section>
 
       <section class="conclusion section" id="conclusion">
-        <div class="section-title reveal"><p>06 · 结论</p><h2>我的研究不是四个孤立算法，<br />而是一条连续演进的路线。</h2></div>
+        <div class="section-title reveal"><p>06 · 结论</p><h2>四个研究点对应一条完整路线：<br />描述、求解、学习、改进。</h2></div>
         <div class="conclusion-flow reveal">
-          <div><span>描述</span><strong>更完整的制造问题</strong></div><i>→</i>
-          <div><span>求解</span><strong>更大规模的真实案例</strong></div><i>→</i>
-          <div><span>学习</span><strong>可跨订单复用的策略</strong></div><i>→</i>
-          <div><span>反思</span><strong>策略表示中的盲区</strong></div>
+          <div><span>描述</span><strong>建立多资源耦合约束的 PAS 调度模型</strong></div><i>→</i>
+          <div><span>求解</span><strong>用元启发式高效搜索复杂解空间</strong></div><i>→</i>
+          <div><span>学习</span><strong>用强化学习实现端到端联合决策</strong></div><i>→</i>
+          <div><span>改进</span><strong>用 LLM Agent 构建反例驱动的自学习闭环</strong></div>
         </div>
-        <p class="conclusion-line reveal">最终目标：把 PAS 的物理柔性，转化为可信、快速、可迁移的智能调度能力。</p>
+        <p class="conclusion-line reveal">最终目标：形成更稳定、泛化性更强、具备自学习能力、动态响应快且可跨系统迁移的调度模型，适应不同的制造场景。</p>
       </section>
 
       <section class="future-section" id="future">
         <div class="section future-inner">
-          <div class="section-title light reveal"><p>07 · 未来展望与下一步</p><h2>从完成当前验证，<br />走向更真实的动态制造系统。</h2></div>
+          <div class="section-title light reveal"><p>07 · 未来展望与下一步</p><h2>下一阶段聚焦深度强化学习与 AI 驱动的自主调度。</h2></div>
           <div class="future-list">
-            <article class="reveal"><span>现在</span><h3>完成 LLM Agent 闭环验证</h3><p>继续反例驱动的特征迭代，完成独立测试、消融实验以及与人工和传统特征工程的公平比较。</p></article>
-            <article class="reveal"><span>下一步</span><h3>让强化学习覆盖完整多资源</h3><p>进一步把有限设置站、物料托盘、缓存与运输资源纳入统一学习环境。</p></article>
-            <article class="reveal"><span>继续拓展</span><h3>面对扰动，而不只是静态订单</h3><p>考虑紧急订单、机器故障、随机加工时间和动态重调度。</p></article>
-            <article class="reveal"><span>长期方向</span><h3>函数逼近与跨系统迁移</h3><p>面向更大状态空间学习可迁移策略，同时保留可解释性和人的审核边界。</p></article>
+            <article class="reveal"><span>近期</span><h3>完成 LLM Agent 精筛闭环</h3><p>冻结评价协议，完成三种子训练、独立测试与消融分析，明确哪些表示改进能够真正提升泛化性能。</p></article>
+            <article class="reveal"><span>深度强化学习</span><h3>从 Q 表走向可扩展的函数逼近</h3><p>面向更多工件、资源与连续状态，研究图表示、注意力机制和约束感知的策略网络，同时保留可行性保证。</p></article>
+            <article class="reveal"><span>动态决策</span><h3>学习对扰动快速响应的在线策略</h3><p>把紧急订单、机器故障、随机加工与装卸时间纳入环境，研究无需从头优化的实时重调度。</p></article>
+            <article class="reveal"><span>AI 自学习</span><h3>让 Agent 自动发现、验证并积累调度知识</h3><p>将反例诊断、特征生成、实验设计与知识记忆连接起来，形成有证据约束的持续改进机制。</p></article>
+            <article class="reveal"><span>迁移与协同</span><h3>跨产品、跨产线、跨系统迁移</h3><p>结合迁移学习、元学习和多智能体协同，使策略能够适应不同 PAS 配置与其他多资源制造系统。</p></article>
           </div>
           <a class="button" href="mailto:yulu.zhou@mail.polimi.it">讨论研究与合作 <span>↗</span></a>
         </div>
