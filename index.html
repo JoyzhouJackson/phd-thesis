@@ -49,9 +49,9 @@
             <p>托盘自动化系统示例 · 视频来自用户提供的 Fastems 参考资料</p>
           </div>
           <div class="pain-list">
-            <article><span>1</span><div><h3>宏观背景</h3><p>随着产品定制化程度提高和生命周期缩短，生产模式正从少品种大批量转向多品种小批量。企业因此面临柔性自动化升级难题，而托盘自动化系统（PAS）是重要解决方案之一。</p></div></article>
+            <article><span>1</span><div><h3>制造模式转型</h3><p>随着产品定制化程度提高和生命周期缩短，生产模式正从少品种大批量转向多品种小批量。企业因此面临柔性自动化升级难题，而托盘自动化系统（PAS）是重要解决方案之一。</p></div></article>
             <article><span>2</span><div><h3>行业升级意愿强</h3><p>Fastems 对中国托盘自动化应用的调查显示，78% 的受访企业计划在一至三年内升级 PAS。更高的产品多样性和更短的交付窗口，使 PAS 的高效运行成为日益重要的生产管理问题。</p></div></article>
-            <article><span>3</span><div><h3>PAS 把柔性设备连成系统</h3><p>PAS 通过标准化托盘整合异构机床、共享设置站、自动搬运与存储及中央控制，减少人工搬运和非加工时间，提高设备利用率与无人化生产能力，并支持模块化扩容和重构。</p></div></article>
+            <article><span>3</span><div><h3>多资源高度耦合</h3><p>工序选择、机器分配、夹具托盘占用、设置站装卸与物料托盘释放相互影响。一个局部选择会改变其他资源的可用时间和后续可行空间，使物理柔性无法自动转化为系统效率。</p></div></article>
           </div>
         </div>
         <blockquote class="problem-statement reveal">真正的瓶颈，是如何把系统的<span>物理柔性</span>转化为<span>生产效率</span>。</blockquote>
@@ -147,8 +147,8 @@
             </div>
 
             <div class="rl-principles" aria-label="强化学习的四个组成部分">
-              <article><span>01 · STATE</span><h4>候选动作的状态表示</h4><p>用设置时间、加工时间、工序等待、机器等待、剩余工作量和工序柔性六个离散特征描述每个候选动作。</p><code>φₜ(a) = [bˢᵉᵗ, bᵖʳᵒᶜ, bᵒʷ, bᵐʷ, bʳᵉᵐ, bᶠˡᵉˣ]</code></article>
-              <article><span>02 · ACTION</span><h4>端到端联合动作</h4><p>先生成所有可行的工序—夹具托盘—机器组合，再保留兼顾设置、加工和等待偏好的代表候选，由智能体完成最终选择。</p><code>aₜ = (Oᵢⱼ, f, m) ∈ Ãₜ</code></article>
+              <article><span>01 · STATE</span><h4>候选动作的状态表示</h4><p>用装卸时间、加工时间、工序等待、机器等待、剩余工作量和工序柔性六个离散特征描述每个候选动作。</p><code>φₜ(a) = [bˡᵘᵗ, bᵖʳᵒᶜ, bᵒʷ, bᵐʷ, bʳᵉᵐ, bᶠˡᵉˣ]</code></article>
+              <article><span>02 · ACTION</span><h4>端到端联合动作</h4><p>先生成所有可行的工序—夹具托盘—机器组合，再保留兼顾装卸、加工和等待偏好的代表候选，由智能体完成最终选择。</p><code>aₜ = (Oᵢⱼ, f, m) ∈ Ãₜ</code></article>
               <article><span>03 · REWARD</span><h4>过程反馈 + 完工反馈</h4><p>过程项惩罚本次动作造成的部分完工期增长；终止项评价完整调度相对参考方案的改善，并按案例规模归一化。</p><code>rₜ = (Cₜᵖ − Cₜ₊₁ᵖ)/Cʳᵉᶠ + Iₜβ(Cʳᵉᶠ − Cₘₐₓ)/Cʳᵉᶠ</code></article>
               <article><span>04 · UPDATE</span><h4>从当前结果修正长期价值</h4><p>用即时回报与下一决策点的最佳估计共同更新 Q 值，使一次联合选择能够学习其对后续调度的影响。</p><code>Q ← Q + α[rₜ + γ max Q′ − Q]</code></article>
             </div>
@@ -161,15 +161,15 @@
             <div class="result-heading">
               <p class="ai-label">结果 · 100 个测试案例</p>
               <h3>在覆盖完整测试集的比较方法中，智能体的平均 makespan 均更低</h3>
-              <p>总体比较覆盖 GA、TS、SA、规则组合与上一代智能体。Gurobi 仅评估最小的 15 个案例，因此不纳入这项完整测试集结论。</p>
+              <p>总体比较覆盖 GA、TS、SA 与多种规则组合。Gurobi 仅评估最小的 15 个案例，因此不纳入这项完整测试集结论。</p>
             </div>
             <div class="bubble-grid">
               <figure><img src="assets/rl-bubble-ts.png" alt="相对禁忌搜索的改进随案例规模变化的气泡图" /><figcaption><strong>相对 TS：</strong>前三个最小规模为负，从第 4 个规模起转为正，并随问题复杂度总体增大。</figcaption></figure>
-              <figure><img src="assets/rl-bubble-previous.png" alt="相对上一代智能体的改进随案例规模变化的气泡图" /><figcaption><strong>相对上一代智能体：</strong>20 个规模均为正，说明端到端联合决策在不同规模上保持一致改进。</figcaption></figure>
+              <figure><img src="assets/rl-bubble-rule3.png" alt="相对 Rule 3 的改进随案例规模变化的气泡图" /><figcaption><strong>相对 Rule 3：</strong>20 个规模均为正，说明端到端联合决策在不同规模上均优于该代表性规则组合。</figcaption></figure>
             </div>
-            <div class="rl-limitation">
-              <span>极端测试暴露的边界</span>
-              <p>在装卸时间占主导的极端场景中，三层离散化会把差异明显的设置时间映射到同一类别，造成信息损失；智能体平均比 Rule 2 差 3.39%。这说明常规测试上的优势并不等于状态表示已经覆盖所有分布变化。</p>
+            <div class="scenario-finding">
+              <figure><img src="assets/rl-generalization.png" alt="强化学习策略在三种极端生产场景下相对 Rule 1 和 Rule 2 的改进箱线图" /><figcaption>极端场景测试：装卸主导、加工主导以及机器与夹具托盘数量减少。</figcaption></figure>
+              <div><span>极端测试暴露的边界</span><h4>优势并不意味着覆盖所有分布变化</h4><p>在装卸时间占主导的极端场景中，三层离散化会把差异明显的装卸时间映射到同一类别，造成信息损失；智能体平均比 Rule 2 差 3.39%。而在加工主导与资源数量减少场景中，智能体仍保持明显优势。</p></div>
             </div>
           </article>
 
@@ -182,29 +182,42 @@
             </div>
 
             <div class="agent-elements" aria-label="LLM Agent 六大要素">
-              <article><span>GOAL</span><h4>目标</h4><p>减少有害反例，同时不牺牲独立测试集的整体调度性能。</p></article>
-              <article><span>PERCEPTION</span><h4>感知</h4><p>读取已选动作、可行替代、最终 makespan、特征差异与状态键冲突。</p></article>
-              <article><span>REASONING</span><h4>推理</h4><p>诊断缺失信息，并提出一次只改变一个表示因素的可检验假设。</p></article>
-              <article><span>MEMORY</span><h4>记忆</h4><p>保存每轮假设、配置、结果与失败原因，避免重复无效方向。</p></article>
-              <article><span>TOOLS</span><h4>工具</h4><p>调用冻结仿真器、训练器、反例挖掘、状态混叠分析和验证程序。</p></article>
-              <article><span>ACTION</span><h4>行动</h4><p>把假设编译为新特征与隔离配置，启动实验并按门槛晋级或淘汰。</p></article>
+              <article><span>01</span><h4>目标</h4><p>消除有害同键反例，同时保持或改善整体 makespan。</p></article>
+              <article><span>02</span><h4>观察</h4><p>反例、Q-table、训练曲线与验证结果。</p></article>
+              <article><span>03</span><h4>推理</h4><p>LLM 分析原因并提出可证伪的单因素假设。</p></article>
+              <article><span>04</span><h4>行动</h4><p>修改代码和配置，执行测试、训练与验证。</p></article>
+              <article><span>05</span><h4>记忆</h4><p>保存反例库、实验注册表和 Git 历史。</p></article>
+              <article><span>06</span><h4>停止条件</h4><p>反例基本消除，或重新诊断后改进仍不收敛。</p></article>
             </div>
 
-            <div class="counterexample-definition">
-              <span>什么是反例？</span>
-              <p>从完全相同的决策前状态出发，分别执行当前所选动作和每个可行替代动作，再用同一冻结贪心策略完成后续调度；若所选动作造成的最终 makespan 比最佳替代高至少 1%，则记为有害反例。若两者还共享同一个离散状态键，则构成最强的“信息丢失”证据。</p>
-            </div>
-
-            <div class="screening-funnel">
-              <article class="screen-card fast"><span>第一层 · 粗略筛选</span><h4>低成本淘汰弱假设</h4><ul><li>Seed A × 500 epochs</li><li>验证集最佳五检查点移动平均达到性能底线</li><li>反例率或同键反例数必须改善</li><li>仅弱改善时，再用 Seed B 复核</li></ul></article>
-              <i>通过才进入 →</i>
-              <article class="screen-card full"><span>第二层 · 精细筛选</span><h4>完整科学确认</h4><ul><li>A / B / C 三个固定种子 × 2000 epochs</li><li>五个发现集案例逐动作反例挖掘</li><li>冻结的 100 案例独立测试</li><li>记录复杂度、状态混叠与总体性能</li></ul></article>
-            </div>
-
-            <div class="closure-grid">
-              <article><span>改进方向</span><p>优先尝试相对化表示、替换弱信息特征、补充资源耦合上下文，并控制状态维度与 Q 表稀疏性。</p></article>
-              <article><span>什么样算好</span><p>有害反例减少、严格同键反例降为 0，且冻结独立测试的宏观性能不低于无选择器基准。</p></article>
-              <article><span>何时结束闭环</span><p>候选通过完整精筛即接受；若预先约定的迭代预算耗尽仍无候选通过，则以“尚未解决的局限”结束，而不是继续追逐正结果。</p></article>
+            <div class="agent-flowchart" aria-label="反例驱动的 LLM Agent 完整流程图">
+              <div class="flow-caption"><span>完整闭环</span><strong>观察 → 推理 → 行动 → 初筛 → 精筛 → 记忆与迭代</strong></div>
+              <div class="flow-node current"><span>当前模型</span><h4>M<sub>k</sub></h4><p>在固定发现集运行，并记录全部候选动作。</p></div>
+              <div class="flow-arrow">↓</div>
+              <div class="flow-node"><span>观察 · 反例挖掘</span><h4>同状态分叉 + 反事实重放</h4><p>比较当前所选动作与所有可行替代动作的最终 makespan，生成确认有害反例库 CE<sub>k</sub>。</p></div>
+              <div class="flow-note"><strong>反例判定</strong><p>若所选动作相对最佳替代动作的归一化 regret ≥ 1%，则记为有害反例；若二者共享同一离散状态键，则说明状态表示发生信息丢失。</p></div>
+              <div class="flow-arrow">↓</div>
+              <div class="flow-node"><span>推理 · LLM 诊断</span><h4>从反例提出一个可证伪假设 H<sub>k</sub></h4><p>分析反例与无害对照，只改变一个表示因素：相对化特征、替换弱信息、补充资源耦合上下文，或降低状态稀疏性。</p></div>
+              <div class="flow-arrow">↓</div>
+              <div class="flow-node"><span>行动 · 实验分支</span><h4>修改代码或配置</h4><p>自动测试与信息泄漏检查通过后提交 Git，确保每个假设可追踪、可回退、可复现。</p></div>
+              <div class="flow-arrow">↓</div>
+              <div class="flow-stage coarse"><span>第一层 · 初筛</span><h4>短训练 + 小规模反例检查</h4><p>先判断性能底线是否守住，以及反例率或同键反例是否改善；弱信号再追加一次复核。</p></div>
+              <div class="flow-arrow">↓</div>
+              <div class="flow-decision-row">
+                <div class="flow-branch reject"><b>否</b><span>拒绝 H<sub>k</sub><br />回到 M<sub>k</sub>，生成下一假设</span></div>
+                <div class="flow-diamond"><span>性能底线与<br />反例信号<br />同时通过？</span></div>
+                <div class="flow-branch accept"><b>是</b><span>候选保留<br />进入精细筛选</span></div>
+              </div>
+              <div class="flow-arrow">↓</div>
+              <div class="flow-stage fine"><span>第二层 · 精筛</span><h4>完整训练 + 独立测试</h4><p>系统评估反例率、regret、状态混叠、模型复杂度与 makespan，确认局部修正是否形成整体净改进。</p></div>
+              <div class="flow-arrow">↓</div>
+              <div class="flow-decision-row final-decision">
+                <div class="flow-branch reject"><b>否</b><span>记录失败原因<br />保留 M<sub>k</sub> 并重新诊断</span></div>
+                <div class="flow-diamond"><span>反例减少、<br />同键归零且<br />整体性能不退化？</span></div>
+                <div class="flow-branch accept"><b>是</b><span>接受 H<sub>k</sub><br />M<sub>k+1</sub> 成为当前模型</span></div>
+              </div>
+              <div class="flow-arrow loop">↓</div>
+              <div class="flow-node memory"><span>记忆与下一轮</span><h4>记录结果，再挖掘新模型产生的反例</h4><p>闭环持续到反例基本消除；若重新诊断后仍无稳定改进，则如实保留未解决的泛化边界并停止。</p></div>
             </div>
           </article>
         </div>
@@ -218,20 +231,20 @@
           <div><span>学习</span><strong>用强化学习实现端到端联合决策</strong></div><i>→</i>
           <div><span>改进</span><strong>用 LLM Agent 构建反例驱动的自学习闭环</strong></div>
         </div>
-        <p class="conclusion-line reveal">最终目标：形成更稳定、泛化性更强、具备自学习能力、动态响应快且可跨系统迁移的调度模型，适应不同的制造场景。</p>
+        <p class="conclusion-line reveal">最终目标：构建兼具稳定性、泛化能力与持续自学习能力的智能调度模型，实现对动态扰动的快速响应，并迁移至不同制造系统与调度场景。</p>
       </section>
 
       <section class="future-section" id="future">
         <div class="section future-inner">
           <div class="section-title light reveal"><p>07 · 未来展望与下一步</p><h2>下一阶段聚焦深度强化学习与 AI 驱动的自主调度。</h2></div>
           <div class="future-list">
-            <article class="reveal"><span>近期</span><h3>完成 LLM Agent 精筛闭环</h3><p>冻结评价协议，完成三种子训练、独立测试与消融分析，明确哪些表示改进能够真正提升泛化性能。</p></article>
+            <article class="reveal"><span>近期</span><h3>验证 LLM Agent 的持续改进能力</h3><p>以反例驱动状态表示优化，验证 Agent 能否在保持整体调度性能的同时持续提升模型的泛化能力。</p></article>
             <article class="reveal"><span>深度强化学习</span><h3>从 Q 表走向可扩展的函数逼近</h3><p>面向更多工件、资源与连续状态，研究图表示、注意力机制和约束感知的策略网络，同时保留可行性保证。</p></article>
             <article class="reveal"><span>动态决策</span><h3>学习对扰动快速响应的在线策略</h3><p>把紧急订单、机器故障、随机加工与装卸时间纳入环境，研究无需从头优化的实时重调度。</p></article>
             <article class="reveal"><span>AI 自学习</span><h3>让 Agent 自动发现、验证并积累调度知识</h3><p>将反例诊断、特征生成、实验设计与知识记忆连接起来，形成有证据约束的持续改进机制。</p></article>
             <article class="reveal"><span>迁移与协同</span><h3>跨产品、跨产线、跨系统迁移</h3><p>结合迁移学习、元学习和多智能体协同，使策略能够适应不同 PAS 配置与其他多资源制造系统。</p></article>
           </div>
-          <a class="button" href="mailto:yulu.zhou@mail.polimi.it">讨论研究与合作 <span>↗</span></a>
+          <a class="button" href="mailto:yuluzhou@sjtu.edu.cn">讨论研究与合作 <span>↗</span></a>
         </div>
       </section>
     </main>
