@@ -31,7 +31,7 @@ body::selection { color: var(--dark); background: var(--green); }
 .hero-copy > p:not(.overline) { max-width: 720px; margin: 25px 0 31px; color: rgba(255,255,255,.68); font-size: 18px; line-height: 1.75; }
 .button { display: inline-flex; align-items: center; gap: 34px; padding: 16px 23px; color: var(--dark); background: var(--green); border-radius: 999px; font-size: 16px; font-weight: 750; }
 .hero-note { align-self: end; margin-bottom: 82px; padding: 28px; border-left: 2px solid var(--orange); background: rgba(255,255,255,.035); }
-.hero-note strong { color: var(--green); font-size: 16px; }.hero-note p { margin: 10px 0 21px; color: white; font-family: Georgia, "Noto Serif SC", serif; font-size: 23px; line-height: 1.5; }.hero-note span { color: rgba(255,255,255,.48); font-size: 14px; }
+.hero-note strong { color: var(--green); font-size: 16px; }.hero-note p { margin: 10px 0 21px; color: white; font-family: Georgia, "Noto Serif SC", serif; font-size: 23px; line-height: 1.5; }.hero-note span { display: block; color: rgba(255,255,255,.58); font-size: 14px; line-height: 1.65; }
 
 .section-title { display: grid; grid-template-columns: 190px 1fr; gap: 45px; margin-bottom: 60px; align-items: start; }
 .section-title > p { margin: 10px 0 0; color: var(--green-dark); font-size: 17px; font-weight: 800; }
