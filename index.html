@@ -241,22 +241,60 @@
             </div>
           </div>
 
-          <div class="schedule-levels reveal" aria-label="多层级排产方法">
-            <article>
+          <div class="schedule-levels reveal" role="tablist" aria-label="点击查看三层排产流程">
+            <button class="schedule-card active" id="tab-preschedule" type="button" role="tab" aria-selected="true" aria-controls="panel-preschedule" data-schedule-target="preschedule">
               <span>01 · 预排产</span>
               <h3>先判断能否按期生产</h3>
-              <p>订单分解 → 分期产能校核 → 关键资源准备，为后续排产给出可执行边界。</p>
-            </article>
-            <article class="featured">
+              <p>订单拆分、产能校核、齐套检查</p>
+              <b>查看流程 ↓</b>
+            </button>
+            <button class="schedule-card featured" id="tab-static" type="button" role="tab" aria-selected="false" aria-controls="panel-static" data-schedule-target="static">
               <span>02 · 静态排产｜博士研究算法</span>
               <h3>把多资源模型转化为可执行方案</h3>
-              <p>多资源耦合建模 → 规则生成可行初始解 → 元启发式搜索优化 → 输出生产排程。</p>
-            </article>
-            <article>
+              <p>多资源建模、优先规则、元启发式</p>
+              <b>查看流程 ↓</b>
+            </button>
+            <button class="schedule-card" id="tab-dynamic" type="button" role="tab" aria-selected="false" aria-controls="panel-dynamic" data-schedule-target="dynamic">
               <span>03 · 动态排产</span>
               <h3>异常发生后快速恢复</h3>
-              <p>识别故障、质量异常、订单插入或取消，撤回未执行任务并完成局部重排。</p>
-            </article>
+              <p>扰动识别、任务撤回、快速重排</p>
+              <b>查看流程 ↓</b>
+            </button>
+          </div>
+
+          <div class="schedule-details reveal">
+            <section class="schedule-panel active" id="panel-preschedule" role="tabpanel" aria-labelledby="tab-preschedule" data-schedule-panel="preschedule">
+              <div class="schedule-panel-heading"><span>01 · 预排产流程</span><h3>把订单需求转化为经过资源验证的生产计划</h3></div>
+              <div class="process-flow">
+                <div><small>输入</small><strong>多层级订单</strong><p>订单、数量与交付期</p></div><i>→</i>
+                <div><small>步骤 1</small><strong>订单拆分</strong><p>拆解为可排产的任务</p></div><i>→</i>
+                <div><small>步骤 2</small><strong>产能校核</strong><p>分期检查产能与瓶颈</p></div><i>→</i>
+                <div><small>步骤 3</small><strong>齐套检查</strong><p>检查工装、刀具与物料</p></div><i>→</i>
+                <div><small>输出</small><strong>预排产计划</strong><p>反馈计划与资源缺口</p></div>
+              </div>
+            </section>
+
+            <section class="schedule-panel" id="panel-static" role="tabpanel" aria-labelledby="tab-static" data-schedule-panel="static" hidden>
+              <div class="schedule-panel-heading"><span>02 · 静态排产流程</span><h3>用规则保证可执行，再由元启发式提升方案质量</h3></div>
+              <div class="process-flow">
+                <div><small>输入</small><strong>订单与资源</strong><p>工艺路线与资源状态</p></div><i>→</i>
+                <div><small>步骤 1</small><strong>耦合建模</strong><p>描述多资源约束关系</p></div><i>→</i>
+                <div><small>步骤 2</small><strong>优先规则</strong><p>快速构造可行初始解</p></div><i>→</i>
+                <div><small>步骤 3</small><strong>元启发式</strong><p>迭代优化调度目标</p></div><i>→</i>
+                <div><small>输出</small><strong>静态排程</strong><p>下发可执行生产任务</p></div>
+              </div>
+            </section>
+
+            <section class="schedule-panel" id="panel-dynamic" role="tabpanel" aria-labelledby="tab-dynamic" data-schedule-panel="dynamic" hidden>
+              <div class="schedule-panel-heading"><span>03 · 动态排产流程</span><h3>锁定已执行任务，只对受扰动部分进行快速重排</h3></div>
+              <div class="process-flow">
+                <div><small>触发</small><strong>动态事件</strong><p>故障、质量或订单变化</p></div><i>→</i>
+                <div><small>步骤 1</small><strong>影响识别</strong><p>定位受影响任务与资源</p></div><i>→</i>
+                <div><small>步骤 2</small><strong>任务撤回</strong><p>保留已完成、撤回未执行</p></div><i>→</i>
+                <div><small>步骤 3</small><strong>快速重排</strong><p>按场景规则局部优化</p></div><i>→</i>
+                <div><small>输出</small><strong>更新计划</strong><p>同步执行并持续反馈</p></div>
+              </div>
+            </section>
           </div>
 
           <div class="industry-results reveal">
@@ -276,8 +314,11 @@
           </div>
 
           <div class="transfer-note reveal">
-            <span>迁移能力</span>
-            <p>将车间特有规则与通用的多资源建模、规则求解和快速重排框架分离，可进一步迁移到其他多品种小批量、资源耦合且动态变化的制造场景。</p>
+            <span class="transfer-title">跨领域迁移</span>
+            <div>
+              <p>将具体业务规则与通用的多资源建模、智能求解和动态重调度框架分离；通过重新定义资源、状态、约束与评价指标，可进一步迁移到其他复杂调度系统。</p>
+              <div class="transfer-tags" aria-label="可迁移的应用场景"><span>智能制造</span><span>机器人集群</span><span>能源调度</span><span>电力调度</span><span>物流与供应链</span></div>
+            </div>
           </div>
         </div>
       </section>
