@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="周雨露的博士研究：面向柔性托盘自动化系统的多资源约束调度，从建模和元启发式到强化学习与 LLM Agent。" />
+    <meta name="description" content="周雨露的博士研究：面向柔性托盘自动化系统的多资源约束调度，从建模、工业落地到强化学习与 LLM Agent。" />
     <meta name="theme-color" content="#111a20" />
     <title>周雨露｜智能制造调度研究</title>
     <link rel="icon" href="favicon.svg" type="image/svg+xml" />
@@ -17,7 +17,7 @@
     <header class="site-header">
       <a class="logo" href="#top"><span>YZ</span><strong>周雨露<br />Yulu Zhou</strong></a>
       <nav aria-label="主导航">
-        <a href="#background">背景</a><a href="#object">研究对象</a><a href="#roadmap">研究主线</a><a href="#ai">AI 方向</a><a href="#future">下一步</a>
+        <a href="#background">背景</a><a href="#roadmap">研究主线</a><a href="#ai">AI 方向</a><a href="#industry">工业落地</a><a href="#future">下一步</a>
       </nav>
       <a class="contact-link" href="mailto:yuluzhou@sjtu.edu.cn">联系我 ↗</a>
     </header>
@@ -224,26 +224,81 @@
         </div>
       </section>
 
-      <section class="conclusion section" id="conclusion">
-        <div class="section-title reveal"><p>06 · 结论</p><h2>四个研究点对应一条完整路线：<br />描述、求解、学习、改进。</h2></div>
-        <div class="conclusion-flow reveal">
-          <div><span>描述</span><strong>建立多资源耦合约束的 PAS 调度模型</strong></div><i>→</i>
-          <div><span>求解</span><strong>用元启发式高效搜索复杂解空间</strong></div><i>→</i>
-          <div><span>学习</span><strong>用强化学习实现端到端联合决策</strong></div><i>→</i>
-          <div><span>改进</span><strong>用 LLM Agent 构建反例驱动的自学习闭环</strong></div>
+      <section class="industry-section" id="industry">
+        <div class="section industry-inner">
+          <div class="section-title light reveal"><p>06 · 工业落地</p><h2>让建模与求解<br />进入真实车间。</h2></div>
+
+          <div class="industry-intro reveal">
+            <div>
+              <p class="industry-kicker">潍柴动力 · 新产品试制车间</p>
+              <h3>多品种、小批量、频繁变化，靠人工排产难以同时兼顾资源与交付。</h3>
+              <p>车间覆盖 120 余种产品、105 台加工设备，年产约 2.7 万件；机器、夹具托盘、刀具、毛坯等资源相互制约，还要应对设备故障、质量异常与订单变更。</p>
+            </div>
+            <div class="industry-facts" aria-label="潍柴项目规模">
+              <div><strong>120+</strong><span>产品种类</span></div>
+              <div><strong>105</strong><span>加工设备</span></div>
+              <div><strong>4 类</strong><span>典型动态异常</span></div>
+            </div>
+          </div>
+
+          <div class="schedule-levels reveal" aria-label="多层级排产方法">
+            <article>
+              <span>01 · 预排产</span>
+              <h3>先判断能否按期生产</h3>
+              <p>订单分解 → 分期产能校核 → 关键资源准备，为后续排产给出可执行边界。</p>
+            </article>
+            <article class="featured">
+              <span>02 · 静态排产｜博士研究算法</span>
+              <h3>把多资源模型转化为可执行方案</h3>
+              <p>多资源耦合建模 → 规则生成可行初始解 → 元启发式搜索优化 → 输出生产排程。</p>
+            </article>
+            <article>
+              <span>03 · 动态排产</span>
+              <h3>异常发生后快速恢复</h3>
+              <p>识别故障、质量异常、订单插入或取消，撤回未执行任务并完成局部重排。</p>
+            </article>
+          </div>
+
+          <div class="industry-results reveal">
+            <figure>
+              <img src="assets/weichai-scheduling-system.png" alt="潍柴新产品试制中心智能排产系统运行界面" />
+              <figcaption>多层级排产算法已集成到车间智能生产管理系统</figcaption>
+            </figure>
+            <div class="result-copy">
+              <p>现场结果</p>
+              <h3>从算法原型走到生产现场</h3>
+              <div class="result-metrics">
+                <div><strong>+25.02%</strong><span>设备利用率</span></div>
+                <div><strong>+21.87%</strong><span>订单一次性交付率</span></div>
+              </div>
+              <p class="validation-note">经过半年现场验证并投入使用，形成覆盖预排产、静态排产与动态排产的多层级排产系统。</p>
+            </div>
+          </div>
+
+          <div class="transfer-note reveal">
+            <span>迁移能力</span>
+            <p>将车间特有规则与通用的多资源建模、规则求解和快速重排框架分离，可进一步迁移到其他多品种小批量、资源耦合且动态变化的制造场景。</p>
+          </div>
         </div>
-        <p class="conclusion-line reveal">最终目标：构建兼具稳定性、泛化能力与持续自学习能力的智能调度模型，实现对动态扰动的快速响应，并迁移至不同制造系统与调度场景。</p>
+      </section>
+
+      <section class="conclusion section" id="conclusion">
+        <div class="section-title reveal"><p>07 · 结论</p><h2>四个研究点对应一条完整路线：<br />描述、求解、学习、改进。</h2></div>
+        <div class="conclusion-flow reveal">
+          <div><span>描述 · 现场问题</span><strong>建立多资源耦合约束的 PAS 调度模型</strong></div><i>→</i>
+          <div><span>求解 · 工业落地</span><strong>用规则与元启发式高效生成可执行排程</strong></div><i>→</i>
+          <div><span>学习 · 智能决策</span><strong>用强化学习实现端到端联合决策</strong></div><i>→</i>
+          <div><span>改进 · 自主进化</span><strong>用 LLM Agent 构建反例驱动的自学习闭环</strong></div>
+        </div>
+        <p class="conclusion-line reveal">目标是形成可落地、能泛化、会持续学习的智能调度方法，快速响应生产变化，并适应不同制造系统与调度场景。</p>
       </section>
 
       <section class="future-section" id="future">
         <div class="section future-inner">
-          <div class="section-title light reveal"><p>07 · 未来展望与下一步</p><h2>下一阶段聚焦深度强化学习与 AI 驱动的自主调度。</h2></div>
+          <div class="section-title light reveal"><p>08 · 未来展望</p><h2>下一步只聚焦两件事：<br />扩展方法，推动落地。</h2></div>
           <div class="future-list">
-            <article class="reveal"><span>近期</span><h3>验证 LLM Agent 的持续改进能力</h3><p>以反例驱动状态表示优化，验证 Agent 能否在保持整体调度性能的同时持续提升模型的泛化能力。</p></article>
-            <article class="reveal"><span>深度强化学习</span><h3>从 Q 表走向可扩展的函数逼近</h3><p>面向更多工件、资源与连续状态，研究图表示、注意力机制和约束感知的策略网络，同时保留可行性保证。</p></article>
-            <article class="reveal"><span>动态决策</span><h3>学习对扰动快速响应的在线策略</h3><p>把紧急订单、机器故障、随机加工与装卸时间纳入环境，研究无需从头优化的实时重调度。</p></article>
-            <article class="reveal"><span>AI 自学习</span><h3>让 Agent 自动发现、验证并积累调度知识</h3><p>将反例诊断、特征生成、实验设计与知识记忆连接起来，形成有证据约束的持续改进机制。</p></article>
-            <article class="reveal"><span>迁移与协同</span><h3>跨产品、跨产线、跨系统迁移</h3><p>结合迁移学习、元学习和多智能体协同，使策略能够适应不同 PAS 配置与其他多资源制造系统。</p></article>
+            <article class="reveal"><span>方法扩展</span><h3>让 DRL 面向动态与连续场景</h3><p>从表格型 Q-learning 走向深度强化学习，研究订单到达、设备故障等动态事件，以及更大规模和连续状态下的联合决策。</p></article>
+            <article class="reveal"><span>工业应用</span><h3>让强化学习进入真实排产系统</h3><p>逐步接入 APS，从历史数据与数字化环境中的离线验证开始，验证其在真实生产中的稳定性、响应速度与持续收益。</p></article>
           </div>
           <a class="button" href="mailto:yuluzhou@sjtu.edu.cn">讨论研究与合作 <span>↗</span></a>
         </div>
