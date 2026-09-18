@@ -17,7 +17,7 @@
     <header class="site-header">
       <a class="logo" href="#top"><span>YZ</span><strong>周雨露<br />Yulu Zhou</strong></a>
       <nav aria-label="主导航">
-        <a href="#background">背景</a><a href="#roadmap">研究主线</a><a href="#ai">AI 方向</a><a href="#industry">工业落地</a><a href="#future">下一步</a>
+        <a href="#background">背景</a><a href="#roadmap">研究主线</a><a href="#foundations">建模与求解</a><a href="#ai">AI 方向</a><a href="#industry">工业落地</a><a href="#future">下一步</a>
       </nav>
       <a class="contact-link" href="mailto:yuluzhou@sjtu.edu.cn">联系我 ↗</a>
     </header>
@@ -135,9 +135,75 @@
         </section>
       </section>
 
+      <section class="foundation-section" id="foundations">
+        <div class="section">
+          <div class="section-title reveal"><p>05 · 建模与求解</p><h2>先把真实车间写进模型，<br />再快速找到可执行的好方案。</h2></div>
+
+          <div class="foundation-grid">
+            <article class="foundation-card model-card reveal">
+              <header>
+                <span>01 · 多资源耦合建模</span>
+                <h3>把“谁在何时占用什么资源”放到同一条时间轴</h3>
+                <p>同一道工序不仅需要机器，还会同时占用夹具托盘、物料托盘和设置站；装卸、等待与加工必须连续衔接。</p>
+              </header>
+
+              <div class="operation-timeline" aria-label="等待、装载、加工和卸载的工序时间链">
+                <div><span>等待</span><small>资源尚未齐备</small></div><i>→</i>
+                <div class="active"><span>装载</span><small>MP + FP + ST</small></div><i>→</i>
+                <div class="active"><span>加工</span><small>机器 + FP</small></div><i>→</i>
+                <div class="active"><span>卸载</span><small>MP + FP + ST</small></div>
+              </div>
+
+              <div class="model-equation"><span>优化目标</span><strong>min C<sub>max</sub></strong><p>在满足全部资源与工艺约束的前提下，最小化总完工时间。</p></div>
+
+              <details class="foundation-detail">
+                <summary>模型具体描述了什么？</summary>
+                <div class="constraint-grid">
+                  <div><strong>机器</strong><p>工序选择可用机器，同一时刻一台机器只加工一道工序。</p></div>
+                  <div><strong>夹具托盘 FP</strong><p>从装载开始到卸载结束持续占用，避免只计算加工时间。</p></div>
+                  <div><strong>物料托盘 MP</strong><p>与工件绑定，在当前工件完成前不能分配给其他工件。</p></div>
+                  <div><strong>设置站 ST</strong><p>装卸任务共享有限工位，需要同时决定分配与排队顺序。</p></div>
+                </div>
+              </details>
+            </article>
+
+            <article class="foundation-card solver-card reveal">
+              <header>
+                <span>02 · 元启发式求解</span>
+                <h3>先用优先规则得到可行方案，再沿关键路径集中改进</h3>
+                <p>IMHRC 用五层编码联合表示物料托盘、机器、夹具托盘、设置站和工序顺序，避免把耦合决策拆散处理。</p>
+              </header>
+
+              <div class="solver-flow" aria-label="IMHRC 的五步求解流程">
+                <div><b>1</b><span>规则初始化</span></div><i>→</i>
+                <div><b>2</b><span>局部搜索</span></div><i>→</i>
+                <div><b>3</b><span>可行性修复</span></div><i>→</i>
+                <div><b>4</b><span>多资源解码</span></div><i>→</i>
+                <div><b>5</b><span>排序选择</span></div>
+              </div>
+
+              <div class="solver-evidence" aria-label="真实订单验证结果">
+                <div><strong>−59.66%</strong><span>小订单 makespan</span></div>
+                <div><strong>−45.90%</strong><span>中等订单 makespan</span></div>
+                <p>两组真实订单相对人工排程的结果；同时，各类资源利用率均得到提升。</p>
+              </div>
+
+              <details class="foundation-detail dark-detail">
+                <summary>算法为什么有效？</summary>
+                <div class="solver-reasons">
+                  <p><strong>高质量起点：</strong>组合工件排序、最短加工时间与最少装卸次数等优先规则。</p>
+                  <p><strong>聚焦瓶颈：</strong>沿关键路径重新选择物料托盘、机器和夹具托盘。</p>
+                  <p><strong>始终可执行：</strong>修复设置站与工序顺序，并在多类资源可用时间的交集中插入任务。</p>
+                </div>
+              </details>
+            </article>
+          </div>
+        </div>
+      </section>
+
       <section class="ai-section" id="ai">
         <div class="section ai-inner">
-          <div class="section-title light reveal"><p>05 · AI 研究重点</p><h2>先让智能体学会端到端联合决策，<br />再让 LLM 用反例推动策略持续改进。</h2></div>
+          <div class="section-title light reveal"><p>06 · AI 研究重点</p><h2>先让智能体学会端到端联合决策，<br />再让 LLM 用反例推动策略持续改进。</h2></div>
 
           <article class="rl-section reveal">
             <div class="ai-copy rl-heading">
@@ -226,7 +292,7 @@
 
       <section class="industry-section" id="industry">
         <div class="section industry-inner">
-          <div class="section-title light reveal"><p>06 · 工业落地</p><h2>让建模与求解<br />进入真实车间。</h2></div>
+          <div class="section-title light reveal"><p>07 · 工业落地</p><h2>让建模与求解<br />进入真实车间。</h2></div>
 
           <div class="industry-intro reveal">
             <div>
@@ -344,7 +410,7 @@
       </section>
 
       <section class="conclusion section" id="conclusion">
-        <div class="section-title reveal"><p>07 · 结论</p><h2>四个研究点对应一条完整路线：<br />描述、求解、学习、改进。</h2></div>
+        <div class="section-title reveal"><p>08 · 结论</p><h2>四个研究点对应一条完整路线：<br />描述、求解、学习、改进。</h2></div>
         <div class="conclusion-flow reveal">
           <div><span>描述 · 现场问题</span><strong>建立多资源耦合约束的 PAS 调度模型</strong></div><i>→</i>
           <div><span>求解 · 工业落地</span><strong>用规则与元启发式高效生成可执行排程</strong></div><i>→</i>
@@ -356,7 +422,7 @@
 
       <section class="future-section" id="future">
         <div class="section future-inner">
-          <div class="section-title light reveal"><p>08 · 未来展望</p><h2>下一步只聚焦两件事：<br />扩展方法，推动落地。</h2></div>
+          <div class="section-title light reveal"><p>09 · 未来展望</p><h2>下一步只聚焦两件事：<br />扩展方法，推动落地。</h2></div>
           <div class="future-list">
             <article class="reveal"><span>方法扩展</span><h3>让 DRL 面向动态与连续场景</h3><p>从表格型 Q-learning 走向深度强化学习，研究订单到达、设备故障等动态事件，以及更大规模和连续状态下的联合决策。</p></article>
             <article class="reveal"><span>工业应用</span><h3>让强化学习进入真实排产系统</h3><p>逐步接入 APS，从历史数据与数字化环境中的离线验证开始，验证其在真实生产中的稳定性、响应速度与持续收益。</p></article>
