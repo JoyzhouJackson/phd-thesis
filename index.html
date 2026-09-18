@@ -156,13 +156,35 @@
 
               <div class="model-equation"><span>优化目标</span><strong>min C<sub>max</sub></strong><p>在满足全部资源与工艺约束的前提下，最小化总完工时间。</p></div>
 
-              <details class="foundation-detail">
-                <summary>模型具体描述了什么？</summary>
-                <div class="constraint-grid">
-                  <div><strong>机器</strong><p>工序选择可用机器，同一时刻一台机器只加工一道工序。</p></div>
-                  <div><strong>夹具托盘 FP</strong><p>从装载开始到卸载结束持续占用，避免只计算加工时间。</p></div>
-                  <div><strong>物料托盘 MP</strong><p>与工件绑定，在当前工件完成前不能分配给其他工件。</p></div>
-                  <div><strong>设置站 ST</strong><p>装卸任务共享有限工位，需要同时决定分配与排队顺序。</p></div>
+              <details class="foundation-detail" open>
+                <summary>主要子问题、决策变量与约束</summary>
+                <div class="model-matrix" role="table" aria-label="主要子问题、决策变量和约束">
+                  <div class="model-row model-head" role="row"><span>子问题</span><span>主要变量</span><span>核心约束</span></div>
+                  <div class="model-row" role="row">
+                    <strong>MP 分配与排序</strong>
+                    <span><var>D<sub>ip</sub></var>、<var>G<sub>ii′p</sub></var></span>
+                    <p>每个工件选择一个物料托盘；同一 MP 同时只承载一个工件，完成后才能释放。</p>
+                  </div>
+                  <div class="model-row" role="row">
+                    <strong>机器分配与排序</strong>
+                    <span><var>X<sub>ijm</sub></var>、<var>Y<sub>iji′j′m</sub></var></span>
+                    <p>每道工序选择一台可用机器；同一机器上的工序不能重叠。</p>
+                  </div>
+                  <div class="model-row" role="row">
+                    <strong>FP 分配与排序</strong>
+                    <span><var>A<sub>ijf</sub></var>、<var>Z<sub>iji′j′f</sub></var></span>
+                    <p>每道工序选择一个兼容的夹具托盘；FP 从装载开始到卸载结束持续占用。</p>
+                  </div>
+                  <div class="model-row" role="row">
+                    <strong>ST 分配与混合排序</strong>
+                    <span><var>ILF<sub>ijn</sub></var>、<var>IUF<sub>ijn</sub></var><small>及 LU / LL / UL / UU</small></span>
+                    <p>装载与卸载选择设置站；同一 ST 上的装载、卸载任务不能冲突。</p>
+                  </div>
+                  <div class="model-row" role="row">
+                    <strong>时间安排与目标</strong>
+                    <span><var>S、C、SLF、CLF、SUF、CUF、SWL、CWL</var></span>
+                    <p>保证等待→装载→加工→卸载的先后关系与持续时间，并最小化 <var>C<sub>max</sub></var>。</p>
+                  </div>
                 </div>
               </details>
             </article>
@@ -198,6 +220,28 @@
               </details>
             </article>
           </div>
+
+          <section class="case-results reveal" aria-labelledby="case-results-title">
+            <div class="case-results-heading">
+              <div><span>15 个由真实数据生成的算例</span><h3 id="case-results-title">不同规模下的求解质量与速度</h3></div>
+              <p>从小、中、大三组算例中各取一个代表案例。柱形表示平均 makespan，折线表示平均求解时间；两者越低越好。</p>
+            </div>
+            <div class="result-case-grid">
+              <figure>
+                <img src="assets/imhrc-case-small.jpg" alt="小规模 Case 2 中七种算法的 makespan 与求解时间对比" />
+                <figcaption><strong>小规模 · Case 2</strong><span>各算法达到相同 makespan，用于验证模型、编码与解码的正确性。</span></figcaption>
+              </figure>
+              <figure>
+                <img src="assets/imhrc-case-medium.jpg" alt="中等规模 Case 9 中七种算法的 makespan 与求解时间对比" />
+                <figcaption><strong>中等规模 · Case 9</strong><span>IMHRC 同时取得最低 makespan 与最短求解时间。</span></figcaption>
+              </figure>
+              <figure>
+                <img src="assets/imhrc-case-large.jpg" alt="大规模 Case 14 中七种算法的 makespan 与求解时间对比" />
+                <figcaption><strong>大规模 · Case 14</strong><span>在大规模算例中，IMHRC 仍取得最低 makespan 与最短求解时间。</span></figcaption>
+              </figure>
+            </div>
+            <p class="case-result-conclusion"><strong>总体结果：</strong>在由真实数据生成的 15 个算例中，IMHRC 在多数算例上能够以更短的时间获得更优解。</p>
+          </section>
         </div>
       </section>
 
