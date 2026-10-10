@@ -76,3 +76,45 @@ scheduleTabs.forEach((tab, index) => {
     activateSchedule(scheduleTabs[nextIndex].dataset.scheduleTarget, true);
   });
 });
+const legacyChapterIds = { object: 'background', state: 'background' };
+const resolveHashTarget = (hash) => {
+  let id;
+  try { id = decodeURIComponent(hash.replace(/^#/, '')); } catch { return null; }
+  return document.getElementById(legacyChapterIds[id] ?? id);
+};
+const revealHashTarget = (hash, focus = false) => {
+  const target = resolveHashTarget(hash);
+  if (!target) return;
+  const ownChapter = target.querySelector(':scope > details[data-chapter]');
+  if (ownChapter) ownChapter.open = true;
+  let ancestor = target.closest('details');
+  while (ancestor) {
+    ancestor.open = true;
+    ancestor = ancestor.parentElement?.closest('details');
+  }
+  const panel = target.closest('[data-schedule-panel]');
+  if (panel) activateSchedule(panel.dataset.schedulePanel);
+  requestAnimationFrame(() => {
+    if (focus) {
+      const summary = ownChapter?.querySelector(':scope > summary');
+      summary?.focus({ preventScroll: true });
+    }
+    target.scrollIntoView({ block: 'start' });
+    updateProgress();
+  });
+};
+document.addEventListener('click', (event) => {
+  if (event.defaultPrevented || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+  const link = event.target.closest('a[href^="#"]');
+  if (!link) return;
+  const hash = link.getAttribute('href');
+  if (!resolveHashTarget(hash)) return;
+  event.preventDefault();
+  if (location.hash !== hash) history.pushState(null, '', hash);
+  revealHashTarget(hash, true);
+});
+window.addEventListener('hashchange', () => revealHashTarget(location.hash));
+document.querySelectorAll('details[data-chapter]').forEach((chapter) => {
+  chapter.addEventListener('toggle', () => requestAnimationFrame(updateProgress));
+});
+if (location.hash) revealHashTarget(location.hash);

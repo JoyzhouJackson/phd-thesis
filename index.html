@@ -77,77 +77,55 @@
             </article>
           </div>
         </div>
-        <div class="hero-copy research-intro section reveal" id="research-intro">
+      </section>
+
+      <section class="research-intro-band" aria-label="博士研究引入">
+        <div class="hero-copy research-intro section" id="research-intro">
           <p class="overline">多资源约束调度研究</p>
           <h1>设备越来越灵活，<br />为什么生产仍会<br /><em>等待和拥堵？</em></h1>
-          <p>问题往往不在单台设备，而在机器、夹具、托盘和设置站之间缺少高效协同。</p>
+          <p>围绕多资源协同调度，贯通建模、求解、学习与改进。</p>
           <a class="button" href="#background">从问题开始 <span>↓</span></a>
         </div>
       </section>
 
-      <section class="background section" id="background">
-        <div class="section-title reveal"><p>01 · 背景与痛点</p></div>
-        <div class="video-layout reveal">
-          <div class="video-frame">
-            <video autoplay muted loop playsinline controls preload="auto" poster="assets/pallet-video-poster.png" aria-label="Fastems 托盘自动化系统演示视频">
-              <source src="assets/pallet-system.mp4" type="video/mp4" />
-              您的浏览器不支持视频播放。
-            </video>
-            <p>托盘自动化系统示例 · 视频来自用户提供的 Fastems 参考资料</p>
-          </div>
-          <div class="pain-list">
-            <article><span>1</span><div><h3>制造模式转型</h3><p>随着产品定制化程度提高和生命周期缩短，生产模式正从少品种大批量转向多品种小批量。企业因此面临柔性自动化升级难题，而托盘自动化系统（PAS）是重要解决方案之一。</p></div></article>
-            <article><span>2</span><div><h3>行业升级意愿强</h3><p>Fastems 对中国托盘自动化应用的调查显示，78% 的受访企业计划在一至三年内升级 PAS。更高的产品多样性和更短的交付窗口，使 PAS 的高效运行成为日益重要的生产管理问题。</p></div></article>
-            <article><span>3</span><div><h3>多资源高度耦合</h3><p>工序选择、机器分配、夹具托盘占用、设置站装卸与物料托盘释放相互影响。一个局部选择会改变其他资源的可用时间和后续可行空间，使物理柔性无法自动转化为系统效率。</p></div></article>
-          </div>
+      <section class="chapter-section background section" id="background">
+        <details class="chapter-details" data-chapter>
+          <summary class="chapter-summary"><span class="chapter-index">01</span><h2>背景、对象与研究缺口<small>多资源协同决定柔性设备能否转化为生产效率。</small></h2><span class="chapter-toggle" aria-hidden="true"></span></summary>
+          <div class="chapter-body">
+<ol class="context-points">
+          <li><h3>制造变化：从大批量走向多品种、小批量</h3><p>定制化与交付周期缩短推动柔性自动化升级。Fastems 中国应用调查中，78% 的受访企业计划在一至三年内升级 PAS，高效运行成为关键问题。</p></li>
+          <li><h3>研究对象：柔性托盘自动化系统（PAS）</h3><p>通过标准化托盘连接异构机床、夹具、设置站与自动搬运存储系统，实现资源共享与柔性生产。</p></li>
+          <li><h3>调度难点：多资源同时占用、相互制约</h3><p>工序与机器选择、夹具托盘占用、设置站装卸及物料托盘释放必须协同决策；局部选择会影响后续等待与可行空间。</p></li>
+          <li><h3>研究缺口：从单项优化走向联合决策与持续学习</h3><p>已有方法多依赖固定规则或逐实例优化，RL 在多资源场景中也常用于辅助选规则、算子或参数；我的研究进一步探索端到端联合决策及反例驱动改进。</p></li>
+        </ol>
+        <div class="object-visuals context-visuals">
+          <figure class="factory-photo">
+            <img src="assets/industrial-pas.jpg" alt="发动机制造企业中的柔性托盘自动化系统" loading="lazy" />
+            <figcaption>实际柔性托盘自动化系统</figcaption>
+          </figure>
+          <figure class="structure-figure">
+            <img src="assets/pas-structure.png" alt="工件、夹具、托盘、设置站与机床组成的 PAS 结构示意图" loading="lazy" />
+            <figcaption>工件装夹后，在设置站、存储系统与异构机床之间流转。</figcaption>
+          </figure>
         </div>
-        <blockquote class="problem-statement reveal">真正的瓶颈，是如何把系统的<span>物理柔性</span>转化为<span>生产效率</span>。</blockquote>
-      </section>
-
-      <section class="object-section" id="object">
-        <div class="section object-inner">
-          <div class="section-title light reveal"><p>02 · 研究对象与难点</p><h2>柔性托盘自动化系统<br /><span>Pallet Automation System</span></h2></div>
-          <div class="object-visuals reveal">
-            <figure class="factory-photo">
-              <img src="assets/industrial-pas.jpg" alt="发动机制造企业中的柔性托盘自动化系统" />
-              <figcaption>发动机制造企业中的实际柔性托盘自动化系统</figcaption>
-            </figure>
-            <figure class="structure-figure">
-              <img src="assets/pas-structure.png" alt="工件、夹具、托盘、设置站与机床组成的 PAS 结构示意图" />
-              <figcaption>结构示意：工件装夹到夹具托盘后，在设置站、存储系统与异构机床之间自动流转</figcaption>
-            </figure>
-          </div>
-          <div class="system-resources reveal" aria-label="系统关键资源">
-            <div><b>机器</b><span>决定加工时间</span></div><i>×</i>
-            <div><b>夹具托盘</b><span>随工件等待与加工</span></div><i>×</i>
-            <div><b>设置站</b><span>承担装载与卸载</span></div><i>×</i>
-            <div><b>物料托盘</b><span>影响存储与释放</span></div>
-          </div>
-          <div class="difficulty-grid reveal">
-            <article><span>难点一</span><h3>约束多</h3><p>兼容选择、同步占用、先后衔接、等待与释放必须同时满足。</p></article>
-            <article><span>难点二</span><h3>耦合强</h3><p>机器选择会改变夹具占用；夹具选择也会改变机器等待。</p></article>
-            <article><span>难点三</span><h3>规模增长快</h3><p>资源和工件增加后，可行组合与决策空间迅速扩大。</p></article>
-          </div>
-        </div>
-      </section>
-
-      <section class="state-section section" id="state">
-        <div class="section-title reveal"><p>03 · 研究现状</p><h2>现有方法能优化生产，<br />但真正的多资源联合学习仍然少见。</h2></div>
-        <div class="literature-table reveal" role="table" aria-label="第五篇论文研究现状表格的精简版">
+        <div class="literature-table" role="table" aria-label="第五篇论文研究现状的精简对比">
           <div class="table-row table-head" role="row"><span>研究方向</span><span>主要决策</span><span>RL 的作用</span></div>
           <div class="table-row" role="row"><strong>标准柔性作业车间</strong><span>工序 + 机器</span><span>直接学习分配</span></div>
-          <div class="table-row" role="row"><strong>多资源调度</strong><span>机器 + 运输 / 工人等</span><span>多用于选择规则、算子或参数</span></div>
-          <div class="table-row" role="row"><strong>已有 PAS 学习方法</strong><span>主要学习夹具托盘选择</span><span>工序与机器仍由固定规则决定</span></div>
+          <div class="table-row" role="row"><strong>多资源调度</strong><span>机器 + 运输 / 工人等</span><span>多用于选规则、算子或参数</span></div>
+          <div class="table-row" role="row"><strong>已有 PAS 学习方法</strong><span>主要学习夹具托盘选择</span><span>其余决策依赖固定规则</span></div>
           <div class="table-row emphasis-row" role="row"><strong>本研究</strong><span>工序 + 夹具托盘 + 机器</span><span>端到端联合决策</span></div>
         </div>
-        <p class="source-note reveal">根据第五篇论文 “RL applications in FJSP and MRFJSP” 文献表归纳。</p>
-        <div class="gap-callout reveal"><span>研究缺口</span><strong>从“让 RL 辅助算法”，走向“让 RL 直接端到端完成多资源调度”。</strong></div>
+        <p class="source-note">文献对比依据第五篇论文的研究现状表归纳。</p>
+        <blockquote class="problem-statement">真正的瓶颈，是如何把系统的<span>物理柔性</span>转化为<span>生产效率</span>。</blockquote>
+          </div>
+        </details>
       </section>
 
-      <section class="roadmap section" id="roadmap">
-        <div class="section-title reveal"><p>04 · 两条研究主线</p><h2>一条让问题更真实，<br />一条让方法更通用。</h2></div>
-
-        <article class="research-line reveal">
+      <section class="chapter-section roadmap section" id="roadmap">
+        <details class="chapter-details" data-chapter>
+          <summary class="chapter-summary"><span class="chapter-index">02</span><h2>两条研究主线与成果<small>一条让问题更真实，一条让方法更通用。</small></h2><span class="chapter-toggle" aria-hidden="true"></span></summary>
+          <div class="chapter-body">
+<article class="research-line reveal">
           <header><span>A</span><div><h3>问题复杂度提升</h3><p>逐步补齐真实 PAS 中的资源与占用关系。</p></div></header>
           <div class="line-steps three">
             <div><span>01</span><h4>夹具托盘 + 装卸时间</h4><p>创新：刻画 FP 从装载、等待、加工到卸载的连续占用。</p></div>
@@ -179,11 +157,16 @@
             <article><span>准备投稿 · IJPR</span><h4>End-to-end Q-learning for operation-fixture-machine scheduling in pallet automation systems</h4><p>工序—夹具托盘—机器端到端联合决策</p></article>
           </div>
         </section>
+          </div>
+        </details>
       </section>
 
-      <section class="foundation-section" id="foundations">
-        <div class="section">
-          <div class="section-title reveal"><p>05 · 建模与求解</p><h2>先把真实车间写进模型，<br />再快速找到可执行的好方案。</h2></div>
+      <section class="chapter-section foundation-section" id="foundations">
+        <details class="chapter-details" data-chapter>
+          <summary class="chapter-summary"><span class="chapter-index">03</span><h2>建模与求解<small>先把真实车间写进模型，再快速找到可执行的好方案。</small></h2><span class="chapter-toggle" aria-hidden="true"></span></summary>
+          <div class="chapter-body chapter-body-dark">
+<div class="section">
+
 
           <div class="foundation-grid">
             <article class="foundation-card model-card reveal">
@@ -202,7 +185,7 @@
 
               <div class="model-equation"><span>优化目标</span><strong>min C<sub>max</sub></strong><p>在满足全部资源与工艺约束的前提下，最小化总完工时间。</p></div>
 
-              <details class="foundation-detail" open>
+              <details class="foundation-detail">
                 <summary>主要子问题、决策变量与约束</summary>
                 <div class="model-matrix" role="table" aria-label="主要子问题、决策变量和约束">
                   <div class="model-row model-head" role="row"><span>子问题</span><span>主要变量</span><span>核心约束</span></div>
@@ -289,11 +272,16 @@
             <p class="case-result-conclusion"><strong>总体结果：</strong>在由真实数据生成的 15 个算例中，IMHRC 在多数算例上能够以更短的时间获得更优解。</p>
           </section>
         </div>
+          </div>
+        </details>
       </section>
 
-      <section class="ai-section" id="ai">
-        <div class="section ai-inner">
-          <div class="section-title light reveal"><p>06 · AI 研究重点</p><h2>先让智能体学会端到端联合决策，<br />再让 LLM 用反例推动策略持续改进。</h2></div>
+      <section class="chapter-section ai-section" id="ai">
+        <details class="chapter-details" data-chapter>
+          <summary class="chapter-summary"><span class="chapter-index">04</span><h2>强化学习与 LLM Agent<small>端到端联合决策，以及反例驱动的持续改进。</small></h2><span class="chapter-toggle" aria-hidden="true"></span></summary>
+          <div class="chapter-body chapter-body-dark">
+<div class="section ai-inner">
+
 
           <article class="rl-section reveal">
             <div class="ai-copy rl-heading">
@@ -378,22 +366,28 @@
             </div>
           </article>
         </div>
+          </div>
+        </details>
       </section>
 
-      <section class="industry-section" id="industry">
-        <div class="section industry-inner">
-          <div class="section-title light reveal"><p>07 · 工业落地</p><h2>让建模与求解<br />进入真实车间。</h2></div>
+      <section class="chapter-section industry-section" id="industry">
+        <details class="chapter-details" data-chapter>
+          <summary class="chapter-summary"><span class="chapter-index">05</span><h2>潍柴工业落地<small>多层级排产；最大算例达到 10,000 道总工序。</small></h2><span class="chapter-toggle" aria-hidden="true"></span></summary>
+          <div class="chapter-body chapter-body-dark">
+<div class="section industry-inner">
+
 
           <div class="industry-intro reveal">
             <div>
               <p class="industry-kicker">潍柴动力 · 新产品试制车间</p>
               <h3>多品种、小批量、频繁变化，靠人工排产难以同时兼顾资源与交付。</h3>
-              <p>车间覆盖 120 余种产品、105 台加工设备，年产约 2.7 万件；机器、夹具托盘、刀具、毛坯等资源相互制约，还要应对设备故障、质量异常与订单变更。</p>
+              <p>车间覆盖 120 余种产品、105 台加工设备，年产约 2.7 万件。工业排产算例最大达到 10,000 道总工序，按全部工件的工序数量合计；机器、夹具托盘、刀具与物料相互制约，并面临故障、质量异常与订单变更。</p>
             </div>
             <div class="industry-facts" aria-label="潍柴项目规模">
               <div><strong>120+</strong><span>产品种类</span></div>
               <div><strong>105</strong><span>加工设备</span></div>
               <div><strong>4 类</strong><span>典型动态异常</span></div>
+              <div><strong>10,000</strong><span>最大算例 · 总工序数</span></div>
             </div>
           </div>
 
@@ -497,28 +491,90 @@
             </div>
           </div>
         </div>
+          </div>
+        </details>
       </section>
 
-      <section class="conclusion section" id="conclusion">
-        <div class="section-title reveal"><p>08 · 结论</p><h2>四个研究点对应一条完整路线：<br />描述、求解、学习、改进。</h2></div>
-        <div class="conclusion-flow reveal">
+      <section class="chapter-section framework-section section" id="industrial-ai">
+        <details class="chapter-details" data-chapter>
+          <summary class="chapter-summary"><span class="chapter-index">06</span><h2>工业 AI 落地框架<small>方案构想：协调需求、执行决策、持续改进。</small></h2><span class="chapter-toggle" aria-hidden="true"></span></summary>
+          <div class="chapter-body">
+<p class="framework-status"><strong>方案构想 · 下一阶段</strong> 当前基础是多资源建模、元启发式与强化学习；三层协同架构及以下灰盒路线尚待工程验证。</p>
+        <div class="industrial-ai-stack" aria-label="协调型、决策型、改进型 AI 三层框架">
+          <article class="ai-layer coordination-layer">
+            <div class="layer-label"><span>顶层</span><h3>协调型 AI</h3></div>
+            <div><h4>理解需求，组织工具，解释结果</h4><p>把交期、产能、插单与设备异常等业务需求转成结构化任务，选择专用 Agent，解释方案依据与关键权衡。</p><div class="layer-steps"><span>需求理解</span><i>→</i><span>任务编排</span><i>→</i><span>调用工具</span><i>→</i><span>结果解释</span></div></div>
+          </article>
+          <p class="layer-connector">↓ 任务与约束　　↑ 方案与执行反馈</p>
+          <article class="ai-layer decision-layer">
+            <div class="layer-label"><span>执行层</span><h3>决策型 AI</h3></div>
+            <div><h4>让合适的 Agent 解决具体问题</h4><div class="specialist-agents"><span>排产 Agent</span><span>排班 Agent</span><span>其他专用 Agent</span></div><p>根据硬约束、实时性、可解释性与数据覆盖，选择或组合不同方法。</p>
+              <div class="decision-methods"><div><b>白盒</b><span>规则 · 数学规划</span></div><div><b>灰盒</b><span>机理 / 优化 + 学习</span></div><div><b>黑盒</b><span>数据驱动的学习策略</span></div></div>
+            </div>
+          </article>
+          <p class="layer-connector">↓ 结果、异常与反例　　↑ 验证后更新规则、策略或模型</p>
+          <article class="ai-layer improvement-layer">
+            <div class="layer-label"><span>改进层</span><h3>改进型 AI</h3></div>
+            <div><h4>让决策 Agent 从反馈中持续改进</h4><p>分析失败案例与分布变化，提出特征、规则组合、算子或训练方案的改进候选；经离线验证和版本审核后更新决策层。</p><div class="layer-steps"><span>收集反馈</span><i>→</i><span>反例诊断</span><i>→</i><span>提出改进</span><i>→</i><span>验证后更新</span></div></div>
+          </article>
+          <p class="execution-boundary"><strong>共同的执行边界：</strong>约束校验、超时处理、保守回退与人工接管；自学习更新须先验证，再进入生产。</p>
+        </div>
+        <div class="deployment-heading"><h3>强化学习落地，难在哪里？</h3><p>训练结果良好，还需要证明策略在现场变化与异常中可用。</p></div>
+        <ul class="deployment-challenges">
+          <li><h4>训练环境是否可信</h4><p>设备时序、资源占用与扰动若与现场不一致，训练收益就可能无法迁移。</p></li>
+          <li><h4>数据与异常是否充分</h4><p>历史数据通常难以覆盖罕见异常，需要结合现场经验补充扰动、边界与压力测试。</p></li>
+          <li><h4>优化目标是否贴合业务</h4><p>奖励改善不等于满足所有交付与执行要求，硬约束应独立检查。</p></li>
+          <li><h4>未见场景如何处理</h4><p>监测输入偏移、不可行解、超时与绩效退化，并为难以识别的异常保留人工处置入口。</p></li>
+        </ul>
+        <article class="hybrid-route">
+          <span class="proposal-label">候选灰盒路线 · 待对照验证</span>
+          <h3>让 RL 选规则与算子，让 LLM 提出新组合</h3>
+          <p>先把学习限制在经过验证的候选库中；LLM 在离线环节生成补充规则或算子组合，测试通过后再纳入候选库。</p>
+          <div class="hybrid-flow"><div><b>场景与状态</b><span>订单、资源、扰动</span></div><i>→</i><div><b>RL 选择</b><span>规则 / 组合 / 搜索算子</span></div><i>→</i><div><b>校验与求解</b><span>检查硬约束与时限</span></div><i>→</i><div><b>执行与反馈</b><span>持续记录实际结果</span></div></div>
+          <p class="offline-rule-loop"><strong>离线补充：</strong>异常与反例 → LLM 生成候选组合 → 独立测试与审核 → 更新规则库 / 算子库。</p>
+          <p class="route-caution">这条路线更便于设置可检查、可回退的决策边界，但不保证必然更稳定；仍需与纯规则、元启发式和端到端 RL 比较可行率、解质量、响应时间及异常下的退化程度。</p>
+        </article>
+        <article class="unseen-response">
+          <h3>面对未训练过的异常，先保证可执行，再学习改进</h3>
+          <ol><li><strong>识别并校验：</strong>检查资源变化、输入范围、输出可行性与计算时限。</li><li><strong>降级或接管：</strong>触发异常时回退到已验证的规则或优化模型；仍无可行方案时请求人工处理。</li><li><strong>保留证据：</strong>记录异常状态、决策、处理过程及结果，补充异常案例库。</li><li><strong>离线改进：</strong>重放异常、扩展训练场景并做独立测试，通过后再发布新版本。</li></ol>
+        </article>
+        <p class="framework-sources">方法参考（不代表本项目已验证）：
+          <a href="https://arxiv.org/abs/1904.12901" target="_blank" rel="noopener noreferrer">真实场景 RL 的挑战</a>；
+          <a href="https://proceedings.neurips.cc/paper_files/paper/2024/hash/4ced59d480e07d290b6f29fc8798f195-Abstract-Conference.html" target="_blank" rel="noopener noreferrer">ReEvo：LLM 生成启发式</a>。
+        </p>
+          </div>
+        </details>
+      </section>
+
+      <section class="chapter-section conclusion section" id="conclusion">
+        <details class="chapter-details" data-chapter>
+          <summary class="chapter-summary"><span class="chapter-index">07</span><h2>研究结论<small>描述、求解、学习、改进，形成完整研究路线。</small></h2><span class="chapter-toggle" aria-hidden="true"></span></summary>
+          <div class="chapter-body">
+<div class="conclusion-flow reveal">
           <div><span>描述 · 现场问题</span><strong>建立多资源耦合约束的 PAS 调度模型</strong></div><i>→</i>
           <div><span>求解 · 工业落地</span><strong>用规则与元启发式高效生成可执行排程</strong></div><i>→</i>
           <div><span>学习 · 智能决策</span><strong>用强化学习实现端到端联合决策</strong></div><i>→</i>
           <div><span>改进 · 自主进化</span><strong>用 LLM Agent 构建反例驱动的自学习闭环</strong></div>
         </div>
         <p class="conclusion-line reveal">形成可落地、能泛化、会持续学习的智能调度方法，快速响应生产变化，适应不同制造系统与应用场景。</p>
+          </div>
+        </details>
       </section>
 
-      <section class="future-section" id="future">
-        <div class="section future-inner">
-          <div class="section-title light reveal"><p>09 · 未来展望</p><h2>下一步只聚焦两件事：<br />扩展方法，推动落地。</h2></div>
+      <section class="chapter-section future-section" id="future">
+        <details class="chapter-details" data-chapter>
+          <summary class="chapter-summary"><span class="chapter-index">08</span><h2>下一步工作<small>拓展动态与连续场景，验证更可控的工业学习方案。</small></h2><span class="chapter-toggle" aria-hidden="true"></span></summary>
+          <div class="chapter-body chapter-body-dark">
+<div class="section future-inner">
+
           <div class="future-list">
-            <article class="reveal"><span>方法扩展</span><h3>让 DRL 面向动态与连续场景</h3><p>从表格型 Q-learning 走向深度强化学习，研究订单到达、设备故障等动态事件，以及更大规模和连续状态下的联合决策。</p></article>
-            <article class="reveal"><span>工业应用</span><h3>让强化学习进入真实排产系统</h3><p>逐步接入 APS，从历史数据与数字化环境中的离线验证开始，验证其在真实生产中的稳定性、响应速度与持续收益。</p></article>
+            <article class="reveal"><span>方法扩展</span><h3>让 DRL 面向动态与连续场景</h3><p>研究 DRL 在动态扰动、更大规模和连续状态 / 动作空间下的决策能力，提升适应性与泛化表现。</p></article>
+            <article class="reveal"><span>工业应用</span><h3>验证可控、可回退的学习型排产</h3><p>先验证 RL 选规则 / 算子与 LLM 补充候选组合的灰盒路线，再逐步接入 APS，评估异常场景下的稳定性与实际收益。</p></article>
           </div>
           <a class="button" href="mailto:yuluzhou@sjtu.edu.cn">讨论研究与合作 <span>↗</span></a>
         </div>
+          </div>
+        </details>
       </section>
     </main>
 
