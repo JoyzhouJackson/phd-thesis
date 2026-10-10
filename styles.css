@@ -323,6 +323,7 @@ body::selection { color: var(--dark); background: var(--green); }
 
 /* Transferable scheduling framework */
 .transfer-framework { margin-top: 24px; padding: 30px; color: var(--ink); background: var(--paper); border: 1px solid var(--line); border-radius: 17px; scroll-margin-top: 24px; }
+.transfer-chapter .transfer-framework { margin: 0; padding: 0; border: 0; border-radius: 0; background: transparent; }
 .transfer-kicker { margin: 0 0 10px; color: var(--green-dark); font-size: 15px; font-weight: 750; }
 .transfer-framework-heading h3 { margin: 0; font-size: 26px; line-height: 1.4; font-weight: 650; }
 .transfer-framework-heading > p:last-child { max-width: 800px; margin: 13px 0 0; color: var(--muted); font-size: 16px; line-height: 1.75; }
