@@ -490,6 +490,54 @@
               <div class="transfer-tags" aria-label="可迁移的应用场景"><span>智能制造</span><span>机器人集群</span><span>能源调度</span><span>电力调度</span><span>物流与供应链</span></div>
             </div>
           </div>
+
+          <section class="transfer-framework reveal" id="transfer-framework" aria-labelledby="transfer-framework-title">
+            <header class="transfer-framework-heading">
+              <p class="transfer-kicker">可迁移的调度建模与求解框架</p>
+              <h3 id="transfer-framework-title">从业务场景到优化模型</h3>
+              <p>先理解问题，再定义决策；复用分析框架，按场景调整目标、资源与约束。</p>
+            </header>
+            <ol class="modeling-steps" aria-label="调度建模的五个步骤">
+              <li><span class="modeling-step-number" aria-hidden="true">1</span><div><h4>对象与场景</h4><p>调度什么？边界在哪里？</p></div><p class="modeling-step-output"><b>明确</b>任务、系统边界、时间尺度与动态事件。</p></li>
+              <li><span class="modeling-step-number" aria-hidden="true">2</span><div><h4>目标与需求</h4><p>优化什么？哪些必须满足？</p></div><p class="modeling-step-output"><b>区分</b>交期、效率、成本等目标与不可违反的要求。</p></li>
+              <li><span class="modeling-step-number" aria-hidden="true">3</span><div><h4>资源与柔性</h4><p>谁能替代？谁需协同？</p></div><p class="modeling-step-output"><b>识别</b>资源种类、容量、可替代性与兼容关系。</p></li>
+              <li><span class="modeling-step-number" aria-hidden="true">4</span><div><h4>业务逻辑</h4><p>先做什么？何时释放资源？</p></div><p class="modeling-step-output"><b>梳理</b>工序先后、装卸、运输及资源占用与释放。</p></li>
+              <li><span class="modeling-step-number" aria-hidden="true">5</span><div><h4>变量与约束</h4><p>哪些要决策？遵守什么规则？</p></div><p class="modeling-step-output"><b>转化</b>分配、排序、数量与时间决策，以及关联约束。</p></li>
+            </ol>
+
+            <details class="transfer-detail" id="transfer-variables">
+              <summary><span><strong>变量与约束如何分工？</strong><small>选什么、何时做，以及必须遵守的业务规则。</small></span><span class="transfer-detail-toggle" aria-hidden="true"></span></summary>
+              <div class="transfer-detail-body">
+                <div class="variable-roles">
+                  <article><span>做选择</span><h4>0–1 变量</h4><p>资源分配、流程分支（if–else），以及尚未确定的任务先后顺序。</p></article>
+                  <article><span>定数值</span><h4>连续变量</h4><p>连续时间模型中的开始与完成时刻，以及需要决策的时长、流量或功率等连续量。</p></article>
+                  <article><span>计数量</span><h4>一般整数变量</h4><p>按场景需要，表示批次数量、车辆数量或人员数量等。</p></article>
+                </div>
+                <div class="logic-example">
+                  <h4>业务逻辑由约束连接，而非由连续变量单独表达</h4>
+                  <p>已知流程为“装载 → 加工 → 卸载”时，可直接约束时间：</p>
+                  <div class="precedence-example" aria-label="装载完成不晚于加工开始，加工完成不晚于卸载开始"><span>装载完成 ≤ 加工开始</span><span>加工完成 ≤ 卸载开始</span></div>
+                  <p>若“谁先谁后”也需要优化，通常还需二元顺序变量配合时间约束。资源何时释放也要明确：例如，夹具可能持续占用至卸载完成。</p>
+                </div>
+              </div>
+            </details>
+
+            <details class="transfer-detail" id="transfer-solving">
+              <summary><span><strong>模型规模变大后，如何求解？</strong><small>先缩减无效选择、加强模型，再按结构选择分解方法。</small></span><span class="transfer-detail-toggle" aria-hidden="true"></span></summary>
+              <div class="transfer-detail-body">
+                <p class="solver-scope-note"><strong>方法选择 · 需结合具体模型验证</strong>模型难度不只取决于二元变量数量，还与约束耦合、松弛强弱、变量边界和大 M 取值有关。Benders 与列生成在此列为可选拓展方向，不作为已有研究或落地成果。</p>
+                <div class="scaling-routes">
+                  <article><span class="scaling-route-label">先缩减候选</span><h4>资源与关系预筛选</h4><p>依据工艺兼容性、资源能力和时间窗口，排除不可行的资源选择与排序关系。</p><p class="scaling-caution">按经验删去“看起来不好”的选择属于启发式筛选，可能损失最优解。</p></article>
+                  <article><span class="scaling-route-label">再组织表达</span><h4>合法资源组合建模</h4><p>将可行的“机器—夹具—托盘”组合视为一个候选方案，直接表达兼容关系。</p><p class="scaling-caution">组合数可能反而增加；只生成合法组合，并保留共享资源的容量与占用约束。</p></article>
+                  <article><span class="scaling-route-label">按决策结构分解</span><h4>Benders 分解</h4><p>主问题做资源分配等关键选择；子问题检查可行性、优化后续安排，再通过割反馈。</p><p class="scaling-caution">经典线性 Benders 要求固定主问题后得到连续线性子问题；若仍含离散排序，可考虑逻辑型 Benders。</p></article>
+                  <article><span class="scaling-route-label">按需生成方案</span><h4>列生成</h4><p>路径、班次或局部排程过多时，从少量方案出发，由定价子问题生成值得加入的新方案。</p><p class="scaling-caution">并非按整数与连续变量分组；通常先求线性松弛，证明整数最优性一般还需分支定价等机制。</p></article>
+                </div>
+                <p class="solver-selection-note">选择依据是问题结构、解质量与响应时限，而非方法名称；直接数学规划、规则或元启发式仍可能更适合具体场景。</p>
+                <p class="transfer-method-sources">方法参考：<a href="https://support.gurobi.com/hc/en-us/articles/13793044538001-General-guidelines-to-strengthen-a-MIP-formulation" target="_blank" rel="noopener noreferrer">模型加强</a> · <a href="https://www.scipopt.org/doc/html/BENDDECF.php" target="_blank" rel="noopener noreferrer">Benders</a> · <a href="https://arxiv.org/abs/1910.11944" target="_blank" rel="noopener noreferrer">逻辑型 Benders</a> · <a href="https://www.scipopt.org/workshop2014/gcg_witt.pdf" target="_blank" rel="noopener noreferrer">列生成与分支定价</a></p>
+              </div>
+            </details>
+            <p class="transfer-takeaway"><strong>迁移的是分析框架，不是照搬一套算法。</strong>面向制造、机器人集群、能源电力或物流供应链，重新定义任务、资源和业务约束；这些是可拓展方向，不代表已在所有领域完成验证。</p>
+          </section>
         </div>
           </div>
         </details>
