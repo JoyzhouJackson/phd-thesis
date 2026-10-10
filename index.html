@@ -46,36 +46,49 @@
             </ol>
           </aside>
         </div>
-        <div class="profile-capabilities section" aria-labelledby="profile-capabilities-title">
-          <h2 id="profile-capabilities-title">个人能力</h2>
-          <div class="profile-capability-grid">
+        <div class="profile-capabilities section" id="professional-capabilities" aria-labelledby="profile-capabilities-title">
+          <h2 id="profile-capabilities-title">专业能力</h2>
+          <div class="profile-capability-grid professional-grid">
             <article class="profile-capability">
-              <h3>科研创新</h3>
-              <p>将复杂现实问题转化为可建模、可求解、可验证的研究问题，贯通建模、优化与 AI 决策。</p>
-              <a href="#research-intro">查看博士研究 <span aria-hidden="true">↗</span></a>
+              <h3>运筹建模与优化求解</h3>
+              <p>将业务需求转化为 LP/MILP 模型，运用 Gurobi、规则与元启发式方法，求解复杂资源约束下的优化问题。</p>
             </article>
             <article class="profile-capability">
-              <h3>工程落地</h3>
-              <p>把现场需求转化为数学模型与可运行的排产方案，推动算法在潍柴项目中应用。</p>
-              <a href="#industry">查看潍柴项目 <span aria-hidden="true">↗</span></a>
+              <h3>智能调度与系统分析</h3>
+              <p>围绕生产计划、多资源分配、物流网络、车辆路径与动态重调度，开展问题建模和算法设计。</p>
             </article>
             <article class="profile-capability">
-              <h3>团队管理</h3>
-              <p>在阳光大使团的组织与协作中，锻炼任务分工、成员沟通与协调能力，推动共同目标达成。</p>
+              <h3>强化学习与 AI 决策</h3>
+              <p>开展 Q-learning 状态、动作与奖励设计，通过泛化测试和反例分析评估策略，并探索 LLM Agent 辅助改进。</p>
             </article>
             <article class="profile-capability">
-              <h3>内容表达</h3>
-              <p>从受众需求出发开展选题策划与内容创作，把复杂信息讲清楚，并根据反馈持续优化表达。</p>
-            </article>
-            <article class="profile-capability">
-              <h3>跨文化协作</h3>
-              <p>理解不同文化背景与工作方式，根据沟通对象调整表达，在交流中明确目标、建立共识。</p>
-            </article>
-            <article class="profile-capability">
-              <h3>抗压与执行</h3>
-              <p>在压力下合理制定计划、明确优先级，保持清晰判断与高效执行，按时完成任务。</p>
+              <h3>算法开发与工程落地</h3>
+              <p>使用 Python、Gurobi、SimPy 等工具，贯通需求抽象、算法实现、实验验证、结果可视化与系统对接。</p>
             </article>
           </div>
+          <div class="profile-work-links" aria-label="科研与工程展示">
+            <a href="#research-intro">查看科研工作 <span aria-hidden="true">↗</span></a>
+            <a href="#industry">查看工程落地 <span aria-hidden="true">↗</span></a>
+          </div>
+        </div>
+        <div class="profile-strengths section" id="personal-strengths" aria-labelledby="profile-strengths-title">
+          <h2 id="profile-strengths-title">个人优势</h2>
+          <div class="profile-capability-grid strength-grid">
+            <article class="profile-capability"><h3>敢于挑战，主动探索</h3><p>愿意走出熟悉的领域，主动面对有难度的任务，对解决问题保持信心，并通过学习与实践逐步突破。</p></article>
+            <article class="profile-capability"><h3>善于计划，重视复盘</h3><p>能够拆解目标、安排阶段任务，并根据过程与结果复盘，及时调整方法和优先级。</p></article>
+            <article class="profile-capability"><h3>抗压稳健，执行有序</h3><p>在压力与不确定性下，合理制定计划、把握任务重点，保持清晰判断与持续行动，推进任务完成。</p></article>
+            <article class="profile-capability"><h3>觉察情绪，理性应对</h3><p>重视识别和调节自身情绪，在遇到挫折或分歧时，保持理性判断，将注意力转回问题与沟通。</p></article>
+            <article class="profile-capability"><h3>适应环境，主动协作</h3><p>根据不同背景和关注点调整表达，在科研、企业项目与跨文化协作中理解需求、建立共识。</p></article>
+            <article class="profile-capability"><h3>目标导向，主动担当</h3><p>围绕关键目标确定优先级，对承担的任务和结果负责；保持进取心，追求更高目标并愿意承担相应责任。</p></article>
+          </div>
+          <div class="profile-practice" aria-label="组织与表达实践">
+            <p><strong>团队管理</strong>阳光大使团：任务分工、成员沟通与组织协调。</p>
+            <p><strong>内容表达</strong>围绕受众需求策划内容，将复杂信息讲清楚，并根据反馈改进。</p>
+          </div>
+          <aside class="profile-growth" id="growth-direction" aria-labelledby="profile-growth-title">
+            <h2 id="profile-growth-title">成长方向</h2>
+            <div><h3>长期规划与取舍</h3><p>我比较关注当前问题的解决与阶段任务的完成，对更长期的方向布局、任务之间的关联，以及投入的长期价值，还需要更系统地考虑。</p></div>
+          </aside>
         </div>
       </section>
 
@@ -282,7 +295,6 @@
           <div class="chapter-body">
             <div class="transfer-framework reveal" aria-labelledby="transfer-framework-title">
             <header class="transfer-framework-heading">
-              <p class="transfer-kicker">可迁移的调度建模与求解框架</p>
               <h3 id="transfer-framework-title">从业务场景到优化模型</h3>
               <p>先理解问题，再定义决策；复用分析框架，按场景调整目标、资源与约束。</p>
             </header>
@@ -303,10 +315,10 @@
                   <article><span>计数量</span><h4>一般整数变量</h4><p>按场景需要，表示批次数量、车辆数量或人员数量等。</p></article>
                 </div>
                 <div class="logic-example">
-                  <h4>业务逻辑由约束连接，而非由连续变量单独表达</h4>
+                  <h4>用时间与资源约束连接业务流程</h4>
                   <p>已知流程为“装载 → 加工 → 卸载”时，可直接约束时间：</p>
                   <div class="precedence-example" aria-label="装载完成不晚于加工开始，加工完成不晚于卸载开始"><span>装载完成 ≤ 加工开始</span><span>加工完成 ≤ 卸载开始</span></div>
-                  <p>若“谁先谁后”也需要优化，通常还需二元顺序变量配合时间约束。资源何时释放也要明确：例如，夹具可能持续占用至卸载完成。</p>
+                  <p>待优化的先后关系由顺序变量与时间约束共同描述；资源释放条件限定占用区间，例如夹具持续占用至卸载完成。</p>
                 </div>
               </div>
             </details>
@@ -314,18 +326,18 @@
             <details class="transfer-detail" id="transfer-solving">
               <summary><span><strong>模型规模变大后，如何求解？</strong><small>先缩减无效选择、加强模型，再按结构选择分解方法。</small></span><span class="transfer-detail-toggle" aria-hidden="true"></span></summary>
               <div class="transfer-detail-body">
-                <p class="solver-scope-note"><strong>方法选择 · 需结合具体模型验证</strong>模型难度不只取决于二元变量数量，还与约束耦合、松弛强弱、变量边界和大 M 取值有关。Benders 与列生成在此列为可选拓展方向，不作为已有研究或落地成果。</p>
+                <p class="solver-scope-note"><strong>方法选择 · 适配问题结构</strong>变量规模、约束耦合、松弛强度、变量边界和大 M 取值共同影响求解难度；通过对照实验评估模型与算法的求解效率。</p>
                 <div class="scaling-routes">
-                  <article><span class="scaling-route-label">先缩减候选</span><h4>资源与关系预筛选</h4><p>依据工艺兼容性、资源能力和时间窗口，排除不可行的资源选择与排序关系。</p><p class="scaling-caution">按经验删去“看起来不好”的选择属于启发式筛选，可能损失最优解。</p></article>
-                  <article><span class="scaling-route-label">再组织表达</span><h4>合法资源组合建模</h4><p>将可行的“机器—夹具—托盘”组合视为一个候选方案，直接表达兼容关系。</p><p class="scaling-caution">组合数可能反而增加；只生成合法组合，并保留共享资源的容量与占用约束。</p></article>
-                  <article><span class="scaling-route-label">按决策结构分解</span><h4>Benders 分解</h4><p>主问题做资源分配等关键选择；子问题检查可行性、优化后续安排，再通过割反馈。</p><p class="scaling-caution">经典线性 Benders 要求固定主问题后得到连续线性子问题；若仍含离散排序，可考虑逻辑型 Benders。</p></article>
-                  <article><span class="scaling-route-label">按需生成方案</span><h4>列生成</h4><p>路径、班次或局部排程过多时，从少量方案出发，由定价子问题生成值得加入的新方案。</p><p class="scaling-caution">并非按整数与连续变量分组；通常先求线性松弛，证明整数最优性一般还需分支定价等机制。</p></article>
+                  <article><span class="scaling-route-label">先缩减候选</span><h4>资源与关系预筛选</h4><p>依据工艺兼容性、资源能力和时间窗口，排除不可行的资源选择与排序关系。</p><p class="scaling-caution">筛选策略需同步评估可行性、解质量与最优性保证。</p></article>
+                  <article><span class="scaling-route-label">再组织表达</span><h4>合法资源组合建模</h4><p>将可行的“机器—夹具—托盘”组合视为一个候选方案，直接表达兼容关系。</p><p class="scaling-caution">按兼容关系生成合法组合，保留共享资源的容量与占用约束，并控制候选组合规模。</p></article>
+                  <article><span class="scaling-route-label">拓展方向 · 决策分解</span><h4>Benders 分解</h4><p>主问题做资源分配等关键选择；子问题检查可行性、优化后续安排，再通过割反馈。</p><p class="scaling-caution">经典线性 Benders 要求固定主问题后得到连续线性子问题；若仍含离散排序，可考虑逻辑型 Benders。</p></article>
+                  <article><span class="scaling-route-label">拓展方向 · 方案生成</span><h4>列生成</h4><p>路径、班次或局部排程过多时，从少量方案出发，由定价子问题生成值得加入的新方案。</p><p class="scaling-caution">先通过列生成求解线性松弛；证明整数最优性时，一般结合分支定价等机制。</p></article>
                 </div>
-                <p class="solver-selection-note">选择依据是问题结构、解质量与响应时限，而非方法名称；直接数学规划、规则或元启发式仍可能更适合具体场景。</p>
+                <p class="solver-selection-note">结合问题结构、解质量与响应时限，选择数学规划、规则、元启发式或分解方法。</p>
                 <p class="transfer-method-sources">方法参考：<a href="https://support.gurobi.com/hc/en-us/articles/13793044538001-General-guidelines-to-strengthen-a-MIP-formulation" target="_blank" rel="noopener noreferrer">模型加强</a> · <a href="https://www.scipopt.org/doc/html/BENDDECF.php" target="_blank" rel="noopener noreferrer">Benders</a> · <a href="https://arxiv.org/abs/1910.11944" target="_blank" rel="noopener noreferrer">逻辑型 Benders</a> · <a href="https://www.scipopt.org/workshop2014/gcg_witt.pdf" target="_blank" rel="noopener noreferrer">列生成与分支定价</a></p>
               </div>
             </details>
-            <p class="transfer-takeaway"><strong>迁移的是分析框架，不是照搬一套算法。</strong>面向制造、机器人集群、能源电力或物流供应链，重新定义任务、资源和业务约束；这些是可拓展方向，不代表已在所有领域完成验证。</p>
+            <p class="transfer-takeaway"><strong>跨场景拓展：复用分析框架，适配业务机制。</strong>面向制造、机器人集群、能源电力及物流供应链等方向，按场景定义任务、资源和业务约束，开展模型适配与效果验证。</p>
             </div>
           </div>
         </details>
@@ -361,7 +373,7 @@
             <div class="result-heading">
               <p class="ai-label">结果 · 100 个测试案例</p>
               <h3>在覆盖完整测试集的比较方法中，智能体的平均 makespan 均更低</h3>
-              <p>总体比较覆盖 GA、TS、SA 与多种规则组合。Gurobi 仅评估最小的 15 个案例，因此不纳入这项完整测试集结论。</p>
+              <p>完整测试集对比覆盖 GA、TS、SA 与多种规则组合；Gurobi 的评估范围为最小的 15 个案例。</p>
             </div>
             <div class="bubble-grid">
               <figure><img src="assets/rl-bubble-ts.png" alt="相对禁忌搜索的改进随案例规模变化的气泡图" /><figcaption><strong>相对 TS：</strong>前三个最小规模为负，从第 4 个规模起转为正，并随问题复杂度总体增大。</figcaption></figure>
@@ -369,15 +381,41 @@
             </div>
             <div class="scenario-finding">
               <figure><img src="assets/rl-generalization.png" alt="强化学习策略在三种极端生产场景下相对 Rule 1 和 Rule 2 的改进箱线图" /><figcaption>极端场景测试：装卸主导、加工主导以及机器与夹具托盘数量减少。</figcaption></figure>
-              <div><span>极端测试暴露的边界</span><h4>优势并不意味着覆盖所有分布变化</h4><p>在装卸时间占主导的极端场景中，三层离散化会把差异明显的装卸时间映射到同一类别，造成信息损失；智能体平均比 Rule 2 差 3.39%。而在加工主导与资源数量减少场景中，智能体仍保持明显优势。</p></div>
+              <div><span>极端测试暴露的边界</span><h4>装卸主导场景揭示离散化的信息损失</h4><p>在装卸时间占主导的极端场景中，三层离散化会把差异明显的装卸时间映射到同一类别，造成信息损失；智能体平均比 Rule 2 差 3.39%。而在加工主导与资源数量减少场景中，智能体仍保持明显优势。</p></div>
             </div>
+          </article>
+
+          <article class="rl-deployment reveal" id="rl-deployment" aria-labelledby="rl-deployment-title">
+        <div class="deployment-heading"><span class="proposal-label">工业应用 · 研究展望</span><h3 id="rl-deployment-title">强化学习的工业落地</h3><p>围绕训练环境、异常覆盖与执行约束，设计可验证、可回退的应用路径。</p></div>
+        <ul class="deployment-challenges">
+          <li><h4>训练环境与现场一致性</h4><p>设备时序、资源占用与现场扰动影响策略迁移效果，需要校核训练环境对实际业务的刻画。</p></li>
+          <li><h4>数据与异常覆盖</h4><p>历史数据对罕见异常的覆盖有限，需结合现场经验补充扰动、边界条件与压力测试。</p></li>
+          <li><h4>业务目标与执行约束</h4><p>奖励设计对齐交付与效率目标，资源、工艺和执行硬约束通过独立检查保障。</p></li>
+          <li><h4>未见场景应对</h4><p>监测输入偏移、不可行解、超时与绩效退化，并为难以识别的异常保留人工处置入口。</p></li>
+        </ul>
+        <article class="hybrid-route">
+          <span class="proposal-label">候选灰盒路线 · 待对照验证</span>
+          <h3>让 RL 选规则与算子，让 LLM 提出新组合</h3>
+          <p>先把学习限制在经过验证的候选库中；LLM 在离线环节生成补充规则或算子组合，测试通过后再纳入候选库。</p>
+          <div class="hybrid-flow"><div><b>场景与状态</b><span>订单、资源、扰动</span></div><i>→</i><div><b>RL 选择</b><span>规则 / 组合 / 搜索算子</span></div><i>→</i><div><b>校验与求解</b><span>检查硬约束与时限</span></div><i>→</i><div><b>执行与反馈</b><span>持续记录实际结果</span></div></div>
+          <p class="offline-rule-loop"><strong>离线补充：</strong>异常与反例 → LLM 生成候选组合 → 独立测试与审核 → 更新规则库 / 算子库。</p>
+          <p class="route-caution">验证重点：与纯规则、元启发式和端到端 RL 对比可行率、解质量、响应时间及异常下的退化程度，评估灰盒方案的现场稳定性。</p>
+        </article>
+        <article class="unseen-response">
+          <h3>面对未训练过的异常，先保证可执行，再学习改进</h3>
+          <ol><li><strong>识别并校验：</strong>检查资源变化、输入范围、输出可行性与计算时限。</li><li><strong>降级或接管：</strong>触发异常时回退到已验证的规则或优化模型；仍无可行方案时请求人工处理。</li><li><strong>保留证据：</strong>记录异常状态、决策、处理过程及结果，补充异常案例库。</li><li><strong>离线改进：</strong>重放异常、扩展训练场景并做独立测试，通过后再发布新版本。</li></ol>
+        </article>
+        <p class="framework-sources">方法参考：
+          <a href="https://arxiv.org/abs/1904.12901" target="_blank" rel="noopener noreferrer">真实场景 RL 的挑战</a>；
+          <a href="https://proceedings.neurips.cc/paper_files/paper/2024/hash/4ced59d480e07d290b6f29fc8798f195-Abstract-Conference.html" target="_blank" rel="noopener noreferrer">ReEvo：LLM 生成启发式</a>。
+        </p>
           </article>
 
           <article class="agent-section reveal">
             <div class="ai-copy agent-heading">
               <p class="ai-label">LLM Agent · Counterexample-driven Learning</p>
-              <h3>LLM 不替代调度智能体，而是帮助它发现表示缺陷</h3>
-              <p>Agent 从反事实决策中寻找“当前策略选了什么、换一个动作会怎样”，把错误转化为可证伪的特征假设，再由冻结的实验协议决定淘汰、晋级或结束。</p>
+              <h3>LLM 辅助诊断与改进调度表示</h3>
+              <p>通过反事实比较挖掘有害反例，由 LLM 提出可证伪的特征假设，再经过初筛与精筛决定方案的保留和迭代。</p>
               <div class="agent-principle"><strong>LLM 生成假设</strong><i>→</i><strong>程序执行实验</strong><i>→</i><strong>证据决定去留</strong></div>
             </div>
 
@@ -417,7 +455,7 @@
                 <div class="flow-branch accept"><b>是</b><span>接受 H<sub>k</sub><br />M<sub>k+1</sub> 成为当前模型</span></div>
               </div>
               <div class="flow-arrow loop">↓</div>
-              <div class="flow-node memory"><span>记忆与下一轮</span><h4>记录结果，再挖掘新模型产生的反例</h4><p>闭环持续到反例基本消除；若重新诊断后仍无稳定改进，则如实保留未解决的泛化边界并停止。</p></div>
+              <div class="flow-node memory"><span>记忆与下一轮</span><h4>记录结果，再挖掘新模型产生的反例</h4><p>反例基本消除时结束闭环；重新诊断后仍无稳定改进时，记录剩余反例与适用边界，结束本轮迭代。</p></div>
             </div>
           </article>
         </div>
@@ -521,7 +559,7 @@
           <div class="transfer-note reveal">
             <div class="transfer-heading">
               <span class="transfer-title">跨领域迁移</span>
-              <h3>可迁移的不只是算法，而是把真实需求转化为可执行决策的能力。</h3>
+              <h3>跨领域迁移：把真实需求转化为可执行决策。</h3>
             </div>
             <div class="transfer-capabilities">
               <article>
@@ -537,7 +575,7 @@
               <article>
                 <span>03</span>
                 <h4>目标与利益对齐</h4>
-                <p>先识别不同角色最关心的利益和最想解决的问题，再围绕共同目标确定需求优先级；在不破坏整体目标的前提下，为关键使用者的合理诉求保留空间。</p>
+                <p>识别不同角色关注的利益与核心问题，围绕共同目标确定需求优先级，协调关键使用者的合理诉求。</p>
               </article>
             </div>
             <div class="transfer-domain-line">
@@ -555,7 +593,7 @@
         <details class="chapter-details" data-chapter>
           <summary class="chapter-summary"><span class="chapter-index">07</span><h2>工业 AI 落地框架<small>方案构想：协调需求、执行决策、持续改进。</small></h2><span class="chapter-toggle" aria-hidden="true"></span></summary>
           <div class="chapter-body">
-<p class="framework-status"><strong>方案构想 · 下一阶段</strong> 当前基础是多资源建模、元启发式与强化学习；三层协同架构及以下灰盒路线尚待工程验证。</p>
+<p class="framework-status"><strong>方案构想 · 下一阶段</strong> 以多资源建模、元启发式与强化学习为基础，探索协调、决策与改进三层协同的工业 AI 架构。</p>
         <div class="industrial-ai-stack" aria-label="协调型、决策型、改进型 AI 三层框架">
           <article class="ai-layer coordination-layer">
             <div class="layer-label"><span>顶层</span><h3>协调型 AI</h3></div>
@@ -575,29 +613,6 @@
           </article>
           <p class="execution-boundary"><strong>共同的执行边界：</strong>约束校验、超时处理、保守回退与人工接管；自学习更新须先验证，再进入生产。</p>
         </div>
-        <div class="deployment-heading"><h3>强化学习落地，难在哪里？</h3><p>训练结果良好，还需要证明策略在现场变化与异常中可用。</p></div>
-        <ul class="deployment-challenges">
-          <li><h4>训练环境是否可信</h4><p>设备时序、资源占用与扰动若与现场不一致，训练收益就可能无法迁移。</p></li>
-          <li><h4>数据与异常是否充分</h4><p>历史数据通常难以覆盖罕见异常，需要结合现场经验补充扰动、边界与压力测试。</p></li>
-          <li><h4>优化目标是否贴合业务</h4><p>奖励改善不等于满足所有交付与执行要求，硬约束应独立检查。</p></li>
-          <li><h4>未见场景如何处理</h4><p>监测输入偏移、不可行解、超时与绩效退化，并为难以识别的异常保留人工处置入口。</p></li>
-        </ul>
-        <article class="hybrid-route">
-          <span class="proposal-label">候选灰盒路线 · 待对照验证</span>
-          <h3>让 RL 选规则与算子，让 LLM 提出新组合</h3>
-          <p>先把学习限制在经过验证的候选库中；LLM 在离线环节生成补充规则或算子组合，测试通过后再纳入候选库。</p>
-          <div class="hybrid-flow"><div><b>场景与状态</b><span>订单、资源、扰动</span></div><i>→</i><div><b>RL 选择</b><span>规则 / 组合 / 搜索算子</span></div><i>→</i><div><b>校验与求解</b><span>检查硬约束与时限</span></div><i>→</i><div><b>执行与反馈</b><span>持续记录实际结果</span></div></div>
-          <p class="offline-rule-loop"><strong>离线补充：</strong>异常与反例 → LLM 生成候选组合 → 独立测试与审核 → 更新规则库 / 算子库。</p>
-          <p class="route-caution">这条路线更便于设置可检查、可回退的决策边界，但不保证必然更稳定；仍需与纯规则、元启发式和端到端 RL 比较可行率、解质量、响应时间及异常下的退化程度。</p>
-        </article>
-        <article class="unseen-response">
-          <h3>面对未训练过的异常，先保证可执行，再学习改进</h3>
-          <ol><li><strong>识别并校验：</strong>检查资源变化、输入范围、输出可行性与计算时限。</li><li><strong>降级或接管：</strong>触发异常时回退到已验证的规则或优化模型；仍无可行方案时请求人工处理。</li><li><strong>保留证据：</strong>记录异常状态、决策、处理过程及结果，补充异常案例库。</li><li><strong>离线改进：</strong>重放异常、扩展训练场景并做独立测试，通过后再发布新版本。</li></ol>
-        </article>
-        <p class="framework-sources">方法参考（不代表本项目已验证）：
-          <a href="https://arxiv.org/abs/1904.12901" target="_blank" rel="noopener noreferrer">真实场景 RL 的挑战</a>；
-          <a href="https://proceedings.neurips.cc/paper_files/paper/2024/hash/4ced59d480e07d290b6f29fc8798f195-Abstract-Conference.html" target="_blank" rel="noopener noreferrer">ReEvo：LLM 生成启发式</a>。
-        </p>
           </div>
         </details>
       </section>
