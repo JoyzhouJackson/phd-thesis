@@ -636,4 +636,9 @@ main > .chapter-section:last-of-type { margin-bottom: 68px; }
   .loop-memory { padding: 14px 12px; }
 }
 
+/* Authorship emphasis and consolidated deployment challenges */
+#publication-title .first-author-emphasis { color: #b4232f; font-weight: 800; }
+.deployment-challenges + .unseen-response { margin: 0 0 30px; }
+.unseen-response > p { margin: 0; color: var(--muted); font-size: 16px; line-height: 1.75; }
+
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *, *::before, *::after { transition-duration: .01ms !important; } .reveal { opacity: 1; transform: none; } }

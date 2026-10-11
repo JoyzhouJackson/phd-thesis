@@ -135,7 +135,7 @@
           <summary class="chapter-summary"><span class="chapter-index">02</span><h2>两条研究主线与成果<small>一条让问题更真实，一条让方法更通用。</small></h2><span class="chapter-toggle" aria-hidden="true"></span></summary>
           <div class="chapter-body">
 <article class="research-line reveal">
-          <header><span>A</span><div><h3>数学建模复杂度的提升</h3><p>逐步补齐真实 PAS 中的资源与占用关系。</p></div></header>
+          <header><span>A</span><div><h3>建模复杂度提升</h3><p>逐步补齐真实 PAS 中的资源与占用关系。</p></div></header>
           <div class="line-steps three">
             <div><span>01</span><h4>夹具托盘 + 装卸时间</h4><p>创新：刻画 FP 从装载、等待、加工到卸载的连续占用。</p></div>
             <i>→</i>
@@ -156,7 +156,7 @@
         </article>
 
         <section class="publications reveal" aria-labelledby="publication-title">
-          <div class="publication-heading"><p>第一作者成果</p><h3 id="publication-title">两条主线已形成 3 篇 SCI 一区顶刊论文、2 篇会议论文，另有 1 篇 IJPR 论文处于第一轮修改中</h3></div>
+          <div class="publication-heading"><p>论文成果</p><h3 id="publication-title">两条主线的<strong class="first-author-emphasis">第一作者成果</strong>：3 篇 SCI 一区顶刊论文、2 篇会议论文，另有 1 篇 IJPR 论文处于第一轮修改中</h3></div>
           <div class="publication-grid">
             <article><span>已发表 · JMS 2024</span><h4>Machine-Fixture-Pallet Resources Constrained Flexible Job Shop Scheduling Considering Loading and Unloading Times under Pallet Automation System</h4><p>机器—夹具托盘联合调度与连续占用建模</p></article>
             <article><span>会议 · IFAC MIM 2025</span><h4>Machine-fixture-pallet resources constrained flexible pallet automation system scheduling with loading and unloading time</h4><p>Yulu Zhou, Shichang Du*, Andrea Matta</p></article>
@@ -320,20 +320,16 @@
             </details>
 
             <details class="transfer-detail" id="transfer-solving">
-              <summary><span><strong>模型规模变大后，如何求解？</strong><small>先缩减无效选择、加强模型，再按结构选择分解方法。</small></span><span class="transfer-detail-toggle" aria-hidden="true"></span></summary>
+              <summary><span><strong>模型规模变大后，如何求解？</strong><small>先识别关键资源，再组织变量，并按结构选择分解方法。</small></span><span class="transfer-detail-toggle" aria-hidden="true"></span></summary>
               <div class="transfer-detail-body">
-                <p class="solver-scope-note"><strong>方法选择 · 适配问题结构</strong>变量规模、约束耦合、松弛强度、变量边界和大 M 取值共同影响求解难度；通过对照实验评估模型与算法的求解效率。</p>
                 <div class="scaling-routes">
-                  <article><span class="scaling-route-label">先缩减候选</span><h4>资源与关系预筛选</h4><p>按工艺、能力与时间窗，排除不可行的资源选择和排序关系。</p></article>
+                  <article><span class="scaling-route-label">先明确范围</span><h4>识别关键调度资源</h4><p>剔除供应充足且不形成调度约束的标准化资源，重点刻画有限、专用或存在竞争与耦合的资源。</p></article>
                   <article><span class="scaling-route-label">再组织表达</span><h4>合法资源组合建模</h4><p>将兼容的机器—夹具—托盘合为候选方案，保留容量与占用约束。</p></article>
-                  <article><span class="scaling-route-label">决策分解</span><h4>Benders 分解</h4><p>主问题定分配，子问题验可行性并反馈割；含离散排序时可考虑逻辑型分解。</p></article>
+                  <article><span class="scaling-route-label">决策分解</span><h4>Benders 分解</h4><p>经典 Benders：主问题确定 0–1 / 整数决策；固定后，连续线性子问题检验可行性、优化目标，并通过割反馈。</p></article>
                   <article><span class="scaling-route-label">方案生成</span><h4>列生成</h4><p>从少量方案起步，按需加入新路径或排程；整数最优求解可结合分支定价。</p></article>
                 </div>
-                <p class="solver-selection-note">结合问题结构、解质量与响应时限，选择数学规划、规则、元启发式或分解方法。</p>
-                <p class="transfer-method-sources">方法参考：<a href="https://support.gurobi.com/hc/en-us/articles/13793044538001-General-guidelines-to-strengthen-a-MIP-formulation" target="_blank" rel="noopener noreferrer">模型加强</a> · <a href="https://www.scipopt.org/doc/html/BENDDECF.php" target="_blank" rel="noopener noreferrer">Benders</a> · <a href="https://arxiv.org/abs/1910.11944" target="_blank" rel="noopener noreferrer">逻辑型 Benders</a> · <a href="https://www.scipopt.org/workshop2014/gcg_witt.pdf" target="_blank" rel="noopener noreferrer">列生成与分支定价</a></p>
               </div>
             </details>
-            <p class="transfer-takeaway"><strong>跨场景拓展：复用分析框架，适配业务机制。</strong>面向制造、机器人集群、能源电力及物流供应链等方向，按场景定义任务、资源和业务约束，开展模型适配与效果验证。</p>
             </div>
           </div>
         </details>
@@ -394,13 +390,16 @@
           </article>
 
           <article class="rl-deployment reveal" id="rl-deployment" aria-labelledby="rl-deployment-title">
-        <div class="deployment-heading"><span class="proposal-label">工业应用 · 研究展望</span><h3 id="rl-deployment-title">强化学习的工业落地</h3><p>围绕训练环境、异常覆盖与执行约束，设计可验证、可回退的应用路径。</p></div>
+        <div class="deployment-heading"><span class="proposal-label">工业应用 · 研究展望</span><h3 id="rl-deployment-title">强化学习的工业落地</h3><p>围绕数据、目标与约束、未见场景，设计可验证、可回退的应用路径。</p></div>
         <ul class="deployment-challenges">
-          <li><h4>训练环境与现场一致性</h4><p>设备时序、资源占用与现场扰动影响策略迁移效果，需要校核训练环境对实际业务的刻画。</p></li>
-          <li><h4>数据与异常覆盖</h4><p>历史数据对罕见异常的覆盖有限，需结合现场经验补充扰动、边界条件与压力测试。</p></li>
-          <li><h4>业务目标与执行约束</h4><p>奖励设计对齐交付与效率目标，资源、工艺和执行硬约束通过独立检查保障。</p></li>
-          <li><h4>未见场景应对</h4><p>监测输入偏移、不可行解、超时与绩效退化，并为难以识别的异常保留人工处置入口。</p></li>
+          <li><h4>有效数据为何难以获取？</h4><p>现场数字化不足、数据缺失与口径不一，增加了采集和清洗难度；还需覆盖典型工况与真实分布，校准训练环境，使其贴近现场。</p></li>
+          <li><h4>如何对齐业务目标并落实完整约束？</h4><p>在环境、状态、动作、奖励与累计回报设计中对齐业务目标；将资源、工艺和执行硬约束落实到可行动作与状态转移，并通过独立校验检查遗漏与违规。</p></li>
         </ul>
+        <article class="unseen-response">
+          <h3>训练未覆盖的异常如何应对？</h3>
+          <p>历史数据难以穷尽罕见异常，策略需要具备回退机制，并从新场景中积累改进依据。</p>
+          <ol><li><strong>降级或接管：</strong>遇到未见异常、不可行解或超时时，回退到已验证的规则或优化模型；仍无可行方案时转人工处理。</li><li><strong>保留证据与离线改进：</strong>记录异常状态、决策与结果，补充案例库；离线重放、扩展训练并独立测试，通过后再更新策略。</li></ol>
+        </article>
         <article class="hybrid-route">
           <span class="proposal-label">候选灰盒路线 · 待对照验证</span>
           <h3>让 RL 选规则与算子，让 LLM 提出新组合</h3>
@@ -409,14 +408,6 @@
           <p class="offline-rule-loop"><strong>离线补充：</strong>异常与反例 → LLM 生成候选组合 → 独立测试与审核 → 更新规则库 / 算子库。</p>
           <p class="route-caution">验证重点：与纯规则、元启发式和端到端 RL 对比可行率、解质量、响应时间及异常下的退化程度，评估灰盒方案的现场稳定性。</p>
         </article>
-        <article class="unseen-response">
-          <h3>面对未训练过的异常，先保证可执行，再学习改进</h3>
-          <ol><li><strong>识别并校验：</strong>检查资源变化、输入范围、输出可行性与计算时限。</li><li><strong>降级或接管：</strong>触发异常时回退到已验证的规则或优化模型；仍无可行方案时请求人工处理。</li><li><strong>保留证据：</strong>记录异常状态、决策、处理过程及结果，补充异常案例库。</li><li><strong>离线改进：</strong>重放异常、扩展训练场景并做独立测试，通过后再发布新版本。</li></ol>
-        </article>
-        <p class="framework-sources">方法参考：
-          <a href="https://arxiv.org/abs/1904.12901" target="_blank" rel="noopener noreferrer">真实场景 RL 的挑战</a>；
-          <a href="https://proceedings.neurips.cc/paper_files/paper/2024/hash/4ced59d480e07d290b6f29fc8798f195-Abstract-Conference.html" target="_blank" rel="noopener noreferrer">ReEvo：LLM 生成启发式</a>。
-        </p>
           </article>
 
 
@@ -609,7 +600,6 @@
         <details class="chapter-details" data-chapter>
           <summary class="chapter-summary"><span class="chapter-index">08</span><h2>工业 AI 落地框架<small>方案构想：协调需求、执行决策、持续改进。</small></h2><span class="chapter-toggle" aria-hidden="true"></span></summary>
           <div class="chapter-body">
-<p class="framework-status"><strong>方案构想 · 下一阶段</strong> 以多资源建模、元启发式与强化学习为基础，探索协调、决策与改进三层协同的工业 AI 架构。</p>
         <div class="industrial-ai-stack" aria-label="协调型、决策型、改进型 AI 三层框架">
           <article class="ai-layer coordination-layer">
             <div class="layer-label"><span>顶层</span><h3>协调型 AI</h3></div>
