@@ -103,7 +103,7 @@
           <div class="research-question-flow">
             <h1>设备越来越灵活，<br />为什么生产仍会<br /><em>等待和拥堵？</em></h1>
             <span class="research-flow-arrow" aria-hidden="true">→</span>
-            <blockquote class="problem-statement">真正的瓶颈，是如何把系统的<span>物理柔性</span>转化为<span>生产效率</span>。</blockquote>
+            <blockquote class="problem-statement">真正的瓶颈，<br />是如何把系统的<span>物理柔性</span><br />转化为<span>生产效率</span>。</blockquote>
           </div>
         </div>
       </section>
@@ -165,7 +165,7 @@
         </article>
 
         <section class="publications reveal" aria-labelledby="publication-title">
-          <div class="publication-heading"><p>论文成果</p><h3 id="publication-title">两条主线的<strong class="first-author-emphasis">第一作者成果</strong>：3 篇 SCI 一区顶刊论文、2 篇会议论文，另有 1 篇 IJPR 论文处于第一轮修改中</h3></div>
+          <div class="publication-heading"><p>论文成果</p><h3 id="publication-title"><strong class="first-author-emphasis">第一作者成果</strong>：3 篇 SCI 一区顶刊论文、2 篇会议论文，另有 1 篇 IJPR 论文处于第一轮修改中</h3></div>
           <div class="publication-grid">
             <article><span>已发表 · JMS 2024</span><h4>Machine-Fixture-Pallet Resources Constrained Flexible Job Shop Scheduling Considering Loading and Unloading Times under Pallet Automation System</h4><p>机器—夹具托盘联合调度与连续占用建模</p></article>
             <article><span>会议 · IFAC MIM 2025</span><h4>Machine-fixture-pallet resources constrained flexible pallet automation system scheduling with loading and unloading time</h4><p>Yulu Zhou, Shichang Du*, Andrea Matta</p></article>
@@ -401,18 +401,28 @@
           <article class="rl-deployment reveal" id="rl-deployment" aria-labelledby="rl-deployment-title">
         <div class="deployment-heading"><span class="proposal-label">工业应用 · 研究展望</span><h3 id="rl-deployment-title">强化学习的工业落地</h3><p>围绕数据、目标与约束、未见场景，设计可验证、可回退的应用路径。</p></div>
         <ol class="deployment-challenges" aria-label="强化学习落地的三个难点">
-          <li><span class="deployment-number">01</span><h4>有效数据为何难以获取？</h4><p>现场数字化不足、数据缺失与口径不一，增加了采集和清洗难度；还需覆盖典型工况与真实分布，校准训练环境，使其贴近现场。</p></li>
-          <li><span class="deployment-number">02</span><h4>如何对齐业务目标并落实完整约束？</h4><p>在环境、状态、动作、奖励与累计回报设计中对齐业务目标；将资源、工艺和执行硬约束落实到可行动作与状态转移，并通过独立校验检查遗漏与违规。</p></li>
-          <li><span class="deployment-number">03</span><h4>训练未覆盖的异常如何应对？</h4><p>历史数据难以穷尽罕见异常，需要预留回退机制，并积累新场景证据。</p>
-            <ul class="deployment-actions"><li><strong>降级或接管：</strong>遇到异常、不可行解或超时，回退到已验证的规则或优化模型；仍不可行时转人工。</li><li><strong>保留证据与离线改进：</strong>记录异常、决策与结果，离线重放并独立测试，通过后再更新策略。</li></ul>
+          <li><span class="deployment-number">01</span><h4>有效数据为何难以获取？</h4>
+            <ul class="deployment-actions"><li><strong>难点：</strong>现场数字化不足、数据缺失且口径不一，难以覆盖真实工况与异常分布。</li><li><strong>解决思路：</strong>清洗现场数据，以仿真补充典型与异常样本；用实测数据校准环境，并以独立真实数据验证策略。</li></ul>
+          </li>
+          <li><span class="deployment-number">02</span><h4>如何对齐业务目标并落实完整约束？</h4>
+            <ul class="deployment-actions"><li><strong>难点：</strong>环境、状态、动作与奖励设计可能偏离业务目标，遗漏硬约束则会产生不可执行的方案。</li><li><strong>解决思路：</strong>围绕目标统一设计，将资源、工艺与执行约束嵌入可行动作和状态转移，并独立校验输出。</li></ul>
+          </li>
+          <li><span class="deployment-number">03</span><h4>训练未覆盖的异常如何应对？</h4>
+            <ul class="deployment-actions"><li><strong>难点：</strong>训练难以覆盖所有异常，策略在未见场景下可能失效或产生不可行解。</li><li><strong>解决思路：</strong>降级至已验证方法，必要时人工接管；保留异常与决策证据，离线复现、改进并验证后更新策略。</li></ul>
           </li>
         </ol>
         <article class="hybrid-route">
           <span class="proposal-label">候选灰盒路线</span>
           <h3>让 RL 选规则与算子，让 LLM 提出新组合</h3>
           <p>先把学习限制在经过验证的候选库中；LLM 在离线环节生成补充规则或算子组合，测试通过后再纳入候选库。</p>
-          <div class="hybrid-flow"><div><b>场景与状态</b><span>订单、资源、扰动</span></div><i>→</i><div><b>RL 选择</b><span>规则 / 组合 / 搜索算子</span></div><i>→</i><div><b>校验与求解</b><span>检查硬约束与时限</span></div><i>→</i><div><b>执行与反馈</b><span>持续记录实际结果</span></div></div>
-          <p class="offline-rule-loop"><strong>离线补充：</strong>异常与反例 → LLM 生成候选组合 → 独立测试与审核 → 更新规则库 / 算子库。</p>
+          <div class="hybrid-cycle" role="group" aria-label="在线决策与离线改进闭环">
+            <p class="hybrid-lane-label">在线决策</p>
+            <div class="hybrid-flow"><div><b>场景与状态</b><span>订单、资源、扰动</span></div><i aria-hidden="true">→</i><div><b>RL 选择</b><span>规则 / 组合 / 搜索算子</span></div><i aria-hidden="true">→</i><div><b>校验与求解</b><span>检查硬约束与时限</span></div><i aria-hidden="true">→</i><div><b>执行与反馈</b><span>记录实际结果与异常</span></div></div>
+            <div class="hybrid-cycle-connector"><span aria-hidden="true">↓</span>执行反馈进入离线改进</div>
+            <p class="hybrid-lane-label">离线改进</p>
+            <div class="hybrid-flow hybrid-offline-flow"><div><b>异常与反例</b><span>汇总失败与改进线索</span></div><i aria-hidden="true">→</i><div><b>LLM 生成组合</b><span>提出候选规则与算子</span></div><i aria-hidden="true">→</i><div><b>独立测试与审核</b><span>验证效果与执行边界</span></div><i aria-hidden="true">→</i><div><b>更新候选库</b><span>纳入通过验证的组合</span></div></div>
+            <div class="hybrid-cycle-return"><span aria-hidden="true">↺</span>更新后的规则库 / 算子库 → 供上方 RL 选择</div>
+          </div>
           <p class="route-caution">验证重点：与纯规则、元启发式和端到端 RL 对比可行率、解质量、响应时间及异常下的退化程度，评估灰盒方案的现场稳定性。</p>
         </article>
           </article>
@@ -626,6 +636,17 @@
             <div class="layer-label"><span>执行层</span><h3>决策型 AI</h3></div>
             <div><h4>让合适的 Agent 解决具体问题</h4><div class="specialist-agents"><span>排产 Agent</span><span>排班 Agent</span><span>其他专用 Agent</span></div><p>根据硬约束、实时性、可解释性与数据覆盖，选择或组合不同方法。</p>
               <div class="decision-methods"><div><b>白盒</b><span>规则 · 数学规划</span></div><div><b>灰盒</b><span>机理 / 优化 + 学习</span></div><div><b>黑盒</b><span>数据驱动的学习策略</span></div></div>
+              <div class="decision-agent-process">
+                <h5>决策 Agent 的六大要素</h5>
+                <ol class="agent-six-flow" aria-label="目标、感知、推理、行动、记忆、停止">
+                  <li><b>目标</b><span>任务与评价指标</span></li>
+                  <li><b>感知</b><span>状态与约束信息</span></li>
+                  <li><b>推理</b><span>比较方案与方法</span></li>
+                  <li><b>行动</b><span>调用工具求解</span></li>
+                  <li><b>记忆</b><span>结果与适用经验</span></li>
+                  <li><b>停止</b><span>完成或触发边界</span></li>
+                </ol>
+              </div>
             </div>
           </article>
           <p class="layer-connector">↓ 结果、异常与反例　　↑ 验证后更新规则、策略或模型</p>
@@ -649,7 +670,7 @@
           <div><span>学习 · 智能决策</span><strong>用强化学习联合决策，检验泛化与极端场景表现</strong></div><i>→</i>
           <div><span>改进 · 反馈闭环</span><strong>探索 LLM Agent 诊断反例并验证改进方案</strong></div>
         </div>
-        <p class="conclusion-line reveal">贯通建模、求解、学习与改进，面向工程可执行、跨场景泛化与持续迭代的智能调度。</p>
+        <p class="conclusion-line reveal"><span>贯通建模、求解、学习与改进，</span><span>面向工程可执行、跨场景泛化与持续迭代的<span class="keep-phrase">智能调度。</span></span></p>
           </div>
         </details>
       </section>
