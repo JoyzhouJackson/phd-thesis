@@ -48,7 +48,7 @@
                 <p>聚焦智能调度与 AI 决策，兼具科研探索和潍柴项目工程落地经历。</p>
               </li>
               <li>
-                <span class="profile-stage">双学位博士项目</span>
+                <span class="profile-stage">双博士学位项目</span>
                 <h3>米兰理工大学</h3>
                 <p>积累海外科研与跨文化协作经验，愿意参与国际项目与海外派驻。</p>
               </li>
@@ -59,12 +59,12 @@
           <h2 id="profile-capabilities-title">专业能力</h2>
           <div class="profile-capability-grid professional-grid">
             <article class="profile-capability">
-              <h3>运筹建模与优化求解</h3>
-              <p>将业务需求转化为 LP/MILP 模型，运用 Gurobi、规则与元启发式方法，求解复杂资源约束下的优化问题。</p>
+              <h3>业务抽象与数学建模</h3>
+              <p>围绕生产计划、多资源分配与动态调度，梳理业务逻辑、决策变量和约束，将实际需求转化为 LP/MILP 模型。</p>
             </article>
             <article class="profile-capability">
-              <h3>智能调度与系统分析</h3>
-              <p>围绕生产计划、多资源分配、物流网络、车辆路径与动态重调度，开展问题建模和算法设计。</p>
+              <h3>优化算法与求解设计</h3>
+              <p>运用 Gurobi、调度规则与元启发式算法，结合问题规模与结构设计求解策略，并评估解质量与计算效率。</p>
             </article>
             <article class="profile-capability">
               <h3>强化学习与 AI 决策</h3>
@@ -100,9 +100,11 @@
       <section class="research-intro-band" aria-label="博士研究引入">
         <div class="hero-copy research-intro section" id="research-intro">
           <p class="overline">多资源约束调度研究</p>
-          <h1>设备越来越灵活，<br />为什么生产仍会<br /><em>等待和拥堵？</em></h1>
-          <p>围绕多资源协同调度，贯通建模、求解、学习与改进。</p>
-          <a class="button" href="#background">从问题开始 <span>↓</span></a>
+          <div class="research-question-flow">
+            <h1>设备越来越灵活，<br />为什么生产仍会<br /><em>等待和拥堵？</em></h1>
+            <span class="research-flow-arrow" aria-hidden="true">→</span>
+            <blockquote class="problem-statement">真正的瓶颈，是如何把系统的<span>物理柔性</span>转化为<span>生产效率</span>。</blockquote>
+          </div>
         </div>
       </section>
 
@@ -111,7 +113,7 @@
           <summary class="chapter-summary"><span class="chapter-index">01</span><h2>背景、对象与研究缺口<small>多资源协同决定柔性设备能否转化为生产效率。</small></h2><span class="chapter-toggle" aria-hidden="true"></span></summary>
           <div class="chapter-body">
 <ol class="context-points">
-          <li><h3>制造变化：从大批量走向多品种、小批量</h3><p>定制化与交付周期缩短推动柔性自动化升级。Fastems 中国应用调查中，78% 的受访企业计划在一至三年内升级 PAS，高效运行成为关键问题。</p></li>
+          <li><h3>制造升级：从大批量走向多品种、小批量</h3><p>定制化与交付周期缩短推动柔性自动化升级。Fastems 中国应用调查中，78% 的受访企业计划在一至三年内升级 PAS，高效运行成为关键问题。</p></li>
           <li><h3>研究对象：柔性托盘自动化系统（PAS）</h3><p>通过标准化托盘连接异构机床、夹具、设置站与自动搬运存储系统，实现资源共享与柔性生产。</p></li>
           <li><h3>调度难点：多资源同时占用、相互制约</h3><p>工序与机器选择、夹具托盘占用、设置站装卸及物料托盘释放必须协同决策；局部选择会影响后续等待与可行空间。</p></li>
           <li><h3>研究缺口：从单项优化走向联合决策与持续学习</h3><p>已有方法多依赖固定规则或逐实例优化，RL 在多资源场景中也常用于辅助选规则、算子或参数；本研究进一步探索端到端联合决策及反例驱动改进。</p></li>
@@ -133,8 +135,6 @@
           <div class="table-row" role="row"><strong>已有 PAS 学习方法</strong><span>主要学习夹具托盘选择</span><span>其余决策依赖固定规则</span></div>
           <div class="table-row emphasis-row" role="row"><strong>本研究</strong><span>工序 + 夹具托盘 + 机器</span><span>端到端联合决策</span></div>
         </div>
-        <p class="source-note">文献对比依据第五篇论文的研究现状表归纳。</p>
-        <blockquote class="problem-statement">真正的瓶颈，是如何把系统的<span>物理柔性</span>转化为<span>生产效率</span>。</blockquote>
           </div>
         </details>
       </section>
@@ -400,17 +400,15 @@
 
           <article class="rl-deployment reveal" id="rl-deployment" aria-labelledby="rl-deployment-title">
         <div class="deployment-heading"><span class="proposal-label">工业应用 · 研究展望</span><h3 id="rl-deployment-title">强化学习的工业落地</h3><p>围绕数据、目标与约束、未见场景，设计可验证、可回退的应用路径。</p></div>
-        <ul class="deployment-challenges">
-          <li><h4>有效数据为何难以获取？</h4><p>现场数字化不足、数据缺失与口径不一，增加了采集和清洗难度；还需覆盖典型工况与真实分布，校准训练环境，使其贴近现场。</p></li>
-          <li><h4>如何对齐业务目标并落实完整约束？</h4><p>在环境、状态、动作、奖励与累计回报设计中对齐业务目标；将资源、工艺和执行硬约束落实到可行动作与状态转移，并通过独立校验检查遗漏与违规。</p></li>
-        </ul>
-        <article class="unseen-response">
-          <h3>训练未覆盖的异常如何应对？</h3>
-          <p>历史数据难以穷尽罕见异常，策略需要具备回退机制，并从新场景中积累改进依据。</p>
-          <ol><li><strong>降级或接管：</strong>遇到未见异常、不可行解或超时时，回退到已验证的规则或优化模型；仍无可行方案时转人工处理。</li><li><strong>保留证据与离线改进：</strong>记录异常状态、决策与结果，补充案例库；离线重放、扩展训练并独立测试，通过后再更新策略。</li></ol>
-        </article>
+        <ol class="deployment-challenges" aria-label="强化学习落地的三个难点">
+          <li><span class="deployment-number">01</span><h4>有效数据为何难以获取？</h4><p>现场数字化不足、数据缺失与口径不一，增加了采集和清洗难度；还需覆盖典型工况与真实分布，校准训练环境，使其贴近现场。</p></li>
+          <li><span class="deployment-number">02</span><h4>如何对齐业务目标并落实完整约束？</h4><p>在环境、状态、动作、奖励与累计回报设计中对齐业务目标；将资源、工艺和执行硬约束落实到可行动作与状态转移，并通过独立校验检查遗漏与违规。</p></li>
+          <li><span class="deployment-number">03</span><h4>训练未覆盖的异常如何应对？</h4><p>历史数据难以穷尽罕见异常，需要预留回退机制，并积累新场景证据。</p>
+            <ul class="deployment-actions"><li><strong>降级或接管：</strong>遇到异常、不可行解或超时，回退到已验证的规则或优化模型；仍不可行时转人工。</li><li><strong>保留证据与离线改进：</strong>记录异常、决策与结果，离线重放并独立测试，通过后再更新策略。</li></ul>
+          </li>
+        </ol>
         <article class="hybrid-route">
-          <span class="proposal-label">候选灰盒路线 · 待对照验证</span>
+          <span class="proposal-label">候选灰盒路线</span>
           <h3>让 RL 选规则与算子，让 LLM 提出新组合</h3>
           <p>先把学习限制在经过验证的候选库中；LLM 在离线环节生成补充规则或算子组合，测试通过后再纳入候选库。</p>
           <div class="hybrid-flow"><div><b>场景与状态</b><span>订单、资源、扰动</span></div><i>→</i><div><b>RL 选择</b><span>规则 / 组合 / 搜索算子</span></div><i>→</i><div><b>校验与求解</b><span>检查硬约束与时限</span></div><i>→</i><div><b>执行与反馈</b><span>持续记录实际结果</span></div></div>
@@ -445,6 +443,15 @@
               <article><span>05</span><h4>记忆</h4><p>记录接受与否决结果</p></article>
               <article><span>06</span><h4>停止</h4><p>反例基本消除或无稳定改进</p></article>
             </div>
+
+            <section class="agent-memory-challenges" aria-labelledby="agent-memory-title">
+              <p class="ai-label">持续迭代中的挑战</p>
+              <h4 id="agent-memory-title">记忆与推理：如何减少重复探索？</h4>
+              <div class="agent-memory-grid">
+                <article><h5>记忆缺失或失真，可能重复试错</h5><p>历史记录缺失、摘要失真或检索遗漏，可能让 Agent 重走已否定的路线。</p><p><strong>应对思路：</strong>结构化记录“假设—实验—结果—适用条件”，保留原始证据，实验前核对历史尝试。</p></article>
+                <article><h5>历史信息过多，可能干扰当前推理</h5><p>冗长、无关或相互冲突的记录，可能使关键证据难以被有效利用。</p><p><strong>应对思路：</strong>完整日志与当前上下文分开，按问题和模型版本检索，只引入相关证据、当前目标与未决问题。</p></article>
+              </div>
+            </section>
 
             <div class="agent-flowchart compact-agent-loop" aria-label="反例驱动的 LLM Agent 两层评估闭环">
               <div class="flow-caption"><span>反例驱动闭环</span><strong>发现问题 → 提出改进 → 两层验证 → 更新或回退</strong></div>

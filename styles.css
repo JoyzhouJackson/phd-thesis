@@ -492,7 +492,7 @@ main > .chapter-section:last-of-type { margin-bottom: 68px; }
 .deployment-heading h3, .hybrid-route h3, .unseen-response h3 { margin: 0 0 12px; font-size: 23px; line-height: 1.5; }
 .deployment-heading > p { margin: 0; color: var(--muted); font-size: 16px; line-height: 1.7; }
 .deployment-challenges { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; margin: 22px 0 30px; padding: 0; list-style: none; }
-.deployment-challenges li { padding: 23px; border: 1px solid var(--line); border-radius: 11px; }
+.deployment-challenges > li { padding: 23px; border: 1px solid var(--line); border-radius: 11px; }
 .deployment-challenges h4 { margin: 0 0 9px; font-size: 18px; line-height: 1.5; }
 .deployment-challenges p, .hybrid-route > p, .unseen-response li { margin: 0; color: var(--muted); font-size: 16px; line-height: 1.75; }
 .hybrid-route { padding: 26px; background: #eaf1eb; border-radius: 13px; }
@@ -656,6 +656,38 @@ main > .chapter-section:last-of-type { margin-bottom: 68px; }
 @media (max-width: 620px) {
   .site-header { padding-top: 20px; gap: 15px; }
   .hero .hero-inner { padding-top: 174px; }
+}
+
+/* Research question, numbered deployment challenges and Agent memory */
+.research-intro-band .research-intro { display: block; }
+.research-question-flow { display: grid; grid-template-columns: minmax(0, 1.15fr) auto minmax(0, 1fr); gap: 36px; align-items: center; }
+.research-question-flow .problem-statement { margin: 0; padding: 0; font-size: clamp(24px, 2.7vw, 32px); line-height: 1.6; }
+.research-question-flow .problem-statement span { display: inline-block; }
+.research-flow-arrow { color: var(--green-dark); font-size: 42px; line-height: 1; }
+.deployment-challenges { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.deployment-number { display: block; margin-bottom: 12px; color: var(--green-dark); font-size: 14px; font-weight: 750; }
+.deployment-actions { display: grid; gap: 10px; margin: 12px 0 0; padding-left: 18px; color: var(--muted); font-size: 16px; line-height: 1.75; list-style: disc; }
+.deployment-actions strong { color: var(--ink); }
+.agent-memory-challenges { margin-top: 32px; }
+.agent-memory-challenges > h4 { margin: 0 0 20px; font-size: 24px; line-height: 1.5; }
+.agent-memory-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+.agent-memory-grid > article { padding: 23px; background: var(--dark-2); border: 1px solid rgba(255,255,255,.16); border-radius: 11px; }
+.agent-memory-grid h5 { margin: 0 0 12px; color: white; font-size: 18px; line-height: 1.5; }
+.agent-memory-grid p { margin: 0; color: rgba(255,255,255,.7); font-size: 16px; line-height: 1.75; }
+.agent-memory-grid p + p { margin-top: 14px; }
+.agent-memory-grid strong { color: var(--green); }
+@media (max-width: 1000px) {
+  .deployment-challenges { grid-template-columns: 1fr; }
+}
+@media (max-width: 760px) {
+  .research-question-flow { grid-template-columns: minmax(0, 1fr); gap: 22px; }
+  .research-flow-arrow { justify-self: center; transform: rotate(90deg); }
+  .research-question-flow .problem-statement { font-size: 25px; }
+  .agent-memory-grid { grid-template-columns: minmax(0, 1fr); }
+}
+@media (max-width: 620px) {
+  .deployment-challenges > li, .agent-memory-grid > article { padding: 20px 18px; }
+  .agent-memory-challenges > h4 { font-size: 21px; }
 }
 
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *, *::before, *::after { transition-duration: .01ms !important; } .reveal { opacity: 1; transform: none; } }
