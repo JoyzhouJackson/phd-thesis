@@ -17,7 +17,7 @@
     <header class="site-header">
       <a class="logo" href="#top"><span>YZ</span><strong>周雨露<br />Yulu Zhou</strong></a>
       <nav aria-label="主导航">
-        <a href="#background">背景</a><a href="#roadmap">研究主线</a><a href="#foundations">建模与求解</a><a href="#ai">AI 方向</a><a href="#industry">工业落地</a><a href="#future">下一步</a>
+        <a href="#background">背景</a><a href="#roadmap">研究主线</a><a href="#foundations">建模与求解</a><a href="#ai">强化学习</a><a href="#llm-agent">LLM Agent</a><a href="#industry">工业落地</a><a href="#future">下一步</a>
       </nav>
       <a class="contact-link" href="mailto:yuluzhou@sjtu.edu.cn">联系我 ↗</a>
     </header>
@@ -81,10 +81,6 @@
             <article class="profile-capability"><h3>适应环境，主动协作</h3><p>根据不同背景和关注点调整表达，在科研、企业项目与跨文化协作中理解需求、建立共识。</p></article>
             <article class="profile-capability"><h3>目标导向，主动担当</h3><p>围绕关键目标确定优先级，对承担的任务和结果负责；保持进取心，追求更高目标并愿意承担相应责任。</p></article>
           </div>
-          <div class="profile-practice" aria-label="组织与表达实践">
-            <p><strong>团队管理</strong>阳光大使团：任务分工、成员沟通与组织协调。</p>
-            <p><strong>内容表达</strong>围绕受众需求策划内容，将复杂信息讲清楚，并根据反馈改进。</p>
-          </div>
           <aside class="profile-growth" id="growth-direction" aria-labelledby="profile-growth-title">
             <h2 id="profile-growth-title">成长方向</h2>
             <div><h3>长期规划与取舍</h3><p>我比较关注当前问题的解决与阶段任务的完成，对更长期的方向布局、任务之间的关联，以及投入的长期价值，还需要更系统地考虑。</p></div>
@@ -109,12 +105,12 @@
           <li><h3>制造变化：从大批量走向多品种、小批量</h3><p>定制化与交付周期缩短推动柔性自动化升级。Fastems 中国应用调查中，78% 的受访企业计划在一至三年内升级 PAS，高效运行成为关键问题。</p></li>
           <li><h3>研究对象：柔性托盘自动化系统（PAS）</h3><p>通过标准化托盘连接异构机床、夹具、设置站与自动搬运存储系统，实现资源共享与柔性生产。</p></li>
           <li><h3>调度难点：多资源同时占用、相互制约</h3><p>工序与机器选择、夹具托盘占用、设置站装卸及物料托盘释放必须协同决策；局部选择会影响后续等待与可行空间。</p></li>
-          <li><h3>研究缺口：从单项优化走向联合决策与持续学习</h3><p>已有方法多依赖固定规则或逐实例优化，RL 在多资源场景中也常用于辅助选规则、算子或参数；我的研究进一步探索端到端联合决策及反例驱动改进。</p></li>
+          <li><h3>研究缺口：从单项优化走向联合决策与持续学习</h3><p>已有方法多依赖固定规则或逐实例优化，RL 在多资源场景中也常用于辅助选规则、算子或参数；本研究进一步探索端到端联合决策及反例驱动改进。</p></li>
         </ol>
         <div class="object-visuals context-visuals">
           <figure class="factory-photo">
             <img src="assets/industrial-pas.jpg" alt="发动机制造企业中的柔性托盘自动化系统" loading="lazy" />
-            <figcaption>实际柔性托盘自动化系统</figcaption>
+            <figcaption>潍柴现场柔性托盘自动化系统</figcaption>
           </figure>
           <figure class="structure-figure">
             <img src="assets/pas-structure.png" alt="工件、夹具、托盘、设置站与机床组成的 PAS 结构示意图" loading="lazy" />
@@ -139,7 +135,7 @@
           <summary class="chapter-summary"><span class="chapter-index">02</span><h2>两条研究主线与成果<small>一条让问题更真实，一条让方法更通用。</small></h2><span class="chapter-toggle" aria-hidden="true"></span></summary>
           <div class="chapter-body">
 <article class="research-line reveal">
-          <header><span>A</span><div><h3>问题复杂度提升</h3><p>逐步补齐真实 PAS 中的资源与占用关系。</p></div></header>
+          <header><span>A</span><div><h3>数学建模复杂度的提升</h3><p>逐步补齐真实 PAS 中的资源与占用关系。</p></div></header>
           <div class="line-steps three">
             <div><span>01</span><h4>夹具托盘 + 装卸时间</h4><p>创新：刻画 FP 从装载、等待、加工到卸载的连续占用。</p></div>
             <i>→</i>
@@ -160,14 +156,14 @@
         </article>
 
         <section class="publications reveal" aria-labelledby="publication-title">
-          <div class="publication-heading"><p>第一作者成果</p><h3 id="publication-title">两条主线已形成 3 篇 SCI 一区顶刊论文、2 篇会议论文，另有 1 篇 IJPR 在投</h3></div>
+          <div class="publication-heading"><p>第一作者成果</p><h3 id="publication-title">两条主线已形成 3 篇 SCI 一区顶刊论文、2 篇会议论文，另有 1 篇 IJPR 论文处于第一轮修改中</h3></div>
           <div class="publication-grid">
             <article><span>已发表 · JMS 2024</span><h4>Machine-Fixture-Pallet Resources Constrained Flexible Job Shop Scheduling Considering Loading and Unloading Times under Pallet Automation System</h4><p>机器—夹具托盘联合调度与连续占用建模</p></article>
             <article><span>会议 · IFAC MIM 2025</span><h4>Machine-fixture-pallet resources constrained flexible pallet automation system scheduling with loading and unloading time</h4><p>Yulu Zhou, Shichang Du*, Andrea Matta</p></article>
             <article><span>已发表 · JMS 2025</span><h4>Flexible Pallet Automation System Scheduling with Limited Fixture-Pallets and Material-Pallets</h4><p>引入有限物料托盘的发动机制造案例</p></article>
             <article><span>已发表 · IEEE TSMC:S 2026</span><h4>Multiresource-Constrained Flexible Job Shop Scheduling with Fixture Pallets and Setup Stations under Pallet Automation Systems</h4><p>进一步纳入有限设置站与装卸任务</p></article>
             <article><span>会议 · APMS 2026</span><h4>End-to-End Q-Learning for Fixture Selection in Multi-Resource-Constrained Flexible Job Shop Scheduling</h4><p>Yulu Zhou, Andrea Matta, Shichang Du*</p></article>
-            <article><span>准备投稿 · IJPR</span><h4>End-to-end Q-learning for operation-fixture-machine scheduling in pallet automation systems</h4><p>工序—夹具托盘—机器端到端联合决策</p></article>
+            <article><span>第一轮修改中 · IJPR</span><h4>End-to-end Q-learning for operation-fixture-machine scheduling in pallet automation systems</h4><p>工序—夹具托盘—机器端到端联合决策</p></article>
           </div>
         </section>
           </div>
@@ -328,10 +324,10 @@
               <div class="transfer-detail-body">
                 <p class="solver-scope-note"><strong>方法选择 · 适配问题结构</strong>变量规模、约束耦合、松弛强度、变量边界和大 M 取值共同影响求解难度；通过对照实验评估模型与算法的求解效率。</p>
                 <div class="scaling-routes">
-                  <article><span class="scaling-route-label">先缩减候选</span><h4>资源与关系预筛选</h4><p>依据工艺兼容性、资源能力和时间窗口，排除不可行的资源选择与排序关系。</p><p class="scaling-caution">筛选策略需同步评估可行性、解质量与最优性保证。</p></article>
-                  <article><span class="scaling-route-label">再组织表达</span><h4>合法资源组合建模</h4><p>将可行的“机器—夹具—托盘”组合视为一个候选方案，直接表达兼容关系。</p><p class="scaling-caution">按兼容关系生成合法组合，保留共享资源的容量与占用约束，并控制候选组合规模。</p></article>
-                  <article><span class="scaling-route-label">拓展方向 · 决策分解</span><h4>Benders 分解</h4><p>主问题做资源分配等关键选择；子问题检查可行性、优化后续安排，再通过割反馈。</p><p class="scaling-caution">经典线性 Benders 要求固定主问题后得到连续线性子问题；若仍含离散排序，可考虑逻辑型 Benders。</p></article>
-                  <article><span class="scaling-route-label">拓展方向 · 方案生成</span><h4>列生成</h4><p>路径、班次或局部排程过多时，从少量方案出发，由定价子问题生成值得加入的新方案。</p><p class="scaling-caution">先通过列生成求解线性松弛；证明整数最优性时，一般结合分支定价等机制。</p></article>
+                  <article><span class="scaling-route-label">先缩减候选</span><h4>资源与关系预筛选</h4><p>按工艺、能力与时间窗，排除不可行的资源选择和排序关系。</p></article>
+                  <article><span class="scaling-route-label">再组织表达</span><h4>合法资源组合建模</h4><p>将兼容的机器—夹具—托盘合为候选方案，保留容量与占用约束。</p></article>
+                  <article><span class="scaling-route-label">决策分解</span><h4>Benders 分解</h4><p>主问题定分配，子问题验可行性并反馈割；含离散排序时可考虑逻辑型分解。</p></article>
+                  <article><span class="scaling-route-label">方案生成</span><h4>列生成</h4><p>从少量方案起步，按需加入新路径或排程；整数最优求解可结合分支定价。</p></article>
                 </div>
                 <p class="solver-selection-note">结合问题结构、解质量与响应时限，选择数学规划、规则、元启发式或分解方法。</p>
                 <p class="transfer-method-sources">方法参考：<a href="https://support.gurobi.com/hc/en-us/articles/13793044538001-General-guidelines-to-strengthen-a-MIP-formulation" target="_blank" rel="noopener noreferrer">模型加强</a> · <a href="https://www.scipopt.org/doc/html/BENDDECF.php" target="_blank" rel="noopener noreferrer">Benders</a> · <a href="https://arxiv.org/abs/1910.11944" target="_blank" rel="noopener noreferrer">逻辑型 Benders</a> · <a href="https://www.scipopt.org/workshop2014/gcg_witt.pdf" target="_blank" rel="noopener noreferrer">列生成与分支定价</a></p>
@@ -345,7 +341,7 @@
 
       <section class="chapter-section ai-section" id="ai">
         <details class="chapter-details" data-chapter>
-          <summary class="chapter-summary"><span class="chapter-index">05</span><h2>强化学习与 LLM Agent<small>端到端联合决策，以及反例驱动的持续改进。</small></h2><span class="chapter-toggle" aria-hidden="true"></span></summary>
+          <summary class="chapter-summary"><span class="chapter-index">05</span><h2>强化学习：方法、落地难点与解决思路<small>端到端联合决策，以及面向工业应用的灰盒与异常回退方案。</small></h2><span class="chapter-toggle" aria-hidden="true"></span></summary>
           <div class="chapter-body chapter-body-dark">
 <div class="section ai-inner">
 
@@ -365,9 +361,21 @@
               <article><span>04 · UPDATE</span><h4>从当前结果修正长期价值</h4><p>用即时回报与下一决策点的最佳估计共同更新 Q 值，使一次联合选择能够学习其对后续调度的影响。</p><code>Q ← Q + α[rₜ + γ max Q′ − Q]</code></article>
             </div>
 
-            <figure class="algorithm-figure">
-              <img src="assets/q-learning-algorithm.png" alt="论文 5 图 4：端到端 Q-learning 的训练、决策、验证与测试流程" />
-              <figcaption>论文 5 图 4：初始化、训练轮次、案例循环、联合决策与独立验证组成完整的端到端 Q-learning 流程。</figcaption>
+            <figure class="rl-interaction" aria-label="强化学习智能体与调度环境交互示意图">
+              <div class="rl-interaction-diagram" role="img" aria-label="Agent 在上方，Environment 在下方。环境从左侧向智能体提供 State，从中间向上反馈 Reward；智能体从右侧向环境下达 Action。">
+                <svg viewBox="0 0 760 340" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+                  <defs><marker id="rl-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 Z" fill="currentColor" /></marker></defs>
+                  <path class="rl-state-path" d="M 152 283 H 44 V 57 H 150" marker-end="url(#rl-arrow)" />
+                  <path class="rl-action-path" d="M 608 57 H 716 V 283 H 610" marker-end="url(#rl-arrow)" />
+                  <path class="rl-reward-path" d="M 380 240 V 102" marker-end="url(#rl-arrow)" />
+                </svg>
+                <div class="rl-interaction-node rl-agent-node"><strong>Agent</strong><span>Q-learning 策略</span></div>
+                <div class="rl-interaction-node rl-environment-node"><strong>Environment</strong><span>多资源调度环境</span></div>
+                <span class="rl-signal rl-state-label">State<small>状态</small></span>
+                <span class="rl-signal rl-action-label">Action<small>动作</small></span>
+                <span class="rl-signal rl-reward-label">Reward<small>奖励</small></span>
+              </div>
+              <figcaption>观察状态 → 选择联合动作 → 环境执行并反馈奖励 → 更新策略。</figcaption>
             </figure>
 
             <div class="result-heading">
@@ -411,61 +419,69 @@
         </p>
           </article>
 
+
+        </div>
+          </div>
+        </details>
+      </section>
+
+      <section class="chapter-section llm-chapter" id="llm-agent">
+        <details class="chapter-details" data-chapter>
+          <summary class="chapter-summary"><span class="chapter-index">06</span><h2>LLM Agent：反例驱动的持续改进<small>诊断表示缺陷，通过初筛与精筛决定模型是否更新。</small></h2><span class="chapter-toggle" aria-hidden="true"></span></summary>
+          <div class="chapter-body chapter-body-dark">
+            <div class="section ai-inner">
           <article class="agent-section reveal">
             <div class="ai-copy agent-heading">
               <p class="ai-label">LLM Agent · Counterexample-driven Learning</p>
               <h3>LLM 辅助诊断与改进调度表示</h3>
               <p>通过反事实比较挖掘有害反例，由 LLM 提出可证伪的特征假设，再经过初筛与精筛决定方案的保留和迭代。</p>
-              <div class="agent-principle"><strong>LLM 生成假设</strong><i>→</i><strong>程序执行实验</strong><i>→</i><strong>证据决定去留</strong></div>
             </div>
 
-            <div class="agent-elements" aria-label="LLM Agent 六大要素">
-              <article><span>01</span><h4>目标</h4><p>消除有害同键反例，同时保持或改善整体 makespan。</p></article>
-              <article><span>02</span><h4>观察</h4><p>反例、Q-table、训练曲线与验证结果。</p></article>
-              <article><span>03</span><h4>推理</h4><p>LLM 分析原因并提出可证伪的单因素假设。</p></article>
-              <article><span>04</span><h4>行动</h4><p>修改代码和配置，执行测试、训练与验证。</p></article>
-              <article><span>05</span><h4>记忆</h4><p>保存反例库、实验注册表和 Git 历史。</p></article>
-              <article><span>06</span><h4>停止条件</h4><p>反例基本消除，或重新诊断后改进仍不收敛。</p></article>
+            <div class="agent-elements agent-elements-compact" aria-label="LLM Agent 六大要素">
+              <article><span>01</span><h4>目标</h4><p>减少反例，保持整体性能</p></article>
+              <article><span>02</span><h4>观察</h4><p>反例、Q 表与验证结果</p></article>
+              <article><span>03</span><h4>推理</h4><p>提出可证伪的改进假设</p></article>
+              <article><span>04</span><h4>行动</h4><p>修改表示并运行实验</p></article>
+              <article><span>05</span><h4>记忆</h4><p>记录接受与否决结果</p></article>
+              <article><span>06</span><h4>停止</h4><p>反例基本消除或无稳定改进</p></article>
             </div>
 
-            <div class="agent-flowchart" aria-label="反例驱动的 LLM Agent 完整流程图">
-              <div class="flow-caption"><span>完整闭环</span><strong>观察 → 推理 → 行动 → 初筛 → 精筛 → 记忆与迭代</strong></div>
-              <div class="flow-node current"><span>当前模型</span><h4>M<sub>k</sub></h4><p>在固定发现集运行，并记录全部候选动作。</p></div>
-              <div class="flow-arrow">↓</div>
-              <div class="flow-node"><span>观察 · 反例挖掘</span><h4>同状态分叉 + 反事实重放</h4><p>比较当前所选动作与所有可行替代动作的最终 makespan，生成确认有害反例库 CE<sub>k</sub>。</p></div>
-              <div class="flow-note"><strong>反例判定</strong><p>若所选动作相对最佳替代动作的归一化 regret ≥ 1%，则记为有害反例；若二者共享同一离散状态键，则说明状态表示发生信息丢失。</p></div>
-              <div class="flow-arrow">↓</div>
-              <div class="flow-node"><span>推理 · LLM 诊断</span><h4>从反例提出一个可证伪假设 H<sub>k</sub></h4><p>分析反例与无害对照，只改变一个表示因素：相对化特征、替换弱信息、补充资源耦合上下文，或降低状态稀疏性。</p></div>
-              <div class="flow-arrow">↓</div>
-              <div class="flow-node"><span>行动 · 实验分支</span><h4>修改代码或配置</h4><p>自动测试与信息泄漏检查通过后提交 Git，确保每个假设可追踪、可回退、可复现。</p></div>
-              <div class="flow-arrow">↓</div>
-              <div class="flow-stage coarse"><span>第一层 · 初筛</span><h4>短训练 + 小规模反例检查</h4><p>先判断性能底线是否守住，以及反例率或同键反例是否改善；弱信号再追加一次复核。</p></div>
-              <div class="flow-arrow">↓</div>
-              <div class="flow-decision-row">
-                <div class="flow-branch reject"><b>否</b><span>拒绝 H<sub>k</sub><br />回到 M<sub>k</sub>，生成下一假设</span></div>
-                <div class="flow-diamond"><span>性能底线与<br />反例信号<br />同时通过？</span></div>
-                <div class="flow-branch accept"><b>是</b><span>候选保留<br />进入精细筛选</span></div>
+            <div class="agent-flowchart compact-agent-loop" aria-label="反例驱动的 LLM Agent 两层评估闭环">
+              <div class="flow-caption"><span>反例驱动闭环</span><strong>发现问题 → 提出改进 → 两层验证 → 更新或回退</strong></div>
+              <div class="loop-preparation">
+                <div><span>观察</span><h4>当前模型挖掘反例</h4><p>同一状态下比较替代动作</p></div><i aria-hidden="true">→</i>
+                <div><span>推理</span><h4>LLM 提出改进假设</h4><p>每轮聚焦一个表示因素</p></div><i aria-hidden="true">→</i>
+                <div><span>行动</span><h4>修改并测试</h4><p>代码 / 配置通过检查后训练</p></div>
               </div>
-              <div class="flow-arrow">↓</div>
-              <div class="flow-stage fine"><span>第二层 · 精筛</span><h4>完整训练 + 独立测试</h4><p>系统评估反例率、regret、状态混叠、模型复杂度与 makespan，确认局部修正是否形成整体净改进。</p></div>
-              <div class="flow-arrow">↓</div>
-              <div class="flow-decision-row final-decision">
-                <div class="flow-branch reject"><b>否</b><span>记录失败原因<br />保留 M<sub>k</sub> 并重新诊断</span></div>
-                <div class="flow-diamond"><span>反例减少、<br />同键归零且<br />整体性能不退化？</span></div>
-                <div class="flow-branch accept"><b>是</b><span>接受 H<sub>k</sub><br />M<sub>k+1</sub> 成为当前模型</span></div>
+              <p class="loop-counterexample"><strong>反例：</strong>同一决策状态下，存在使最终完工时间更短的可行替代动作。</p>
+              <div class="loop-entry" aria-hidden="true">↓</div>
+              <div class="loop-gates">
+                <section class="loop-gate coarse-gate" aria-label="第一层初筛">
+                  <header><span>第一层 · 初筛</span><h4>短训练与小规模检查</h4></header>
+                  <div class="loop-diamond"><span>性能守底线<br />反例有改善？</span></div>
+                  <p class="loop-pass"><b>是 →</b> 保留候选，进入精筛</p>
+                  <p class="loop-reject"><b>否 ↺</b> 回退原模型，换下一假设</p>
+                </section>
+                <i class="loop-gate-connector" aria-hidden="true">→</i>
+                <section class="loop-gate fine-gate" aria-label="第二层精筛">
+                  <header><span>第二层 · 精筛</span><h4>完整训练与独立测试</h4></header>
+                  <div class="loop-diamond"><span>反例减少、同键归零<br />整体性能不退化？</span></div>
+                  <p class="loop-pass"><b>是 →</b> 接受新模型，进入下一轮</p>
+                  <p class="loop-reject"><b>否 ↺</b> 保留原模型，重新诊断</p>
+                </section>
               </div>
-              <div class="flow-arrow loop">↓</div>
-              <div class="flow-node memory"><span>记忆与下一轮</span><h4>记录结果，再挖掘新模型产生的反例</h4><p>反例基本消除时结束闭环；重新诊断后仍无稳定改进时，记录剩余反例与适用边界，结束本轮迭代。</p></div>
+              <p class="loop-memory"><strong>记忆与迭代 ↺</strong>记录每轮结果，基于保留的模型重新挖掘反例。</p>
+              <p class="loop-stop"><strong>结束条件：</strong>反例基本消除；或重新诊断后仍无稳定改进，记录剩余边界并结束本轮。</p>
             </div>
           </article>
-        </div>
+            </div>
           </div>
         </details>
       </section>
 
       <section class="chapter-section industry-section" id="industry">
         <details class="chapter-details" data-chapter>
-          <summary class="chapter-summary"><span class="chapter-index">06</span><h2>潍柴工业落地<small>多层级排产；最大算例达到 10,000 道总工序。</small></h2><span class="chapter-toggle" aria-hidden="true"></span></summary>
+          <summary class="chapter-summary"><span class="chapter-index">07</span><h2>潍柴工业落地<small>多层级排产；最大算例达到 10,000 道总工序。</small></h2><span class="chapter-toggle" aria-hidden="true"></span></summary>
           <div class="chapter-body chapter-body-dark">
 <div class="section industry-inner">
 
@@ -591,7 +607,7 @@
 
       <section class="chapter-section framework-section section" id="industrial-ai">
         <details class="chapter-details" data-chapter>
-          <summary class="chapter-summary"><span class="chapter-index">07</span><h2>工业 AI 落地框架<small>方案构想：协调需求、执行决策、持续改进。</small></h2><span class="chapter-toggle" aria-hidden="true"></span></summary>
+          <summary class="chapter-summary"><span class="chapter-index">08</span><h2>工业 AI 落地框架<small>方案构想：协调需求、执行决策、持续改进。</small></h2><span class="chapter-toggle" aria-hidden="true"></span></summary>
           <div class="chapter-body">
 <p class="framework-status"><strong>方案构想 · 下一阶段</strong> 以多资源建模、元启发式与强化学习为基础，探索协调、决策与改进三层协同的工业 AI 架构。</p>
         <div class="industrial-ai-stack" aria-label="协调型、决策型、改进型 AI 三层框架">
@@ -619,28 +635,29 @@
 
       <section class="chapter-section conclusion section" id="conclusion">
         <details class="chapter-details" data-chapter>
-          <summary class="chapter-summary"><span class="chapter-index">08</span><h2>研究结论<small>描述、求解、学习、改进，形成完整研究路线。</small></h2><span class="chapter-toggle" aria-hidden="true"></span></summary>
+          <summary class="chapter-summary"><span class="chapter-index">09</span><h2>研究结论<small>从现场建模、工程求解到学习决策与反例改进。</small></h2><span class="chapter-toggle" aria-hidden="true"></span></summary>
           <div class="chapter-body">
 <div class="conclusion-flow reveal">
-          <div><span>描述 · 现场问题</span><strong>建立多资源耦合约束的 PAS 调度模型</strong></div><i>→</i>
-          <div><span>求解 · 工业落地</span><strong>用规则与元启发式高效生成可执行排程</strong></div><i>→</i>
-          <div><span>学习 · 智能决策</span><strong>用强化学习实现端到端联合决策</strong></div><i>→</i>
-          <div><span>改进 · 自主进化</span><strong>用 LLM Agent 构建反例驱动的自学习闭环</strong></div>
+          <div><span>描述 · 问题建模</span><strong>将现场需求转化为多资源耦合约束模型</strong></div><i>→</i>
+          <div><span>求解 · 工程落地</span><strong>以规则与元启发式支撑可执行的排产方案</strong></div><i>→</i>
+          <div><span>学习 · 智能决策</span><strong>用强化学习联合决策，检验泛化与极端场景表现</strong></div><i>→</i>
+          <div><span>改进 · 反馈闭环</span><strong>探索 LLM Agent 诊断反例并验证改进方案</strong></div>
         </div>
-        <p class="conclusion-line reveal">形成可落地、能泛化、会持续学习的智能调度方法，快速响应生产变化，适应不同制造系统与应用场景。</p>
+        <p class="conclusion-line reveal">贯通建模、求解、学习与改进，面向工程可执行、跨场景泛化与持续迭代的智能调度。</p>
           </div>
         </details>
       </section>
 
       <section class="chapter-section future-section" id="future">
         <details class="chapter-details" data-chapter>
-          <summary class="chapter-summary"><span class="chapter-index">09</span><h2>下一步工作<small>拓展动态与连续场景，验证更可控的工业学习方案。</small></h2><span class="chapter-toggle" aria-hidden="true"></span></summary>
+          <summary class="chapter-summary"><span class="chapter-index">10</span><h2>下一步工作<small>拓展 DRL，补足工程化能力，积累真实落地案例。</small></h2><span class="chapter-toggle" aria-hidden="true"></span></summary>
           <div class="chapter-body chapter-body-dark">
 <div class="section future-inner">
 
           <div class="future-list">
-            <article class="reveal"><span>方法扩展</span><h3>让 DRL 面向动态与连续场景</h3><p>研究 DRL 在动态扰动、更大规模和连续状态 / 动作空间下的决策能力，提升适应性与泛化表现。</p></article>
-            <article class="reveal"><span>工业应用</span><h3>验证可控、可回退的学习型排产</h3><p>先验证 RL 选规则 / 算子与 LLM 补充候选组合的灰盒路线，再逐步接入 APS，评估异常场景下的稳定性与实际收益。</p></article>
+            <article class="reveal"><span>方法扩展</span><h3>面向动态与连续场景拓展 DRL</h3><p>研究动态扰动、连续状态 / 动作与更大规模问题，提升策略的泛化能力、稳定性与响应速度。</p></article>
+            <article class="reveal"><span>工程化能力</span><h3>打通算法原型与生产系统</h3><p>补足数据治理、系统接口、算法服务化、运行监控与异常回退等知识，提升算法接入与持续运行能力。</p></article>
+            <article class="reveal"><span>案例积累</span><h3>积累强化学习的实际落地经验</h3><p>从 RL 选规则 / 算子等可控路线起步，通过离线回放、影子测试和小范围试运行，积累真实案例并验证收益与适用边界。</p></article>
           </div>
           <a class="button" href="mailto:yuluzhou@sjtu.edu.cn">讨论研究与合作 <span>↗</span></a>
         </div>
