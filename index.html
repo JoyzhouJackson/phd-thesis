@@ -45,7 +45,7 @@
               <li>
                 <span class="profile-stage">博士研究生</span>
                 <h3>上海交通大学</h3>
-                <p>聚焦智能调度与 AI 决策，兼具科研探索和潍柴项目工程落地经历。</p>
+                <p>聚焦运筹优化与智能调度，兼具科研探索和潍柴项目工程落地经历。</p>
               </li>
               <li>
                 <span class="profile-stage">双博士学位项目</span>
@@ -105,6 +105,16 @@
             <span class="research-flow-arrow" aria-hidden="true">→</span>
             <blockquote class="problem-statement">真正的瓶颈，<br />是如何把系统的<span>物理柔性</span><br />转化为<span>生产效率</span>。</blockquote>
           </div>
+          <div class="object-visuals context-visuals">
+            <figure class="factory-photo">
+              <img src="assets/industrial-pas.jpg" alt="发动机制造企业中的柔性托盘自动化系统" loading="lazy" />
+              <figcaption>潍柴现场柔性托盘自动化系统</figcaption>
+            </figure>
+            <figure class="structure-figure">
+              <img src="assets/pas-structure.png" alt="工件、夹具、托盘、设置站与机床组成的 PAS 结构示意图" loading="lazy" />
+              <figcaption>工件装夹后，在设置站、存储系统与异构机床之间流转。</figcaption>
+            </figure>
+          </div>
         </div>
       </section>
 
@@ -118,16 +128,6 @@
           <li><h3>调度难点：多资源同时占用、相互制约</h3><p>工序与机器选择、夹具托盘占用、设置站装卸及物料托盘释放必须协同决策；局部选择会影响后续等待与可行空间。</p></li>
           <li><h3>研究缺口：从单项优化走向联合决策与持续学习</h3><p>已有方法多依赖固定规则或逐实例优化，RL 在多资源场景中也常用于辅助选规则、算子或参数；本研究进一步探索端到端联合决策及反例驱动改进。</p></li>
         </ol>
-        <div class="object-visuals context-visuals">
-          <figure class="factory-photo">
-            <img src="assets/industrial-pas.jpg" alt="发动机制造企业中的柔性托盘自动化系统" loading="lazy" />
-            <figcaption>潍柴现场柔性托盘自动化系统</figcaption>
-          </figure>
-          <figure class="structure-figure">
-            <img src="assets/pas-structure.png" alt="工件、夹具、托盘、设置站与机床组成的 PAS 结构示意图" loading="lazy" />
-            <figcaption>工件装夹后，在设置站、存储系统与异构机床之间流转。</figcaption>
-          </figure>
-        </div>
         <div class="literature-table" role="table" aria-label="第五篇论文研究现状的精简对比">
           <div class="table-row table-head" role="row"><span>研究方向</span><span>主要决策</span><span>RL 的作用</span></div>
           <div class="table-row" role="row"><strong>标准柔性作业车间</strong><span>工序 + 机器</span><span>直接学习分配</span></div>
@@ -454,15 +454,6 @@
               <article><span>06</span><h4>停止</h4><p>反例基本消除或无稳定改进</p></article>
             </div>
 
-            <section class="agent-memory-challenges" aria-labelledby="agent-memory-title">
-              <p class="ai-label">持续迭代中的挑战</p>
-              <h4 id="agent-memory-title">记忆与推理：如何减少重复探索？</h4>
-              <div class="agent-memory-grid">
-                <article><h5>记忆缺失或失真，可能重复试错</h5><p>历史记录缺失、摘要失真或检索遗漏，可能让 Agent 重走已否定的路线。</p><p><strong>应对思路：</strong>结构化记录“假设—实验—结果—适用条件”，保留原始证据，实验前核对历史尝试。</p></article>
-                <article><h5>历史信息过多，可能干扰当前推理</h5><p>冗长、无关或相互冲突的记录，可能使关键证据难以被有效利用。</p><p><strong>应对思路：</strong>完整日志与当前上下文分开，按问题和模型版本检索，只引入相关证据、当前目标与未决问题。</p></article>
-              </div>
-            </section>
-
             <div class="agent-flowchart compact-agent-loop" aria-label="反例驱动的 LLM Agent 两层评估闭环">
               <div class="flow-caption"><span>反例驱动闭环</span><strong>发现问题 → 提出改进 → 两层验证 → 更新或回退</strong></div>
               <div class="loop-preparation">
@@ -490,6 +481,15 @@
               <p class="loop-memory"><strong>记忆与迭代 ↺</strong>记录每轮结果，基于保留的模型重新挖掘反例。</p>
               <p class="loop-stop"><strong>结束条件：</strong>反例基本消除；或重新诊断后仍无稳定改进，记录剩余边界并结束本轮。</p>
             </div>
+
+            <section class="agent-memory-challenges" aria-labelledby="agent-memory-title">
+              <p class="ai-label">持续迭代中的挑战</p>
+              <h4 id="agent-memory-title">记忆与推理：如何减少重复探索？</h4>
+              <div class="agent-memory-grid">
+                <article><h5>记忆缺失或失真，可能重复试错</h5><p>历史记录缺失、摘要失真或检索遗漏，可能让 Agent 重走已否定的路线。</p><p><strong>应对思路：</strong>结构化记录“假设—实验—结果—适用条件”，保留原始证据，实验前核对历史尝试。</p></article>
+                <article><h5>历史信息过多，可能干扰当前推理</h5><p>冗长、无关或相互冲突的记录，可能使关键证据难以被有效利用。</p><p><strong>应对思路：</strong>完整日志与当前上下文分开，按问题和模型版本检索，只引入相关证据、当前目标与未决问题。</p></article>
+              </div>
+            </section>
           </article>
             </div>
           </div>
