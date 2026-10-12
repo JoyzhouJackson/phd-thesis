@@ -124,6 +124,16 @@ document.addEventListener('click', (event) => {
   revealHashTarget(hash, true);
 });
 window.addEventListener('hashchange', () => revealHashTarget(location.hash));
+document.querySelector('#collapse-chapters')?.addEventListener('click', () => {
+  document.querySelectorAll('details[data-chapter], details[data-chapter] details').forEach((chapter) => {
+    chapter.open = false;
+  });
+  // A chapter hash would reopen its section on refresh; clear only that hash.
+  if (resolveHashTarget(location.hash)?.closest('.chapter-section')) {
+    history.replaceState(null, '', location.pathname + location.search);
+  }
+  requestAnimationFrame(updateProgress);
+});
 document.querySelectorAll('details[data-chapter]').forEach((chapter) => {
   chapter.addEventListener('toggle', () => requestAnimationFrame(updateProgress));
 });
