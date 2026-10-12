@@ -1,5 +1,15 @@
 const progress = document.querySelector('#progress');
 
+const siteHeader = document.querySelector('.site-header');
+if (siteHeader) {
+  // Keep anchor targets and the introduction clear of the fixed, responsive header.
+  const updateHeaderHeight = () => {
+    document.documentElement.style.setProperty('--site-header-height', `${Math.ceil(siteHeader.getBoundingClientRect().height)}px`);
+  };
+  updateHeaderHeight();
+  new ResizeObserver(updateHeaderHeight).observe(siteHeader);
+}
+
 const updateProgress = () => {
   const available = document.documentElement.scrollHeight - window.innerHeight;
   const value = available > 0 ? (window.scrollY / available) * 100 : 0;
